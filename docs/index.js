@@ -140,7 +140,7 @@ async function cw2()
 	//catch(e){console.log("CWE:",e);window.location.reload(true)}
 	console.log("doing the paints")
 	$("cw").innerHTML= (window.ethereum.selectedAddress).substr(0,10) +"..."+(window.ethereum.selectedAddress).substr(34);
-	if(window.ethereum.chainId==250) (new ethers.Contract("0x14ffd1fa75491595c6fd22de8218738525892101",["function getNames(address) public view returns(string[] memory)"],provider)).getNames(window.ethereum.selectedAddress).then(rn=>{if(rn.length>0){$("cw").innerHTML="Hello, <span style='font-family:bold;font-size:1.337em'>"+rn[0]+"</span> ^‿^"}else{$("cw").innerHTML= (window.ethereum.selectedAddress).substr(0,10) +"..."+(window.ethereum.selectedAddress).substr(34);}})
+	if(window.ethereum.chainId==250) (new ethers.Contract("0x14ffd1fa75491595c6fd22de8218738525892101",["function getNames(address) public view returns(string[] memory)"],provider)).getNames(window.ethereum.selectedAddress).then(rn=>{if(rn.length>0){$("cw").innerHTML="Hello, <span style='/*font-family:bold;font-size:1.337em*/'>"+rn[0]+"</span> ^‿^"}else{$("cw").innerHTML= (window.ethereum.selectedAddress).substr(0,10) +"..."+(window.ethereum.selectedAddress).substr(34);}})
 	$("cw_m").innerHTML=""
 	$("connect").style.display="none";
 	$("switch").style.display="block";
@@ -183,7 +183,7 @@ async function gubs() {
 	  $("nft-sel").innerHTML = '<option value="" selected>Choose a NFT</option>'
 	  for(i=0;i<bal;i++) {
 	  	$("nft-sel").innerHTML += `
-	  	  <option value='${nids[i]}'>#${nids[i]} : ${(Number(balids[i])/1e18).toFixed()} </option>
+	  	  <option value='${nids[i]}'>#${nids[i]} : ${fornum(Number(balids[i]),18)} </option>
 	  	`
 	  }
 	}

@@ -7,7 +7,6 @@
 <title>Convert Equalizer veNFT Airdrops to FTM | FTM.guru</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="shortcut icon" href="https://ftm.guru/img/64.png"/>
-<link rel="stylesheet" href="g.css">
 <style>
 @font-face{font-family:bold;src: url(https://ftm.guru/font/bold.ttf);}
 @font-face{ font-family:italic;src: url(https://ftm.guru/font/italic.ttf);}
@@ -15,10 +14,11 @@
 @font-face{ font-family:light_italic;src: url(https://ftm.guru/font/light_italic.ttf);}
 @font-face{ font-family:regular;src: url(https://ftm.guru/font/regular.ttf);}
 @font-face{ font-family:regular_italic;src: url(https://ftm.guru/font/regular_italic.ttf);}
-*{font-family:regular;}
 *{
-scroll-behavior: smooth !important;
+  font-family:regular;
+  scroll-behavior: smooth !important;
 }
+
 .equal-gradient {
   background: -webkit-linear-gradient(left, #035cd6, #2cfbee);
 }
@@ -40,7 +40,7 @@ small {
 
 p {
   font-family: sans-serif;
-  font-size: 12px;
+  font-size: 1em;
   text-align: center;
   margin-top: 5px;
 }
@@ -50,6 +50,7 @@ h1, h2 {
   font-family: sans-serif;
   text-align: center;
 }
+
 h1 span, h2 span {
   background: -webkit-linear-gradient(left, #035cd6, #2cfbee);
   -webkit-background-clip: text;
@@ -58,7 +59,7 @@ h1 span, h2 span {
 
 h1 {
   margin-top: 100px;
-  font-size: 72px;
+  font-size: 4em;
 }
 
 h2 {
@@ -68,19 +69,13 @@ h2 {
 }
 
 .mechanism {
-  width: 500px;
+  width: 90%;
   position: relative;
   background-color: #01011b;
   border-radius: 25px;
   margin: 50px auto;
   padding: 25px;
   position: relative;
-}
-
-.mechanism .amount {
-  position: absolute;
-  right: 25px;
-  top: 15px;
 }
 
 .mechanism .amount p {
@@ -104,13 +99,13 @@ button.submit {
 }
 
 .mechanism .input-amount input, .nft-amtl {
-  width: 100px;
   display: inline;
   vertical-align: middle;
   margin-left: 10px;
 }
+
 .mechanism .input-amount img {
-  width: 40px;
+  width: 20px;
   display: inline;
   vertical-align: middle;
 }
@@ -120,7 +115,7 @@ button.submit {
   color: black;
   width: 100%;
   border: 0;
-  font-size: 24px;
+  font-size: 1.5em;
   color: white;
 }
 
@@ -163,6 +158,26 @@ textarea:focus, input:focus {
   height: 2px;
 }
 #p_cw{font-size:1em;font-family:light}
+
+
+@media(min-width:641px) {
+
+  .mechanism {
+    width: 500px;
+  }
+
+  .mechanism .amount {
+    position: absolute;
+    right: 25px;
+    top: 15px;
+  }
+  .mechanism .input-amount img {
+    width: 40px;
+    display: inline;
+    vertical-align: middle;
+  }
+
+}
 </style>
   <body>
     <div class="partnership">
@@ -172,9 +187,11 @@ textarea:focus, input:focus {
     <div class="mechanism">
       <div class="amount">
       	<p id="p_cw"><span id="cw">Hello👋 Connect wallet!</p>
-      	<select class="equal-gradient" id="nft-sel">
-      		<option value="" selected>Choose a NFT</option>
-      	</select>
+      	<div align="center">
+      	  <select class="equal-gradient" id="nft-sel">
+      	    <option value="" selected>Choose a NFT</option>
+      	  </select>
+      	</div>
         <p>Balance: <span id="nft-bal">2</span> veNFT</p>
       </div>
       <div class="input-amount">
@@ -189,12 +206,21 @@ textarea:focus, input:focus {
         <img src="img/ftm.svg"/>
         <span class="nft-amtl" id="nft-ftm">30 FTM</span>
       </div>
-      <button class="submit equal-gradient">Claim <span id="claim-ftm">30</span> FTM</button>
+      <div align="center">
+        <button class="submit equal-gradient">Claim <span id="claim-ftm">30</span> FTM</button>
+      </div>
     </div>
     <div class="extra">
       <small>Available Liquidity: 73 FTM + 24 veEQUAL
       <br>Total Converted: 6 veNFTs</small>
     </div>
+
+
+
+
+
+
+
     <div style="display:none">
 		<span id="cw_m"></span>
 		<div id="connect">
