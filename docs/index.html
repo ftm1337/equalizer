@@ -8,6 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="shortcut icon" href="https://ftm.guru/img/64.png"/>
 <style>
+
 @font-face{font-family:bold;src: url(https://ftm.guru/font/bold.ttf);}
 @font-face{ font-family:italic;src: url(https://ftm.guru/font/italic.ttf);}
 @font-face{ font-family:light;src: url(https://ftm.guru/font/light.ttf);}
@@ -157,10 +158,26 @@ textarea:focus, input:focus {
   background: linear-gradient(266.44deg, #0564d7, #28edec);
   height: 2px;
 }
+
 #p_cw{font-size:1em;font-family:light}
+
 #nft-sel {
   font-size: 0.8em;
   padding: 5px
+}
+
+#cw_og {
+  text-decoration: 2px underline aqua;
+}
+#cw_og {
+  border-radius: 5px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+#cw_og:hover {
+  box-shadow: 0px 0px 10px 5px rgba(255,255,255,.2), 0px 0px 10px 5px rgba(255,255,255,0.1);transition: 0.2s;
+  text-decoration: 2px underline wavy aqua
 }
 
 @media(min-width:641px) {
@@ -216,7 +233,7 @@ textarea:focus, input:focus {
     </div>
     <div class="mechanism">
       <div class="amount">
-      	<p id="p_cw"><span id="cw">Hello👋 Connect wallet!</p>
+      	<p id="p_cw"><span id="cw" onclick="cw()">Hello 👋 <span id="cw_og">Connect wallet!</span></p>
       	<div align="center">
       	  <select class="equal-gradient" id="nft-sel">
       	    <option value="" selected>Choose a NFT</option>
