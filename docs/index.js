@@ -180,14 +180,13 @@ async function gubs() {
 	  nids = await Promise.all(nid);
 	  balid = [];
 	  for(i=0;i<bal;i++) {
-	  	//balid[i]=veq.balanceOfNFT(Number(nids[i]));
-	  	balid[i]=Number(veq.locked(Number(nids[i]))[0]);
+	  	balid[i]=veq.locked(Number(nids[i]));
 	  }
 	  balids = await Promise.all(balid);
-	  $("nft-sel").innerHTML = '<option value="" selected>Choose a NFT</option>'
+	  $("nft-sel").innerHTML = '<option value="" selected>Choose a NFT</option>';
 	  for(i=0;i<bal;i++) {
 	  	$("nft-sel").innerHTML += `
-	  	  <option value='${nids[i]}'>#${nids[i]} : ${fornum(Number(balids[i]),18)} </option>
+	  	  <option value='${nids[i]}'>#${nids[i]} : ${fornum(Number(balids[i][0]),18)} </option>
 	  	`
 	  }
 	}
@@ -197,7 +196,7 @@ async function gubs() {
 async function quote() {
 	_id = $("nft-sel").value;
 	vm=new ethers.Contract("0xf75e971e173b6b56b1181c46c778997012f0d1b3",VMABI,signer);
-	_q = await vm.quoted(_id);
+	_q = await vm.getQuoted(_id);
 	$("nft-amt").innerHTML = fornum(_q[1],18) + " EQUAL";
 	$("nft-tl").innerHTML = Number(_q[2]) + " Weeks";
 	$("nft-offer").innerHTML = fornum(_q[0],18);
