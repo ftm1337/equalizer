@@ -246,6 +246,61 @@ textarea:focus, input:focus {
 
 
 
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+  overflow-y:  auto;
+}
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup {
+  margin: 70px auto;
+  padding: 20px;
+  background: #192133;
+  color: #fff;
+  border-radius: 20px;
+  width: 30%;
+  position: relative;
+  transition: all 5s ease-in-out;
+}
+
+.popup .close {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #789;
+}
+.popup .close:hover {
+  color: #fff;
+  cursor:  context-menu
+}
+.popup .content {
+  max-height: 30%;
+  overflow: auto;
+}
+
+@media screen and (max-width: 700px){
+  .box{
+    width: 70%;
+  }
+  .popup{
+    width: 70%;
+  }
+}
 
 </style>
   <body>
@@ -279,12 +334,24 @@ textarea:focus, input:focus {
         <span class="nft-amtl" id="nft-offer">? FTM</span>
       </div>
       <div style="margin-top: -25px;" align="center">
-        <button class="submit equal-gradient"><span id="claim-offer">Claim ? FTM</span></button>
+        <button class="submit equal-gradient" onclick="sell()"><span id="claim-offer">Claim ? FTM</span></button>
       </div>
     </div>
+
+
+	<div id="note" class="overlay">
+		<div class="popup">
+			<a class="close" href="#">&times;</a>
+			<div class="content" id="content1">
+				w31c0m3 fren!<br>trade well :)
+			</div>
+		</div>
+	</div>
+
+
     <div class="extra">
       <small id="stats">
-      	Available Liquidity: ? FTM + ? veEQUAL
+      	Available Liquidity: ? FTM
       	<br>Total Converted: ? veNFTs
       	<br>Total Payouts: ? FTM
       </small>

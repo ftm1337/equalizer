@@ -195,12 +195,74 @@ async function gubs() {
 
 async function quote() {
 	_id = $("nft-sel").value;
-	vm=new ethers.Contract("0xf75e971e173b6b56b1181c46c778997012f0d1b3",VMABI,signer);
+
 	_q = await vm.getQuoted(_id);
 	$("nft-amt").innerHTML = fornum(_q[1],18) + " EQUAL";
 	$("nft-tl").innerHTML = Number(_q[2]) + " Weeks";
 	$("nft-offer").innerHTML = fornum(_q[0],18) + " FTM";
-	$("claim-offer").innerHTML = "Claim "+Number(_q[0])/1e18 + " FTM";
+	$("claim-offer").innerHTML = "Claim "+ fornum(_q[0],18) + " FTM";
+}
 
+async function sell() {
+	_id = $("nft-sel").value;
+	veq = new ethers.Contract(VENFT, VEABI, provider);
+	vm=new ethers.Contract(VENAMM,VMABI,provider);
+	al = await veq.isApprovedForAll(window.ethereum.selectedAddress,VENAMM);
+	if(al==false) {
+		notice(`
+			<h3>Approval required</h3>
+			VeNAMM requires your approval to complete this trade.<br><br>
+			<h4><u><i>Please Confirm this transaction in your wallet!</i></u></h4>
+		`);
+		let _tr = await veq.setApprovalForAll(VENAMM,true);
+		console.log(_tr)
+		notice(`
+			<h3>Submitting Approval Transction!</h3>
+			<h4><a target="_blank" href="https://ftmscan.com/tx/${_tr.hash}">View on Explorer</a></h4>
+		`);
+		_tw = await _tr.wait()
+		console.log(_tw)
+		alrt(`
+			<h3>Approval Completed!</h3>
+			<br><br>
+			<h4><a target="_blank" href="https://ftmscan.com/tx/${_tr.hash}">View on Explorer</a></h4>
+			<br><br>
+			Please confirm the Trade at your wallet provider now.
+		`)
+	}
+	_q = await vm.getQuoted(_id);
+	notice(`
+		<h3>Order Summary</h3>
+		<b>Sale of Equalizer veNFT:</b><br>
 
+		<img style='height:20px;position:relative;top:4px' src="https://equalizer.exchange/assets/logo/EQUAL.png">veNFT Token-ID: veNFT#<b>${_id}</b><br>
+		<img style='height:20px;position:relative;top:4px' src="https://equalizer.exchange/assets/logo/EQUAL.png">Amount Locked: ${fornum(_q[1],18)} EQUAL<br>
+		<img style='height:20px;position:relative;top:4px' src="img/lock.svg">Time to Unlock: ${Number(_q[2]} Weeks from now<br><br>
+		<b>Expected to Buy:</b><br>
+		<img style='height:20px;position:relative;top:4px' src="https://ftm.guru/icons/ftm.svg"> {fornum(_q[0],18)} FTM<br><br><br><br>
+		<h4><u><i>Please Confirm this transaction in your wallet!</i></u></h4>
+	`)
+	let _tr = await vm.sell(_id);
+	console.log(_tr)
+	notice(`
+		<h3>Order Submitted!</h3>
+		<b>Buying FTM</b><br>
+		<img style='height:20px;position:relative;top:4px' src="https://ftm.guru/icons/ftm.svg"> {fornum(_q[0],18)} FTM<br>
+		<b>Selling veEQUAL NFT</b><br>
+		<img style='height:20px;position:relative;top:4px' src="https://equalizer.exchange/assets/logo/EQUAL.png">veNFT#<b>${_id}</b> containing ${fornum(_q[1],18)} EQUAL locked for ${Number(_q[2]} weeks.<br><br>
+		<h4><a target="_blank" href="https://ftmscan.com/tx/${_tr.hash}">View on Explorer</a></h4>
+	`)
+	_tw = await _tr.wait()
+	console.log(_tw)
+	alrt(`
+		<h3>Order Completed!</h3>
+		Bought <img style='height:20px;position:relative;top:4px' src="https://ftm.guru/icons/ftm.svg"> {fornum(_q[0],18)} FTM for <img style='height:20px;position:relative;top:4px' src="https://equalizer.exchange/assets/logo/EQUAL.png">veNFT#<b>${_id}</b>.
+		<br><br>
+		<h4><a target="_blank" href="https://ftmscan.com/tx/${_tr.hash}">View on Explorer</a></h4>
+	`)
+}
+
+function notice(c) {
+	window.location = "#note"
+	$("content1").innerHTML = c
 }
