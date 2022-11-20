@@ -237,7 +237,7 @@ async function sell() {
 
 		<img style='height:20px;position:relative;top:4px' src="https://equalizer.exchange/assets/logo/EQUAL.png">veNFT Token-ID: veNFT#<b>${_id}</b><br>
 		<img style='height:20px;position:relative;top:4px' src="https://equalizer.exchange/assets/logo/EQUAL.png">Amount Locked: ${fornum(_q[1],18)} EQUAL<br>
-		<img style='height:20px;position:relative;top:4px' src="img/lock.svg">Time to Unlock: ${Number(_q[2]} Weeks from now<br><br>
+		<img style='height:20px;position:relative;top:4px' src="img/lock.svg">Time to Unlock: ${Number(_q[2])} Weeks from now<br><br>
 		<b>Expected to Buy:</b><br>
 		<img style='height:20px;position:relative;top:4px' src="https://ftm.guru/icons/ftm.svg"> {fornum(_q[0],18)} FTM<br><br><br><br>
 		<h4><u><i>Please Confirm this transaction in your wallet!</i></u></h4>
@@ -249,7 +249,7 @@ async function sell() {
 		<b>Buying FTM</b><br>
 		<img style='height:20px;position:relative;top:4px' src="https://ftm.guru/icons/ftm.svg"> {fornum(_q[0],18)} FTM<br>
 		<b>Selling veEQUAL NFT</b><br>
-		<img style='height:20px;position:relative;top:4px' src="https://equalizer.exchange/assets/logo/EQUAL.png">veNFT#<b>${_id}</b> containing ${fornum(_q[1],18)} EQUAL locked for ${Number(_q[2]} weeks.<br><br>
+		<img style='height:20px;position:relative;top:4px' src="https://equalizer.exchange/assets/logo/EQUAL.png">veNFT#<b>${_id}</b> containing ${fornum(_q[1],18)} EQUAL locked for ${Number(_q[2])} weeks.<br><br>
 		<h4><a target="_blank" href="https://ftmscan.com/tx/${_tr.hash}">View on Explorer</a></h4>
 	`)
 	_tw = await _tr.wait()
