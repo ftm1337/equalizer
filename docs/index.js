@@ -43,7 +43,7 @@ async function basetrip()
         		chainName: RPC_URL.split(".")[1],
         		nativeCurrency: {
             		name: RPC_URL.split(".")[1],
-            		symbol: RPC_URL.split(".")[1],
+            		symbol: (RPC_URL.split(".")[1]).toUpperCase(),
             		decimals: 18
         		},
         		blockExplorerUrls: [EXPLORE.split("/address")[0]]
@@ -90,7 +90,8 @@ function fornum(n,d)
 
 async function cw()
 {
-	let cs = await cw2(); cs?console.log("Good to Transact"):cw2()
+	let cs = await cw2(); cs?console.log("Good to Transact"):cw2();
+	cw2();
 }
 async function cw2()
 {
@@ -169,7 +170,7 @@ async function gubs() {
 	bal = await veq.balanceOf(window.ethereum.selectedAddress);
 	if (bal == 0) $("nft-bal").innerHTML = "No NFTs owned!";
 	else {
-	  $("nft-bal").innerHTML = bal;
+	  $("nft-bal").innerHTML = "Balance: "+bal+" veNFT";
 	  nid=[];
 	  for(i=0;i<bal;i++) {
 	  	nid[i]=veq.tokenOfOwnerByIndex(window.ethereum.selectedAddress,i);
