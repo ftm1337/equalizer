@@ -199,8 +199,8 @@ async function quote() {
 	_q = await vm.getQuoted(_id);
 	$("nft-amt").innerHTML = fornum(_q[1],18) + " EQUAL";
 	$("nft-tl").innerHTML = Number(_q[2]) + " Weeks";
-	$("nft-offer").innerHTML = fornum(_q[0],18);
-	$("claim-offer").innerHTML = "Claim "+fornum(_q[0],18) + " FTM";
+	$("nft-offer").innerHTML = fornum(_q[0],18) + " FTM";
+	$("claim-offer").innerHTML = "Claim "+Number(_q[0])/1e18 + " FTM";
 
 
 }
