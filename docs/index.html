@@ -9,6 +9,8 @@
 <link rel="shortcut icon" href="https://ftm.guru/img/64.png"/>
 <style>
 
+
+
 @font-face{font-family:bold;src: url(https://ftm.guru/font/bold.ttf);}
 @font-face{ font-family:italic;src: url(https://ftm.guru/font/italic.ttf);}
 @font-face{ font-family:light;src: url(https://ftm.guru/font/light.ttf);}
@@ -72,12 +74,14 @@ h2 {
 
 .mechanism {
   width: 75%;
-  position: relative;
-  background-color: #01011b;
+  position: relative;  background: -webkit-linear-gradient(183.56deg, #01011b, #001337);
+  background: -moz-linear-gradient(183.56deg, #01011b 0, #001337 100%);
+  background: linear-gradient(266.44deg, #01011b, #001337)
   border-radius: 25px;
   margin: 25px auto;
   padding: 15px;
   position: relative;
+  border-radius: 25px
 }
 
 .mechanism .amount p {
@@ -148,7 +152,8 @@ textarea:focus, input:focus {
 #particle-container {
   position:absolute;
   top:0;
-  height:100vh
+  height:100vh;
+  z-index: -1;
 }
 
 .hr-nft {
@@ -176,9 +181,21 @@ textarea:focus, input:focus {
 }
 
 #cw_og:hover {
-  box-shadow: 0px 0px 10px 5px rgba(255,255,255,.2), 0px 0px 10px 5px rgba(255,255,255,0.1);transition: 0.2s;
+  box-shadow: 0px 0px 10px 5px rgba(255,255,255,.05), 0px 0px 10px 5px rgba(255,255,255,0.05);transition: 0.3s;
   text-decoration: 2px underline wavy aqua
 }
+
+.extra h3,.extra h4 {
+  color: aqua
+}
+.extra h1 {
+	background: -webkit-linear-gradient(left, #035cd6, #2cfbee);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	font-size:2.5em
+}
+
+
 
 @media(min-width:641px) {
 
@@ -223,7 +240,12 @@ textarea:focus, input:focus {
   }
 
 
+
 }
+
+
+
+
 
 </style>
   <body>
@@ -233,33 +255,42 @@ textarea:focus, input:focus {
     </div>
     <div class="mechanism">
       <div class="amount">
+      	<br>
       	<p id="p_cw"><span id="cw" onclick="cw()">Hello 👋 <span id="cw_og">Connect wallet!</span></p>
       	<div align="center">
-      	  <select class="equal-gradient" id="nft-sel">
+      	  <select class="equal-gradient" id="nft-sel" onchange="quote()">
       	    <option value="" selected>Choose a NFT</option>
       	  </select>
       	</div>
-        <p><span id="nft-bal">Balance: 2 veNFT</span></p>
+        <p><span id="nft-bal">Balance: ? veNFT</span></p>
       </div>
       <div class="input-amount">
+      	<br>
         <img src="https://equalizer.exchange/assets/logo/EQUAL.png"/>
-        <span class="nft-amtl" id="nft-amt">300 veEQUAL</span>
+        <span class="nft-amtl" id="nft-amt">? EQUAL</span>
         <br><br>
         <img src="img/lock.svg"/>
-        <span class="nft-amtl" id="nft-tl">180 Days</span>
+        <span class="nft-amtl" id="nft-tl">? Weeks</span>
         <br> <br>
+      	<br>
         <div class="hr-nft"></div>
         <br>
         <img src="img/ftm.svg"/>
-        <span class="nft-amtl" id="nft-ftm">30 FTM</span>
+        <span class="nft-amtl" id="nft-offer">? FTM</span>
       </div>
-      <div align="center">
-        <button class="submit equal-gradient">Claim <span id="claim-ftm">30</span> FTM</button>
+      <div style="margin-top: -25px;" align="center">
+        <button class="submit equal-gradient"><span id="claim-ftm">Claim ? FTM</span></button>
       </div>
     </div>
     <div class="extra">
-      <small>Available Liquidity: 73 FTM + 24 veEQUAL
-      <br>Total Converted: 6 veNFTs</small>
+      <small id="stats">
+      	Available Liquidity: ? FTM + ? veEQUAL
+      	<br>Total Converted: ? veNFTs
+      	<br>Total Payouts: ? FTM
+      </small>
+      <br><br>
+      <h1><span>VeNAMM DEX</span></h1>
+      <h3>Powered by Guru Network</h3>
     </div>
 
 
@@ -267,22 +298,9 @@ textarea:focus, input:focus {
 
 
 
-
+<!-- IGNORE THIS BLOCK : DEV LOGS -->
     <div style="display:none">
 		<span id="cw_m"></span>
-		<div id="connect">
-			Please connect your web3 wallet.
-			<br><br>
-			<button onclick="cw()" id="btn-connect">Connect</button>
-		</div>
-		<div id="switch">
-			<b id="btn-switch" onclick="cw()">
-				<img src="img/wallet.svg" width="24px" style="position:relative;top:4px">
-				<span id="cw"></span>
-			</b>
-			<br>Balance: <b style="font-family:bold" id="usb-mtv">?</b> <img class="imgmtv" src="https://ftm.guru/icons/usdc.svg" width="20px" style="position:relative;top:4px">USDC<br>
-			<span style="font-size:0.9em">Wallet at <img class="imgmtv" src="https://ftm.guru/icons/ftm.svg" width="20px" style="position:relative;top:4px">Fantom Opera. <a href="index.html" style="color:aqua;font-family:bold">Change?</a></span>
-		</div>
 	</div>
 
     <div id="particle-container">
@@ -296,7 +314,8 @@ textarea:focus, input:focus {
         CHAINID = 250;
         RPC_URL = "https://rpc.ftm.tools"
         EXPLORE = "https://ftmscan.com/address/";
-        VENFT = "0x8313f3551C4D3984FfbaDFb42f780D0c8763Ce94"
+        VENFT = "0x8313f3551C4D3984FfbaDFb42f780D0c8763Ce94";
+        VENAMM = "0xf75e971e173b6b56b1181c46c778997012f0d1b3";
       </script>
   </body>
 </html>
