@@ -195,7 +195,7 @@ async function gubs() {
 
 async function quote() {
 	_id = $("nft-sel").value;
-
+	vm=new ethers.Contract(VENAMM,VMABI,provider);
 	_q = await vm.getQuoted(_id);
 	$("nft-amt").innerHTML = fornum(_q[1],18) + " EQUAL";
 	$("nft-tl").innerHTML = Number(_q[2]) + " Weeks";
