@@ -206,7 +206,7 @@ async function quote() {
 async function sell() {
 	_id = $("nft-sel").value;
 	veq = new ethers.Contract(VENFT, VEABI, signer);
-	vm=new ethers.Contract(VENAMM,VMABI,signer);
+	vm = new ethers.Contract(VENAMM,VMABI,signer);
 	al = await veq.isApprovedForAll(window.ethereum.selectedAddress,VENAMM);
 	if(al==false) {
 		notice(`
@@ -222,7 +222,7 @@ async function sell() {
 		`);
 		_tw = await _tr.wait()
 		console.log(_tw)
-		alrt(`
+		notice(`
 			<h3>Approval Completed!</h3>
 			<br><br>
 			<h4><a target="_blank" href="https://ftmscan.com/tx/${_tr.hash}">View on Explorer</a></h4>
@@ -254,7 +254,7 @@ async function sell() {
 	`)
 	_tw = await _tr.wait()
 	console.log(_tw)
-	alrt(`
+	notice(`
 		<h3>Order Completed!</h3>
 		Bought <img style='height:20px;position:relative;top:4px' src="https://ftm.guru/icons/ftm.svg"> {fornum(_q[0],18)} FTM for <img style='height:20px;position:relative;top:4px' src="https://equalizer.exchange/assets/logo/EQUAL.png">veNFT#<b>${_id}</b>.
 		<br><br>
