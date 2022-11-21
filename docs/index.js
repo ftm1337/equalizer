@@ -54,6 +54,7 @@ async function basetrip()
 	//DrefreshFarm()
 	//arf()
 	cw()
+	dexstats()
 }
 
 
