@@ -239,7 +239,7 @@ async function sell() {
 		<img style='height:20px;position:relative;top:4px' src="https://equalizer.exchange/assets/logo/EQUAL.png"> Amount Locked: ${fornum(_q[1],18)} EQUAL<br>
 		<img style='height:20px;position:relative;top:4px' src="img/lock.svg">Time to Unlock: ${Number(_q[2])} Weeks from now<br><br>
 		<b>Expected to Buy:</b><br>
-		<img style='height:20px;position:relative;top:4px' src="https://ftm.guru/icons/ftm.svg"> {fornum(_q[0],18)} FTM<br><br><br><br>
+		<img style='height:20px;position:relative;top:4px' src="https://ftm.guru/icons/ftm.svg"> ${fornum(_q[0],18)} FTM<br><br><br><br>
 		<h4><u><i>Please Confirm this transaction in your wallet!</i></u></h4>
 	`)
 	let _tr = await vm.sell(_id);
