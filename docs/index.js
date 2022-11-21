@@ -13,8 +13,8 @@ window.addEventListener('load',async function()
 
 async function basetrip()
 {
-	if(!(window.ethereum)){$("cw_m").innerHTML = "Wallet wasn't detected!";console.log("Wallet wasn't detected!");provider = new ethers.providers.JsonRpcProvider(RPC_URL);return}
-	else if(!Number(window.ethereum.chainId)==CHAINID){$("cw_m").innerHTML = "Wrong network! Please Switch to "+CHAINID;provider = new ethers.providers.Web3Provider(window.ethereum);return}
+	if(!(window.ethereum)){$("cw_m").innerHTML = "Wallet wasn't detected!";console.log("Wallet wasn't detected!");notice("<h3>Wallet wasn't detected!</h3>Please make sure that your device and browser have an active Web3 wallet like MetaMask installed and running.<br><br>Visit <a href='https://metamask.io' target='_blank'>metamask.io</a> to install MetaMask wallet.");provider = new ethers.providers.JsonRpcProvider(RPC_URL); await dexstats();return}
+	else if(!Number(window.ethereum.chainId)==CHAINID){$("cw_m").innerHTML = "Wrong network! Please Switch to "+CHAINID;provider = new ethers.providers.Web3Provider(window.ethereum);await dexstats();notice("<h3>Wrong network!</h3>Please Switch to Chain #"+CHAINID+"<btr"+ CHAIN_NAME+ "</u> Blockchain.");}
 	else if(//typeOf window.ethereum == Object &&Number(window.ethereum.chainId)
 		Number(window.ethereum.chainId)==CHAINID)
 	{
@@ -236,11 +236,11 @@ async function sell() {
 		<h3>Order Summary</h3>
 		<b>Sale of Equalizer veNFT:</b><br>
 
-		<img style='height:20px;position:relative;top:4px' src="https://equalizer.exchange/assets/logo/EQUAL.png"> veNFT Token-ID: veNFT#<b>${_id}</b><br>
-		<img style='height:20px;position:relative;top:4px' src="https://equalizer.exchange/assets/logo/EQUAL.png"> Amount Locked: ${fornum(_q[1],18)} EQUAL<br>
-		<img style='height:20px;position:relative;top:4px' src="img/lock.svg">Time to Unlock: ${Number(_q[2])} Weeks from now<br><br>
+		<img style='height:20px;position:relative;top:4px' src="https://equalizer.exchange/assets/logo/EQUAL.png"> NFT Token ID: <u>#<b>${_id}</b></u><br>
+		<img style='height:20px;position:relative;top:4px' src="https://equalizer.exchange/assets/logo/EQUAL.png"> Amount Locked: <u>${fornum(_q[1],18)} EQUAL</u><br>
+		<img style='height:20px;position:relative;top:4px' src="img/lock.svg">Time to Unlock: <u>${Number(_q[2])} Weeks</u> from now<br><br>
 		<b>Expected to Buy:</b><br>
-		<img style='height:20px;position:relative;top:4px' src="https://ftm.guru/icons/ftm.svg"> ${fornum(_q[0],18)} FTM<br><br><br><br>
+		<img style='height:20px;position:relative;top:4px' src="https://ftm.guru/icons/ftm.svg"> <u>${fornum(_q[0],18)} FTM</u><br><br><br><br>
 		<h4><u><i>Please Confirm this transaction in your wallet!</i></u></h4>
 	`)
 	let _tr = await vm.sell(_id);
@@ -248,16 +248,16 @@ async function sell() {
 	notice(`
 		<h3>Order Submitted!</h3>
 		<br><h4>Buying FTM</h4>
-		<img style='height:20px;position:relative;top:4px' src="https://ftm.guru/icons/ftm.svg"> ${fornum(_q[0],18)} FTM<br>
+		<img style='height:20px;position:relative;top:4px' src="https://ftm.guru/icons/ftm.svg"> <u>${fornum(_q[0],18)} FTM</u><br>
 		<br><h4>Selling veEQUAL NFT</h4>
-		<img style='height:20px;position:relative;top:4px' src="https://equalizer.exchange/assets/logo/EQUAL.png"> veNFT#<b>${_id}</b> containing ${fornum(_q[1],18)} EQUAL locked for ${Number(_q[2])} weeks.<br><br>
+		<img style='height:20px;position:relative;top:4px' src="https://equalizer.exchange/assets/logo/EQUAL.png"> <u>veNFT #<b>${_id}</b></u> containing <u>${fornum(_q[1],18)} EQUAL</u> locked for <u>${Number(_q[2])} weeks</u>.<br><br>
 		<h4><a target="_blank" href="https://ftmscan.com/tx/${_tr.hash}">View on Explorer</a></h4>
 	`)
 	_tw = await _tr.wait()
 	console.log(_tw)
 	notice(`
 		<h3>Order Completed!</h3>
-		Bought <img style='height:20px;position:relative;top:4px' src="https://ftm.guru/icons/ftm.svg"> ${fornum(_q[0],18)} FTM for <img style='height:20px;position:relative;top:4px' src="https://equalizer.exchange/assets/logo/EQUAL.png">veNFT#<b>${_id}</b>.
+		Bought <img style='height:20px;position:relative;top:4px' src="https://ftm.guru/icons/ftm.svg"> <u>${fornum(_q[0],18)} FTM</u> for <img style='height:20px;position:relative;top:4px' src="https://equalizer.exchange/assets/logo/EQUAL.png"> <u>veNFT #<b>${_id}</b></u>.
 		<br><br>
 		<h4><a target="_blank" href="https://ftmscan.com/tx/${_tr.hash}">View on Explorer</a></h4>
 	`)
@@ -270,7 +270,7 @@ function notice(c) {
 }
 
 async function dexstats() {
-	vm = new ethers.Contract(VENAMM,VMABI,signer);
+	vm = new ethers.Contract(VENAMM,VMABI,provider);
 	_b = (new ethers.Contract(WFTM, VEABI, provider)).balanceOf(VENAMM);
 	/*_c = vm.tradesCounter(WFTM);*/
 	_p = vm.tokensPaid(WFTM);
