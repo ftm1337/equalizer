@@ -205,8 +205,8 @@ async function quote() {
 
 async function sell() {
 	_id = $("nft-sel").value;
-	veq = new ethers.Contract(VENFT, VEABI, provider);
-	vm=new ethers.Contract(VENAMM,VMABI,provider);
+	veq = new ethers.Contract(VENFT, VEABI, signer);
+	vm=new ethers.Contract(VENAMM,VMABI,signer);
 	al = await veq.isApprovedForAll(window.ethereum.selectedAddress,VENAMM);
 	if(al==false) {
 		notice(`
