@@ -74,14 +74,16 @@ h2 {
 
 .mechanism {
   width: 75%;
-  position: relative;  background: -webkit-linear-gradient(183.56deg, #01011b, #001337);
+  position: relative;  
+  background: -webkit-linear-gradient(183.56deg, #01011b, #001337);
   background: -moz-linear-gradient(183.56deg, #01011b 0, #001337 100%);
-  background: linear-gradient(266.44deg, #01011b, #001337)
+  background: linear-gradient(266.44deg, #01011b, #001337);
   border-radius: 25px;
   margin: 25px auto;
   padding: 15px;
   position: relative;
-  border-radius: 25px
+  border-radius: 25px;
+  margin-bottom: 0;
 }
 
 .mechanism .amount p {
@@ -310,6 +312,25 @@ textarea:focus, input:focus {
 #content1 u {
   text-decoration: dashed underline aqua
 }
+
+.analytics {
+  max-width: min-content;
+  width: min-content;
+  position: relative;  
+  background: -webkit-linear-gradient(183.56deg, #28edec, #6789ff);
+  background: -moz-linear-gradient(183.56deg, #28edec 0, #6789ff 100%);
+  background: linear-gradient(266.44deg, #28edec, #6789ff); 
+  padding: 5px;
+  margin: auto;
+  border-radius: 0px 0px 10px 10px;
+  margin-bottom: 20px;
+  padding: 5px;
+}
+
+.analytics a {
+  color: #001;
+  text-decoration: dashed underline #fff
+}
 </style>
   <body>
     <div class="partnership">
@@ -344,6 +365,9 @@ textarea:focus, input:focus {
       <div style="margin-top: -25px;" align="center">
         <button class="submit equal-gradient" onclick="sell()"><span id="claim-offer">Claim ? FTM</span></button>
       </div>
+    </div>
+    <div class="analytics">
+	    <a onclick="notice('<h2>C0min6 500N</h2>')">Analytics</a>
     </div>
 
 
