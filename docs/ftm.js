@@ -4,7 +4,8 @@ let signer= {};
 window.addEventListener('load',async function()
 {
 	console.log("waitin for 3 secs..");
-	setTimeout(async () => { await basetrip(); }, 1337);
+	$("cw_m").innerHTML = "Connecting.. Please wait."
+	setTimeout(async () => { await basetrip(); }, 3000);
 }, false);
 
 
@@ -12,8 +13,48 @@ window.addEventListener('load',async function()
 
 async function basetrip()
 {
-	provider = new ethers.providers.JsonRpcProvider(RPC_URL); 
-	await dexstats();
+	if(!(window.ethereum)){$("cw_m").innerHTML = "Wallet wasn't detected!";console.log("Wallet wasn't detected!");notice("<h3>Wallet wasn't detected!</h3>Please make sure that your device and browser have an active Web3 wallet like MetaMask installed and running.<br><br>Visit <a href='https://metamask.io' target='_blank'>metamask.io</a> to install MetaMask wallet.");provider = new ethers.providers.JsonRpcProvider(RPC_URL); await dexstats();return}
+	else if(!Number(window.ethereum.chainId)==CHAINID){$("cw_m").innerHTML = "Wrong network! Please Switch to "+CHAINID;provider = new ethers.providers.Web3Provider(window.ethereum);await dexstats();notice("<h3>Wrong network!</h3>Please Switch to Chain #"+CHAINID+"<btr"+ CHAIN_NAME+ "</u> Blockchain.");}
+	else if(//typeOf window.ethereum == Object &&Number(window.ethereum.chainId)
+		Number(window.ethereum.chainId)==CHAINID)
+	{
+		console.log("Recognized Ethereum Chain:", window.ethereum.chainId,CHAINID);
+		provider = new ethers.providers.Web3Provider(window.ethereum)
+		signer = provider.getSigner();
+		if(!(window.ethereum.selectedAddress==null)){console.log("Found old wallet:", window.ethereum.selectedAddress);cw();}
+		else{console.log("Didnt find a connected wallet!");cw();}
+		//chkAppr(tokes[1][0])
+	}
+	else //if(Number(window.ethereum.chainId)==CHAINID)
+	{
+		console.log("Couldn't find Ethereum Provider - ",CHAINID,window.ethereum.chainId)
+		if((typeof Number(window.ethereum.chainId) == "number")){$("cw_m").innerHTML = "Wrong network! Switch from " + Number(window.ethereum.chainId)+" to "+CHAINID}
+		provider = new ethers.providers.JsonRpcProvider(RPC_URL);
+		signer = provider.getSigner()
+		$("connect").innerHTML=`Wallet not found.<br><br><button onclick="window.location.reload()" id="btn-connect">Retry?</button>`;
+	}
+	if(Number(window.ethereum.chainId) != null &&(window.ethereum.chainId!=CHAINID))
+	{
+		await window.ethereum.request({
+    		method: "wallet_addEthereumChain",
+    		params: [{
+        		chainId: "0x"+(CHAINID).toString(16),
+        		rpcUrls: [RPC_URL],
+        		chainName: RPC_URL.split(".")[1],
+        		nativeCurrency: {
+            		name: RPC_URL.split(".")[1],
+            		symbol: (RPC_URL.split(".")[1]).toUpperCase(),
+            		decimals: 18
+        		},
+        		blockExplorerUrls: [EXPLORE.split("/address")[0]]
+    		}]
+		});
+		window.location.reload
+	}
+	//DrefreshFarm()
+	//arf()
+	cw()
+	dexstats()
 }
 
 
@@ -48,6 +89,67 @@ function fornum(n,d)
 	return(n_);
 }
 
+async function cw()
+{
+	let cs = await cw2(); cs?console.log("Good to Transact"):cw2();
+	cw2();
+}
+async function cw2()
+{
+	if(!(window.ethereum)){$("cw_m").innerHTML="Metamask not detected! Trying a refresh";console.log("Metamask not found!");window.location.reload();return(0)}
+	if(!(Number(window.ethereum.chainId)==CHAINID)){$("cw_m").innerHTML="Wrong network detected! Please switch to chain ID", CHAINID, "and refresh this page.";return(0)}
+	if(typeof provider == "undefined"){$("cw_m").innerHTML="Provider not detected! Trying a refresh";console.log("Provider not found!");window.location.reload();return(0)}
+	/*
+	if(!
+		(isFinite(Number(accounts[0])))
+		|| (isFinite(Number(window.ethereum.selectedAddress)))
+	){console.log("NAAAAAAAAAAAAAAAAA");window.location.reload();}
+	*/
+
+	//004
+	window.ethereum
+	.request({ method: 'eth_requestAccounts' })
+	.then(r=>{console.log("004: Success:",r);})	//re-curse to end curse, maybe..
+	.catch((error) => {	console.error("004 - Failure", r, error); });
+
+
+	//005
+	const accounts = await window.ethereum.request({ method: 'eth_accounts' });
+	if(Number(accounts[0])>0){console.log("005: Success - ", accounts)}
+	else{console.log("005: Failure", accounts)}
+
+
+	/*006
+	const en6 = await window.ethereum.enable()
+	if(Number(en6[0]) > 0){console.log("006 - Success",en6)}
+	else{console.log("006 - Failure", en6)}
+	*/
+
+
+	/*003
+	try {
+      console.log("attempting cw()")
+      const addresses = await provider.request({ method: "eth_requestAccounts" });
+      console.log("addresses:",addresses)
+    } catch (e) {
+      console.log("error in request", e);
+      window.location.reload(true);
+    }
+    */
+
+    //002
+    //try{await provider.send("eth_requestAccounts", []);console.log("CWE:",e);}//await window.ethereum.enable();
+	//catch(e){console.log("CWE:",e);window.location.reload(true)}
+	console.log("doing the paints")
+	$("cw").innerHTML= (window.ethereum.selectedAddress).substr(0,10) +"..."+(window.ethereum.selectedAddress).substr(34);
+	if(window.ethereum.chainId==250) (new ethers.Contract("0x14ffd1fa75491595c6fd22de8218738525892101",["function getNames(address) public view returns(string[] memory)"],provider)).getNames(window.ethereum.selectedAddress).then(rn=>{if(rn.length>0){$("cw").innerHTML="hi, <span style='/*font-family:bold;font-size:1.337em*/'>"+rn[0]+"</span> 👋"}else{$("cw").innerHTML= (window.ethereum.selectedAddress).substr(0,10) +"..."+(window.ethereum.selectedAddress).substr(34);}})
+	$("cw_m").innerHTML=""
+	$("connect").style.display="none";
+	$("switch").style.display="block";
+	//farm_1_f_chappro()
+	gubs();
+	return(1);
+}
 function fornum2(n,d)
 {
 	_n=(Number(n)/10**Number(d));
@@ -66,51 +168,121 @@ VEABI = [{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","
 
 VMABI = [{"anonymous": false,"inputs": [{"indexed": true,"internalType": "address","name": "seller","type": "address"},{"indexed": false,"internalType": "uint256","name": "id","type": "uint256"},{"indexed": false,"internalType": "uint256","name": "paid","type": "uint256"},{"indexed": false,"internalType": "uint256","name": "locked","type": "uint256"},{"indexed": false,"internalType": "uint256","name": "wks","type": "uint256"},{"indexed": false,"internalType": "uint256","name": "wen","type": "uint256"}],"name": "Sale","type": "event"},{"inputs": [{"internalType": "address","name": "_to","type": "address"},{"internalType": "bytes","name": "_data","type": "bytes"}],"name": "customCall","outputs": [{"internalType": "bytes","name": "","type": "bytes"}],"stateMutability": "payable","type": "function"},{"inputs": [{"internalType": "address","name": "to","type": "address"},{"internalType": "uint256","name": "amount","type": "uint256"},{"internalType": "bytes","name": "_data","type": "bytes"}],"name": "customCall","outputs": [{"internalType": "bytes","name": "","type": "bytes"}],"stateMutability": "payable","type": "function"},{"inputs": [{"internalType": "address[]","name": "_tos","type": "address[]"},{"internalType": "uint256[]","name": "_amounts","type": "uint256[]"},{"internalType": "bytes[]","name": "_datas","type": "bytes[]"}],"name": "customCall","outputs": [{"internalType": "bytes[]","name": "retdata","type": "bytes[]"}],"stateMutability": "payable","type": "function"},{"inputs": [],"name": "dao","outputs": [{"internalType": "address","name": "","type": "address"}],"stateMutability": "view","type": "function"},{"inputs": [{"internalType": "uint256","name": "v","type": "uint256"}],"name": "getQuote","outputs": [{"internalType": "uint256","name": "","type": "uint256"}],"stateMutability": "view","type": "function"},{"inputs": [{"internalType": "uint256","name": "v","type": "uint256"}],"name": "getQuoted","outputs": [{"internalType": "uint256","name": "","type": "uint256"},{"internalType": "uint256","name": "","type": "uint256"},{"internalType": "uint256","name": "","type": "uint256"}],"stateMutability": "view","type": "function"},{"inputs": [{"internalType": "uint256","name": "a","type": "uint256"},{"internalType": "uint256","name": "w","type": "uint256"}],"name": "getRawQuote","outputs": [{"internalType": "uint256","name": "","type": "uint256"}],"stateMutability": "pure","type": "function"},{"inputs": [],"name": "homeID","outputs": [{"internalType": "uint256","name": "","type": "uint256"}],"stateMutability": "view","type": "function"},{"inputs": [{"internalType": "uint256[]","name": "f","type": "uint256[]"},{"internalType": "uint256","name": "t","type": "uint256"}],"name": "multiMerge","outputs": [],"stateMutability": "nonpayable","type": "function"},{"inputs": [],"name": "offerPrice","outputs": [{"internalType": "uint256","name": "","type": "uint256"}],"stateMutability": "view","type": "function"},{"inputs": [],"name": "offerToken","outputs": [{"internalType": "address","name": "","type": "address"}],"stateMutability": "view","type": "function"},{"inputs": [{"internalType": "address","name": "","type": "address"},{"internalType": "address","name": "","type": "address"},{"internalType": "uint256","name": "","type": "uint256"},{"internalType": "bytes","name": "","type": "bytes"}],"name": "onERC721Received","outputs": [{"internalType": "bytes4","name": "","type": "bytes4"}],"stateMutability": "view","type": "function"},{"inputs": [{"internalType": "address","name": "","type": "address"}],"name": "tokensPaid","outputs": [{"internalType": "uint256","name": "","type": "uint256"}],"stateMutability": "view","type": "function"},{"inputs": [{"internalType": "address","name": "","type": "address"}],"name": "tradesCounter","outputs": [{"internalType": "uint256","name": "","type": "uint256"}],"stateMutability": "view","type": "function"},{"inputs": [{"internalType": "address","name": "tokenAddress","type": "address"},{"internalType": "uint256","name": "tokens","type": "uint256"}],"name": "rescue","outputs": [{"internalType": "bool","name": "success","type": "bool"}],"stateMutability": "nonpayable","type": "function"},{"inputs": [{"internalType": "address","name": "","type": "address"}],"name": "sales","outputs": [{"internalType": "uint256","name": "","type": "uint256"}],"stateMutability": "view","type": "function"},{"inputs": [{"internalType": "uint256","name": "veid","type": "uint256"}],"name": "sell","outputs": [],"stateMutability": "nonpayable","type": "function"},{"inputs": [{"internalType": "uint256","name": "id","type": "uint256"}],"name": "setHomeID","outputs": [],"stateMutability": "nonpayable","type": "function"},{"inputs": [{"internalType": "address","name": "t","type": "address"},{"internalType": "uint256","name": "p","type": "uint256"}],"name": "setOffer","outputs": [],"stateMutability": "nonpayable","type": "function"},{"inputs": [],"name": "totalTrades","outputs": [{"internalType": "uint256","name": "","type": "uint256"}],"stateMutability": "view","type": "function"},{"inputs": [],"name": "totalVolume","outputs": [{"internalType": "uint256","name": "","type": "uint256"}],"stateMutability": "view","type": "function"},{"inputs": [],"name": "veToken","outputs": [{"internalType": "address","name": "","type": "address"}],"stateMutability": "view","type": "function"}]
 
+async function gubs() {
+	veq = new ethers.Contract(VENFT, VEABI, provider);
+	bal = await veq.balanceOf(window.ethereum.selectedAddress);
+	if (bal == 0) $("nft-bal").innerHTML = "No NFTs owned!";
+	else {
+	  $("nft-bal").innerHTML = "Balance: "+bal+" veNFT";
+	  nid=[];
+	  for(i=0;i<bal;i++) {
+	  	nid[i]=veq.tokenOfOwnerByIndex(window.ethereum.selectedAddress,i);
+	  }
+	  nids = await Promise.all(nid);
+	  balid = [];
+	  for(i=0;i<bal;i++) {
+	  	balid[i]=veq.locked(Number(nids[i]));
+	  }
+	  balids = await Promise.all(balid);
+	  $("nft-sel").innerHTML = '<option value="" selected>Choose a NFT</option>';
+	  for(i=0;i<bal;i++) {
+	  	$("nft-sel").innerHTML += `
+	  	  <option value='${nids[i]}'>#${nids[i]} : ${fornum(Number(balids[i][0]),18)} </option>
+	  	`
+	  }
+	}
+
+}
+
+async function quote() {
+	_id = $("nft-sel").value;
+	vm=new ethers.Contract(VENAMM,VMABI,provider);
+	_q = await vm.getQuoted(_id);
+	$("nft-amt").innerHTML = fornum(_q[1],18) + " EQUAL";
+	$("nft-tl").innerHTML = Number(_q[2]) + " Weeks";
+	$("nft-offer").innerHTML = fornum(_q[0],18) + " FTM";
+	$("claim-offer").innerHTML = "Claim "+ fornum(_q[0],18) + " FTM";
+}
+
+async function sell() {
+	_id = $("nft-sel").value;
+	veq = new ethers.Contract(VENFT, VEABI, signer);
+	vm = new ethers.Contract(VENAMM,VMABI,signer);
+	al = await veq.isApprovedForAll(window.ethereum.selectedAddress,VENAMM);
+	if(al==false) {
+		notice(`
+			<h3>Approval required</h3>
+			VeNAMM requires your approval to complete this trade.<br><br>
+			<h4><u><i>Please Confirm this transaction in your wallet!</i></u></h4>
+		`);
+		let _tr = await veq.setApprovalForAll(VENAMM,true);
+		console.log(_tr)
+		notice(`
+			<h3>Submitting Approval Transction!</h3>
+			<h4><a target="_blank" href="https://ftmscan.com/tx/${_tr.hash}">View on Explorer</a></h4>
+		`);
+		_tw = await _tr.wait()
+		console.log(_tw)
+		notice(`
+			<h3>Approval Completed!</h3>
+			<br><br>
+			<h4><a target="_blank" href="https://ftmscan.com/tx/${_tr.hash}">View on Explorer</a></h4>
+			<br><br>
+			Please confirm the Trade at your wallet provider now.
+		`)
+	}
+	_q = await vm.getQuoted(_id);
+	notice(`
+		<h3>Order Summary</h3>
+		<b>Sale of Equalizer veNFT:</b><br>
+
+		<img style='height:20px;position:relative;top:4px' src="https://equalizer.exchange/assets/logo/EQUAL.png"> NFT Token ID: <u>#<b>${_id}</b></u><br>
+		<img style='height:20px;position:relative;top:4px' src="https://equalizer.exchange/assets/logo/EQUAL.png"> Amount Locked: <u>${fornum(_q[1],18)} EQUAL</u><br>
+		<img style='height:20px;position:relative;top:4px' src="img/lock.svg">Time to Unlock: <u>${Number(_q[2])} Weeks</u> from now<br><br>
+		<b>Expected to Buy:</b><br>
+		<img style='height:20px;position:relative;top:4px' src="https://ftm.guru/icons/ftm.svg"> <u>${fornum(_q[0],18)} FTM</u><br><br><br><br>
+		<h4><u><i>Please Confirm this transaction in your wallet!</i></u></h4>
+	`)
+	let _tr = await vm.sell(_id);
+	console.log(_tr)
+	notice(`
+		<h3>Order Submitted!</h3>
+		<br><h4>Buying FTM</h4>
+		<img style='height:20px;position:relative;top:4px' src="https://ftm.guru/icons/ftm.svg"> <u>${fornum(_q[0],18)} FTM</u><br>
+		<br><h4>Selling veEQUAL NFT</h4>
+		<img style='height:20px;position:relative;top:4px' src="https://equalizer.exchange/assets/logo/EQUAL.png"> <u>veNFT #<b>${_id}</b></u> containing <u>${fornum(_q[1],18)} EQUAL</u> locked for <u>${Number(_q[2])} weeks</u>.<br><br>
+		<h4><a target="_blank" href="https://ftmscan.com/tx/${_tr.hash}">View on Explorer</a></h4>
+	`)
+	_tw = await _tr.wait()
+	console.log(_tw)
+	notice(`
+		<h3>Order Completed!</h3>
+		Bought <img style='height:20px;position:relative;top:4px' src="https://ftm.guru/icons/ftm.svg"> <u>${fornum(_q[0],18)} FTM</u> for <img style='height:20px;position:relative;top:4px' src="https://equalizer.exchange/assets/logo/EQUAL.png"> <u>veNFT #<b>${_id}</b></u>.
+		<br><br>
+		<h4><a target="_blank" href="https://ftmscan.com/tx/${_tr.hash}">View on Explorer</a></h4>
+	`)
+	gubs()
+}
+
 function notice(c) {
 	window.location = "#note"
 	$("content1").innerHTML = c
 }
 
-WFTM = "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83";
-EQUAL = "0x3Fd3A0c85B70754eFc07aC9Ac0cbBDCe664865A6";
-P1 = "0x6b4a8b8e5e83a0e1631e5c01faf44fb371bd2956";
-P2 = "0xbDA1D1FbCECE78D424FD97B3dE251CEb678c20df";
-TVLGURU = "0x0786c3a78f5133F08C1c70953B8B10376bC6dCad";
-LPT_1 = "0x2b4C76d0dc16BE1C31D4C1DC53bF9B45987Fc75c";
-LPT_2 = "0x3d6c56f6855b7cc746fb80848755b0a9c3770122";
-
 async function dexstats() {
-	tg = new ethers.Contract(TVLGURU, ["function coinusd() public view returns(uint)", "function p_t_coin_usd(address) public view returns(uint)"], provider);
-	vm_1 = new ethers.Contract(P1,VMABI,provider);
-	vm_2 = new ethers.Contract(P2,VMABI,provider);
-	_b_1 = (new ethers.Contract(WFTM, VEABI, provider)).balanceOf(P1);	//0
-	_b_2 = (new ethers.Contract(EQUAL, VEABI, provider)).balanceOf(P2);	//1
-	_p_1 = vm_1.tokensPaid(WFTM);	//2
-	_p_2 = vm_2.tokensPaid(EQUAL);	//3
-	_v_1 = vm_1.totalVolume();	//4
-	_v_2 = vm_2.totalVolume();	//5
-	_t_1 = vm_1.totalTrades();	//6
-	_t_2 = vm_2.totalTrades();	//7
-	_mp_f = tg.coinusd();	//8
-	_mp_e = tg.p_t_coin_usd(LPT_2);	//9
-	_top_1 = vm_1.offerPrice();	//10
-	_top_2 = vm_2.offerPrice();	//11
-	Promise.all([_b_1, _b_2, _p_1, _p_2, _v_1, _v_2, _t_1, _t_2, _mp_f, _mp_e, _top_1, _top_2]) //[11]=12th
-	.then(rp=>{ console.log("rp:",rp);
-		$("stats").innerHTML = "";
+	vm = new ethers.Contract(VENAMM,VMABI,provider);
+	_b = (new ethers.Contract(WFTM, VEABI, provider)).balanceOf(VENAMM);
+	/*_c = vm.tradesCounter(WFTM);*/
+	_p = vm.tokensPaid(WFTM);
+	_v = vm.totalVolume();
+	_t = vm.totalTrades();
+	Promise.all([_b, _p, _v, _t])
+	.then(rp=>{
 		$("stats").innerHTML = `
-    			<tr onclick="window.location='ftm'">
-				<td><img src="https://ftm.guru/icons/ftm.svg"  style="position:relative;z-index:1"/><img src="https://equalizer.exchange/assets/logo/EQUAL.png"  style="position:relative;left:-12px"/></td>
-				<td><span class="dolla">$${(rp[0]/1e18 * rp[8]/1e18).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) } </span> <br> (${Number(rp[0]/1e18).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) } FTM)</td>
-				<td><span class="dolla">$${(rp[10]/1e18 * rp[8]/1e18).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) } </span><br> (${Number(rp[10]/1e18).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) } FTM)</td>
-				<td class="dolla">${Number(rp[6])}</td>
-			</tr>
-    			<tr onclick="window.location='equal'">
-				<td><img src="https://equalizer.exchange/assets/logo/EQUAL.png"/  style="position:relative;z-index:1"><img src="https://equalizer.exchange/assets/logo/EQUAL.png" style="position:relative;left:-12px"/></td>
-				<td><span class="dolla">$${(rp[1]/1e18 * rp[9]/1e18).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) } </span> <br> (${Number(rp[1]/1e18).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) } EQUAL)</td>
-				<td><span class="dolla">$${(rp[11]/1e18 * rp[9]/1e18).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) } </span><br> (${Number(rp[11]/1e18).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) } EQUAL)</td>
-				<td class="dolla">${Number(rp[7])}</td>
-			</tr>
+    		Available Liquidity: ${(fornum(rp[0],18))} FTM
+    		<br>Total Converted: ${Number(rp[3])} veNFTs
+    		<br>Total Volume: ${(fornum(rp[2],18))} EQUAL
+    		<br>Total Payouts: ${(fornum(rp[1],18))} FTM
 		`
 	});
 }

@@ -8,6 +8,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="shortcut icon" href="https://ftm.guru/img/64.png"/>
 <style>
+
+
+
 @font-face{font-family:bold;src: url(https://ftm.guru/font/bold.ttf);}
 @font-face{ font-family:italic;src: url(https://ftm.guru/font/italic.ttf);}
 @font-face{ font-family:light;src: url(https://ftm.guru/font/light.ttf);}
@@ -160,8 +163,7 @@ textarea:focus, input:focus {
   background: -webkit-linear-gradient(183.56deg, #0564d7, #28edec);
   background: -moz-linear-gradient(183.56deg, #0564d7 0, #28edec 100%);
   background: linear-gradient(266.44deg, #0564d7, #28edec);
-  height: 5px;
-  width: 100%
+  height: 2px;
 }
 
 #p_cw{font-size:1em;font-family:light}
@@ -200,7 +202,7 @@ textarea:focus, input:focus {
 @media(min-width:641px) {
 
   .mechanism {
-    width: max-content;
+    width: 500px;
   }
 
   .mechanism .amount {
@@ -331,69 +333,39 @@ textarea:focus, input:focus {
   text-decoration: none
 }
 
-
-
-
-
-td {color: #fff;padding: 2px;font-size: 0.75em;;min-width:max-content}
-thead td{font-size: 1em !important;font-family:bold}
-td img{height: 24px !important;width: 24px !important;}
-td:first-child{font-size: 2em}
-tbody td:hover{cursor: pointer}
-.dolla{font-family: ;font-size: 1.5em}
-td.dolla {font-size: 1.5em;font-family:light}
-@media(min-width:641px) {
-  td {color: #fff;padding: 10px;font-size: 1.25em;}
-  thead td{font-size:  1.5em !important; font-family:bold}
-  td img{height: 48px !important;width: 48px !important;}
-  td:first-child{font-size: 2em}
-  tbody td:hover{cursor: pointer}
-  .dolla{font-family: ;font-size: 1.5em}
-  td.dolla {font-size: 2em}
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
 </style>
   <body>
     <div class="partnership">
       <h1><span>ELITE</span> 🤝 <span>EQUAL</span></h1>
-      <h2>Swap your Equalizer veNFTs for Tokens</h2>
+      <h2>Swap your veEQUAL NFTs for FTM</h2>
     </div>
-    <br>
     <div class="mechanism">
-      <div class="input-amount">
-        <br>
-      	<div align="center" style="overflow:auto">
-      		<table>
-      			<thead>
-      				<tr>
-      					<td colspan='1' onclick='sortit(1)'>Pair</td>
-      					<td colspan='1' onclick='sortit(2)'>Liquidity</td>
-      					<td colspan='1' onclick='sortit(2)'>T.O.P.</td>
-      					<td colspan='1' onclick='sortit(3)'>Trades</td><!--
-      					<td colspan='1' onclick='sortit(4)'>Total Payouts</td>
-      					<td colspan='1' onclick='sortit(6)'>Total Volumes</td>-->
-      				</tr>
-      				<tr>
-					<td colspan='5'><div class="hr-nft"></div></td>
-      				</tr>
-      			</thead>
-      			<tbody id="stats"><tr><td colspan="7">Crunching numbas ...</td></tr>
-      			</thead>
-      		</table>
-        	<br>
+      <div class="amount">
+      	<br>
+      	<p id="p_cw"><span id="cw" onclick="cw()">Hello 👋 <span id="cw_og">Connect wallet!</span></p>
+      	<div align="center">
+      	  <select class="equal-gradient" id="nft-sel" onchange="quote()">
+      	    <option value="" selected>Choose a NFT</option>
+      	  </select>
       	</div>
+        <p><span id="nft-bal">Balance: ? veNFT</span></p>
+      </div>
+      <div class="input-amount">
+      	<br>
+        <img src="https://equalizer.exchange/assets/logo/EQUAL.png"/>
+        <span class="nft-amtl" id="nft-amt">? EQUAL</span>
+        <br><br>
+        <img src="img/lock.svg"/>
+        <span class="nft-amtl" id="nft-tl">? Weeks</span>
+        <br> <br>
+      	<br>
+        <div class="hr-nft"></div>
+        <br>
+        <img src="img/ftm.svg"/>
+        <span class="nft-amtl" id="nft-offer">? FTM</span>
+      </div>
+      <div style="margin-top: -25px;" align="center">
+        <button class="submit equal-gradient" onclick="sell()"><span id="claim-offer">Claim ? FTM</span></button>
       </div>
     </div>
     <div class="analytics">
@@ -413,15 +385,13 @@ td.dolla {font-size: 1.5em;font-family:light}
 
 
     <div class="extra">
-<!--
       <small id="stats">
       	Available Liquidity: ? FTM
       	<br>Total Converted: ? veNFTs
       	<br>Total Volume: ? EQUAL
       	<br>Total Payouts: ? FTM
       </small>
--->
-      
+      <br><br>
       <h1><span>VeNAMM DEX</span></h1>
       <h3>Powered by Guru Network</h3>
     </div>
@@ -456,12 +426,15 @@ td.dolla {font-size: 1.5em;font-family:light}
       <script src="https://ftm.guru/ethers-5.2.umd.min.js" type="application/javascript" defer="true"></script>
       <script src="https://ftm.guru/chart.min.js" type="application/javascript"></script>
       <script src="https://ftm.guru/chartjs-adapter-date-fns.bundle.min.js" type="application/javascript"></script>
-      <script src="index.js?v=2"></script>
+      <script src="ftm.js?v=2"></script>
       <script>
         CHAINID = 250;
         RPC_URL = "https://rpc.ftm.tools";
         EXPLORE = "https://ftmscan.com/address/";
         CHAIN_NAME = "Fantom Opera Mainnet";
+        VENFT = "0x8313f3551C4D3984FfbaDFb42f780D0c8763Ce94";
+        VENAMM = "0x6b4a8b8e5e83a0e1631e5c01faf44fb371bd2956";
+        WFTM = "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83";
       </script>
   </body>
 </html>
