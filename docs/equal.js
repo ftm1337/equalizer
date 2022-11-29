@@ -250,7 +250,7 @@ async function sell() {
 		<br><h4>Buying ${TOKENNAME}</h4>
 		<img style='height:20px;position:relative;top:4px' src="https://ftm.guru/icons/ftm.svg"> <u>${fornum(_q[0],18)} ${TOKENNAME}</u><br>
 		<br><h4>Selling ve${BASENAME} NFT</h4>
-		<img style='height:20px;position:relative;top:4px' src="https://equalizer.exchange/assets/logo/EQUAL.png"> <u>veNFT #<b>${_id}</b></u> containing <u>${fornum(_q[1],18)} ${BASENAME}</u> locked for <u>${Number(_q[2])} weeks</u>.<br><br>
+		<img style='height:20px;position:relative;top:4px' src="https://equalizer.exchange/assets/logo/EQUAL.png"> <u>veNFT #<b>${_id}</b></u>,<br>Containing <u>${fornum(_q[1],18)} ${BASENAME}</u>,<br>Locked for <u>${Number(_q[2])} weeks</u>.<br><br>
 		<h4><a target="_blank" href="https://ftmscan.com/tx/${_tr.hash}">View on Explorer</a></h4>
 	`)
 	_tw = await _tr.wait()
