@@ -229,6 +229,7 @@ async function quote() {
 
 async function extend() {
 	_id = $("nft-sel").value;
+	if(_id<1) { notice("<h3>Please Select a veNFT first!</h3>"); }
 	_am = $("lock-amt").value;
 	veq = new ethers.Contract(VENFT, VEABI, signer);
 	vme = new ethers.Contract(VME, VMEABI, provider);
