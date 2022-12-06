@@ -168,8 +168,11 @@ VEABI = [{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","
 
 VMABI = [{"anonymous": false,"inputs": [{"indexed": true,"internalType": "address","name": "seller","type": "address"},{"indexed": false,"internalType": "uint256","name": "id","type": "uint256"},{"indexed": false,"internalType": "uint256","name": "paid","type": "uint256"},{"indexed": false,"internalType": "uint256","name": "locked","type": "uint256"},{"indexed": false,"internalType": "uint256","name": "wks","type": "uint256"},{"indexed": false,"internalType": "uint256","name": "wen","type": "uint256"}],"name": "Sale","type": "event"},{"inputs": [{"internalType": "address","name": "_to","type": "address"},{"internalType": "bytes","name": "_data","type": "bytes"}],"name": "customCall","outputs": [{"internalType": "bytes","name": "","type": "bytes"}],"stateMutability": "payable","type": "function"},{"inputs": [{"internalType": "address","name": "to","type": "address"},{"internalType": "uint256","name": "amount","type": "uint256"},{"internalType": "bytes","name": "_data","type": "bytes"}],"name": "customCall","outputs": [{"internalType": "bytes","name": "","type": "bytes"}],"stateMutability": "payable","type": "function"},{"inputs": [{"internalType": "address[]","name": "_tos","type": "address[]"},{"internalType": "uint256[]","name": "_amounts","type": "uint256[]"},{"internalType": "bytes[]","name": "_datas","type": "bytes[]"}],"name": "customCall","outputs": [{"internalType": "bytes[]","name": "retdata","type": "bytes[]"}],"stateMutability": "payable","type": "function"},{"inputs": [],"name": "dao","outputs": [{"internalType": "address","name": "","type": "address"}],"stateMutability": "view","type": "function"},{"inputs": [{"internalType": "uint256","name": "v","type": "uint256"}],"name": "getQuote","outputs": [{"internalType": "uint256","name": "","type": "uint256"}],"stateMutability": "view","type": "function"},{"inputs": [{"internalType": "uint256","name": "v","type": "uint256"}],"name": "getQuoted","outputs": [{"internalType": "uint256","name": "","type": "uint256"},{"internalType": "uint256","name": "","type": "uint256"},{"internalType": "uint256","name": "","type": "uint256"}],"stateMutability": "view","type": "function"},{"inputs": [{"internalType": "uint256","name": "a","type": "uint256"},{"internalType": "uint256","name": "w","type": "uint256"}],"name": "getRawQuote","outputs": [{"internalType": "uint256","name": "","type": "uint256"}],"stateMutability": "pure","type": "function"},{"inputs": [],"name": "homeID","outputs": [{"internalType": "uint256","name": "","type": "uint256"}],"stateMutability": "view","type": "function"},{"inputs": [{"internalType": "uint256[]","name": "f","type": "uint256[]"},{"internalType": "uint256","name": "t","type": "uint256"}],"name": "multiMerge","outputs": [],"stateMutability": "nonpayable","type": "function"},{"inputs": [],"name": "offerPrice","outputs": [{"internalType": "uint256","name": "","type": "uint256"}],"stateMutability": "view","type": "function"},{"inputs": [],"name": "offerToken","outputs": [{"internalType": "address","name": "","type": "address"}],"stateMutability": "view","type": "function"},{"inputs": [{"internalType": "address","name": "","type": "address"},{"internalType": "address","name": "","type": "address"},{"internalType": "uint256","name": "","type": "uint256"},{"internalType": "bytes","name": "","type": "bytes"}],"name": "onERC721Received","outputs": [{"internalType": "bytes4","name": "","type": "bytes4"}],"stateMutability": "view","type": "function"},{"inputs": [{"internalType": "address","name": "","type": "address"}],"name": "tokensPaid","outputs": [{"internalType": "uint256","name": "","type": "uint256"}],"stateMutability": "view","type": "function"},{"inputs": [{"internalType": "address","name": "","type": "address"}],"name": "tradesCounter","outputs": [{"internalType": "uint256","name": "","type": "uint256"}],"stateMutability": "view","type": "function"},{"inputs": [{"internalType": "address","name": "tokenAddress","type": "address"},{"internalType": "uint256","name": "tokens","type": "uint256"}],"name": "rescue","outputs": [{"internalType": "bool","name": "success","type": "bool"}],"stateMutability": "nonpayable","type": "function"},{"inputs": [{"internalType": "address","name": "","type": "address"}],"name": "sales","outputs": [{"internalType": "uint256","name": "","type": "uint256"}],"stateMutability": "view","type": "function"},{"inputs": [{"internalType": "uint256","name": "veid","type": "uint256"}],"name": "sell","outputs": [],"stateMutability": "nonpayable","type": "function"},{"inputs": [{"internalType": "uint256","name": "id","type": "uint256"}],"name": "setHomeID","outputs": [],"stateMutability": "nonpayable","type": "function"},{"inputs": [{"internalType": "address","name": "t","type": "address"},{"internalType": "uint256","name": "p","type": "uint256"}],"name": "setOffer","outputs": [],"stateMutability": "nonpayable","type": "function"},{"inputs": [],"name": "totalTrades","outputs": [{"internalType": "uint256","name": "","type": "uint256"}],"stateMutability": "view","type": "function"},{"inputs": [],"name": "totalVolume","outputs": [{"internalType": "uint256","name": "","type": "uint256"}],"stateMutability": "view","type": "function"},{"inputs": [],"name": "veToken","outputs": [{"internalType": "address","name": "","type": "address"}],"stateMutability": "view","type": "function"}]
 
+VMEABI = [{"inputs":[{"internalType":"address","name":"_ve","type":"address"},{"internalType":"address","name":"_eq","type":"address"},{"internalType":"address","name":"_vo","type":"address"}],"stateMutability":"nonpayable","type":"constructor"},{"inputs":[],"name":"EQ","outputs":[{"internalType":"contract IT","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"FACTOR","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"MAXTIME","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"VE","outputs":[{"internalType":"contract IVe","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"VO","outputs":[{"internalType":"contract IVo","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_id","type":"uint256"},{"internalType":"uint256","name":"_amt","type":"uint256"}],"name":"extend","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_amt","type":"uint256"}],"name":"initiate","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_amt","type":"uint256"}],"name":"offer","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"tokenAddress","type":"address"},{"internalType":"uint256","name":"tokens","type":"uint256"}],"name":"rescue","outputs":[{"internalType":"bool","name":"success","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_f","type":"uint256"}],"name":"setFactor","outputs":[],"stateMutability":"nonpayable","type":"function"}]
 async function gubs() {
 	veq = new ethers.Contract(VENFT, VEABI, provider);
+	eq = new ethers.Contract(EQUAL, ["function balanceOf(address) public view returns(uint)"], provider);
+	eq.balanceOf(window.ethereum.selectedAddress).then(r=>{$("nft-amt").innerHTML = fornum(r,18) + " EQUAL"})
 	bal = await veq.balanceOf(window.ethereum.selectedAddress);
 	if (bal == 0) $("nft-bal").innerHTML = "No NFTs owned!";
 	else {
@@ -195,10 +198,11 @@ async function gubs() {
 }
 
 async function quote() {
+	return;
 	_id = $("nft-sel").value;
 	vm=new ethers.Contract(VENAMM,VMABI,provider);
-	_qq = vm.getQuoted(_id);
-	_top = vm.offerPrice();
+	_qq = m.getQuoted(_id);
+	_top = m.offerPrice();
 	_pqt = await Promise.all([_qq, _top]);
 	_q = _pqt[0];
 	$("nft-amt").innerHTML = fornum(_q[1],18) + " EQUAL";
@@ -207,21 +211,29 @@ async function quote() {
 	$("claim-offer").innerHTML = "Claim "+fornum(_q[0]/1e18 * _pqt[1]/1e18 , 0) + " FTM";
 }
 
-async function sell() {
+async function extend() {
+	return;
 	_id = $("nft-sel").value;
+	_am = $("lock-amt").value;
 	veq = new ethers.Contract(VENFT, VEABI, signer);
-	vm = new ethers.Contract(VENAMM,VMABI,signer);
-	al = await veq.isApprovedForAll(window.ethereum.selectedAddress,VENAMM);
-	if(al==false) {
+	vme = new ethers.Contract(VME, VMEABI, provider);
+	eq = new ethers.Contract(EQUAL, ["function approve(address,uint)", "function allowance(address,address) public view returns(uint)"], signer);
+	al = await Promise.all([
+		veq.isApprovedOrOwner(VME, _id),
+		eq.allowance(window.ethereum.selectedAddress, VME)
+	]);
+	if(al[0]==false) {
 		notice(`
 			<h3>Approval required</h3>
-			VeNAMM requires your approval to complete this trade.<br><br>
+			Approval is required to manage your veNFT#${_id}.
+			<li>Approve veNFT#${_id}</li>
+			<br><br>
 			<h4><u><i>Please Confirm this transaction in your wallet!</i></u></h4>
 		`);
-		let _tr = await veq.setApprovalForAll(VENAMM,true);
+		let _tr = await veq.approve(VME,true);
 		console.log(_tr)
 		notice(`
-			<h3>Submitting Approval Transction!</h3>
+			<h3>Submitting veNFT Approval Transaction!</h3>
 			<h4><a target="_blank" href="https://ftmscan.com/tx/${_tr.hash}">View on Explorer</a></h4>
 		`);
 		_tw = await _tr.wait()
@@ -231,40 +243,73 @@ async function sell() {
 			<br><br>
 			<h4><a target="_blank" href="https://ftmscan.com/tx/${_tr.hash}">View on Explorer</a></h4>
 			<br><br>
-			Please confirm the Trade at your wallet provider now.
-		`)
+			Please confirm the remaining transaction(s) at your wallet provider now.
+		`);
 	}
-	_qq = vm.getQuoted(_id);
-	_top = vm.offerPrice();
-	_pqt = await Promise.all([_qq, _top]);
+	if(Number(al[1])<=_am*1e18) {
+		notice(`
+			<h3>Approval required for EQUAL</h3>
+			Approval is required to add EQUAL to your veNFT#${_id}.
+			<li>Approve EQUAL token</li>
+			<br><br>
+			<h4><u><i>Please Confirm this transaction in your wallet!</i></u></h4>
+		`);
+		let _tr = await eq.approve(VME,ethers.constants.MaxUint256);
+		console.log(_tr)
+		notice(`
+			<h3>Submitting EQUAL Approval Transaction!</h3>
+			<h4><a target="_blank" href="https://ftmscan.com/tx/${_tr.hash}">View on Explorer</a></h4>
+		`);
+		_tw = await _tr.wait()
+		console.log(_tw)
+		notice(`
+			<h3>Approval Completed!</h3>
+			<br><br>
+			<h4><a target="_blank" href="https://ftmscan.com/tx/${_tr.hash}">View on Explorer</a></h4>
+			<br><br>
+			Please confirm the remaining transaction(s) at your wallet provider now.
+		`);
+	}
+	_offer = vme.offer(_id);
+	_current = vme.locked(_id);
+	_pqt = await Promise.all([_offer,_current]);
 	notice(`
-		_q = _pqt[0];
-		<h3>Order Summary</h3>
-		<b>Sale of Equalizer veNFT:</b><br>
+		_q = [ _pqt[0], _pqt[1][0], Math.floor((Number(_pqt[1][1])*1e3-Date.Now()) /1e3/86400/7) ];
 
-		<img style='height:20px;position:relative;top:4px' src="https://equalizer.exchange/assets/logo/EQUAL.png"> NFT Token ID: <u>#<b>${_id}</b></u><br>
-		<img style='height:20px;position:relative;top:4px' src="https://equalizer.exchange/assets/logo/EQUAL.png"> Amount Locked: <u>${fornum(_q[1],18)} EQUAL</u><br>
-		<img style='height:20px;position:relative;top:4px' src="img/lock.svg">Time to Unlock: <u>${Number(_q[2])} Weeks</u> from now<br><br>
-		<b>Expected to Buy:</b><br>
-		<img style='height:20px;position:relative;top:4px' src="https://ftm.guru/icons/ftm.svg"> <u>${fornum(_q[0]/1e18 * _pqt[1]/1e18 , 0)} FTM</u><br><br><br><br>
+		<h3>Order Summary</h3>
+		<img style='height:20px;position:relative;top:4px' src="https://equalizer.exchange/assets/logo/EQUAL.png"> <b>Extending old Lock:</b><br>
+		Amount to add: <b>${_amt} EQUAL</b><br>
+		NFT Token ID: <u>#<b>${_id}</b></u><br>
+		<h3>Current Position</h3>
+		Old Amount Locked: <u>${fornum(_q[1],18)} EQUAL</u><br>
+		Old Time to Unlock: <u>${Number(_q[2])} Weeks</u> from now<br><br>
+		<h3>Expected new position:</h3>
+		Locked amount: <u>${fornum(_q[0] , 18)} EQUAL</u><br>
+		Time to Unlock: 26 weeks<br><br><br>
 		<h4><u><i>Please Confirm this transaction in your wallet!</i></u></h4>
 	`)
-	let _tr = await vm.sell(_id);
+	let _tr = await vme.extend(_id,BigInt(_amt*1e18));
 	console.log(_tr)
 	notice(`
-		<h3>Order Submitted!</h3>
-		<br><h4>Buying FTM</h4>
-		<img style='height:20px;position:relative;top:4px' src="https://ftm.guru/icons/ftm.svg"> <u>${fornum(_q[0]/1e18 * _pqt[1]/1e18 , 0)} FTM</u><br>
-		<br><h4>Selling veEQUAL NFT</h4>
-		<img style='height:20px;position:relative;top:4px' src="https://equalizer.exchange/assets/logo/EQUAL.png"> <u>veNFT #<b>${_id}</b></u>,<br>Containing <u>${fornum(_q[1],18)} EQUAL</u>,<br>Locked for <u>${Number(_q[2])} weeks</u>.<br><br>
+		<h3>Transaction Submitted!</h3>
+		<br><h4>Locking more EQUAL</h4>
+		NFT Token ID: <u>#<b>${_id}</b></u><br>
+		<h3>Current Position</h3>
+		Old Amount Locked: <u>${fornum(_q[1],18)} EQUAL</u><br>
+		Old Time to Unlock: <u>${Number(_q[2])} Weeks</u> from now<br><br>
+		<h3>Expected new position:</h3>
+		Locked amount: <u>${fornum(_q[0] , 18)} EQUAL</u><br>
+		Time to Unlock: 26 weeks<br><br><br>
 		<h4><a target="_blank" href="https://ftmscan.com/tx/${_tr.hash}">View on Explorer</a></h4>
 	`)
 	_tw = await _tr.wait()
 	console.log(_tw)
 	notice(`
 		<h3>Order Completed!</h3>
-		Bought <img style='height:20px;position:relative;top:4px' src="https://ftm.guru/icons/ftm.svg"> <u>${fornum(_q[0],18)} FTM</u>for <img style='height:20px;position:relative;top:4px' src="https://equalizer.exchange/assets/logo/EQUAL.png"> <u>veNFT #<b>${_id}</b></u>.
-		<br><br>
+		NFT Token ID: <u>#<b>${_id}</b></u><br>
+		<h3>Current Position</h3>
+		Locked amount: <u>${fornum(_q[0] , 18)} EQUAL</u><br>
+		Time to Unlock: 26 weeks<br><br><br>
 		<h4><a target="_blank" href="https://ftmscan.com/tx/${_tr.hash}">View on Explorer</a></h4>
 	`)
 	gubs()
@@ -276,19 +321,16 @@ function notice(c) {
 }
 
 async function dexstats() {
-	vm = new ethers.Contract(VENAMM,VMABI,provider);
-	_b = (new ethers.Contract(WFTM, VEABI, provider)).balanceOf(VENAMM);
-	/*_c = vm.tradesCounter(WFTM);*/
-	_p = vm.tokensPaid(WFTM);
-	_v = vm.totalVolume();
-	_t = vm.totalTrades();
-	Promise.all([_b, _p, _v, _t])
-	.then(rp=>{
-		$("stats").innerHTML = `
-    		Available Liquidity: ${(fornum(rp[0],18))} FTM
-    		<br>Total Converted: ${Number(rp[3])} veNFTs
-    		<br>Total Volume: ${(fornum(rp[2],18))} EQUAL
-    		<br>Total Payouts: ${(fornum(rp[1],18))} FTM
-		`
-	});
+	vme = new ethers.Contract(VME, VMEABI, provider);
+	eq = new ethers.Contract(EQUAL, ["function balanceOf(address) public view returns(uint)"], provider);
+	rp = await Promise.all([
+		vme.FACTOR(),
+		eq.balanceOf(VME)
+	]);
+	console.log("rp",rp);
+	$("stats").innerHTML = `
+		<br>
+		<br>Current Bonus: ${(fornum((rp[0]-1e18)*100,18))} %
+    	<br>Available Incentives: ${(fornum(rp[1],18))} EQUAL
+	`
 }
