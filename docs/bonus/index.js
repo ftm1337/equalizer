@@ -229,7 +229,7 @@ async function extend() {
 			<br><br>
 			<h4><u><i>Please Confirm this transaction in your wallet!</i></u></h4>
 		`);
-		let _tr = await veq.approve(VME,true);
+		let _tr = await veq.approve(VME,_id);
 		console.log(_tr)
 		notice(`
 			<h3>Submitting veNFT Approval Transaction!</h3>
