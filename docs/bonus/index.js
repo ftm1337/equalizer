@@ -212,7 +212,6 @@ async function quote() {
 }
 
 async function extend() {
-	return;
 	_id = $("nft-sel").value;
 	_am = $("lock-amt").value;
 	veq = new ethers.Contract(VENFT, VEABI, signer);
