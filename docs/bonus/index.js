@@ -5,7 +5,7 @@ window.addEventListener('load',async function()
 {
 	console.log("waitin for 3 secs..");
 	$("cw_m").innerHTML = "Connecting.. Please wait."
-	setTimeout(async () => { await basetrip(); arf() }, 3000);
+	setTimeout(async () => { await basetrip(); arf(); dexstats(); }, 3000);
 }, false);
 
 
@@ -229,7 +229,7 @@ async function quote() {
 
 async function extend() {
 	_id = $("nft-sel").value;
-	if(_id<1) { notice("<h3>Please Select a veNFT first!</h3>"); }
+	if(_id<1) { notice("<h3>Please Select a veNFT first!</h3>"); return;}
 	_am = $("lock-amt").value;
 	veq = new ethers.Contract(VENFT, VEABI, signer);
 	vme = new ethers.Contract(VME, VMEABI, provider);
@@ -242,8 +242,7 @@ async function extend() {
 		notice(`
 			<h3>Approval required</h3>
 			Approval is required to manage your veNFT#${_id}.
-			<li>Approve veNFT#${_id}</li>
-			<br><br>
+			<br>
 			<h4><u><i>Please Confirm this transaction in your wallet!</i></u></h4>
 		`);
 		let _tr = await veq.approve(VME,_id);
