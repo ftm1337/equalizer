@@ -5,7 +5,7 @@ window.addEventListener('load',async function()
 {
 	console.log("waitin for 3 secs..");
 	$("cw_m").innerHTML = "Connecting.. Please wait."
-	setTimeout(async () => { await basetrip(); arf(); /*dexstats();*/ }, 1337);
+	setTimeout(async () => { await basetrip(); arf(); /*dexstats();*/ }, 0.1337);
 }, false);
 
 
@@ -86,7 +86,7 @@ SBLOCK = 52500821;
 
 
 Chart.defaults.color="#fff";
-function paint(el,da,na,la,hi) {
+function paint(el,da,na,la,hi,ld) {
 
 	new Chart(el, {
 		type: "line",
@@ -147,7 +147,7 @@ function paint(el,da,na,la,hi) {
     				}
     			},
     			legend :{
-    				display: true,
+    				display: ld,
     			},
     			tooltip: {
                 	callbacks: {
@@ -214,13 +214,17 @@ async function paint25() {
 		_info[13] = fdv();
 		_info[14] = lockedMarketCap();
 	*/
-	cd_price = []
-	cd_s = [[],[],[]]	//s in c/o/d
-	cd_s2 = [[],[],[]]	//s in n/g/e
-	cd_v = [[],[],[]]	//s of o/n/v
-	for(i=0;i< TBH.length; i++) {
+	cd_s = [[],[],[]]		//s in c/o/d
+	cd_s2 = [[],[],[]]		//s in n/g/e
+	cd_v = [[],[],[]]		//s of o/n/v
+	cd_lr = [[],[],[]]		//./lqr/.
+	cd_p = [[],[],[]]		//p/./.
+	cd_lq = [[],[],[]]		//./lq/.
+	cd_lqmc = [[],[],[]]	//lq/mc/.
+	cd_lqmcr = [[],[],[]]	//./lqmc/.
+	cd_mc = [[],[],[]]		//c/o/l
 
-		cd_price.push( [ Number(RPP[i][0])*1e3, Number(RPP[i][1])/1e18 ] )
+	for(i=0;i< TBH.length; i++) {
 
 		cd_s[0].push( [ Number(RPP[i][0])*1e3, Number(RPP[i][2])/1e18 ] )	//s.cir
 		cd_s[1].push( [ Number(RPP[i][0])*1e3, Number(RPP[i][3])/1e18 ] )	//s.out
@@ -233,11 +237,32 @@ async function paint25() {
 		cd_v[0].push( [ Number(RPP[i][0])*1e3, Number(RPP[i][3])/1e18 ] )	//s.out
 		cd_v[1].push( [ Number(RPP[i][0])*1e3, Number(RPP[i][5])/1e18 ] )	//s.nft
 		cd_v[2].push( [ Number(RPP[i][0])*1e3, Number(RPP[i][8])/1e18 ] )	//s.vee
+
+		cd_p[0].push( [ Number(RPP[i][0])*1e3, Number(RPP[i][1])/1e18 ] )	//price
+
+		cd_lr[1].push( [ Number(RPP[i][0])*1e3, Number(RPP[i][9])/1e18 * 100 ] )//s.lqmcr
+
+		cd_lqmc[0].push( [ Number(RPP[i][0])*1e3, Number(RPP[i][11])/1e18 ] )	//s.mc
+		cd_lqmc[1].push( [ Number(RPP[i][0])*1e3, Number(RPP[i][10])/1e18 ] )	//s.lq
+
+		cd_lqmcr[1].push( [ Number(RPP[i][0])*1e3, Number(RPP[i][10])/Number(RPP[i][11]) * 100 ] )	//s.lr
+
+		cd_mc[0].push( [ Number(RPP[i][0])*1e3, Number(RPP[i][12])/1e18 ] )	//s.out
+		cd_mc[1].push( [ Number(RPP[i][0])*1e3, Number(RPP[i][14])/1e18 ] )	//s.loc
+		cd_mc[2].push( [ Number(RPP[i][0])*1e3, Number(RPP[i][11])/1e18 ] )	//s.cir
+
+
+
+
 	}
 
-	paint("ch_s", cd_s, "Supply Classification", ["Circulating", "Outstanding", "Diluted"], [0,1,1])
-	paint("ch_s2", cd_s2, "Non-circulating Supply", ["Locked in veNFTs", "Unclaimed Gauge Rewards", "Other Excluded Supply"], [0,1,1])
-	paint("ch_v", cd_v, "Vote Escrowed Supply", ["Total EQUAL", "Locked EQUAL", "veEQUAL Power"], [1,1,0])
-	//paint("ch_i", cd_i, "SINSPIRIT Price History", ["Floor Price", "Current Price", "Target Price"], [0,0,0])
+	paint("ch_s", cd_s, "Supply Classification", ["Circulating", "Outstanding", "Diluted"], [0,1,1], 1)
+	paint("ch_s2", cd_s2, "Non-circulating Supply", ["Locked in veNFTs", "Unclaimed Gauge Rewards", "Other Excluded Supply"], [0,1,1], 1)
+	paint("ch_v", cd_v, "Vote Escrowed Supply", ["Total EQUAL", "Locked EQUAL", "veEQUAL Power"], [1,1,0], 1)
+	paint("ch_lr", cd_lr, "Locked Supply (in %)", ["", "", ""], [1,0,1], 0)
+	paint("ch_p", cd_p, "Price of EQUAL in USD ($)", ["Circ. Mkt. Cap.", "Pool2 Liquidity", ""], [0,1,1], 0)
+	paint("ch_lqmc", cd_lqmc, "Day-Trading Vitals", ["Circ. Mkt. Cap.", "Pool2 Liquidity", ""], [0,0,1], 1)
+	paint("ch_lqmcr", cd_lqmcr, "Pool2 Liquidity to Mkt.Cap Ratio (in %)", ["", "", ""], [1,0,1], 0)
+	paint("ch_mc", cd_mc, "Market Capitalization", ["Total Issued", "Locked", "Circulating"], [0,0,0], 1)
 
 }
