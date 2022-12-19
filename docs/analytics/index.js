@@ -6,6 +6,7 @@ window.addEventListener('load',async function()
 	console.log("waitin for 3 secs..");
 	$("cw_m").innerHTML = "Connecting.. Please wait."
 	setTimeout(async () => { await basetrip(); arf(); /*dexstats();*/ }, 0.1337);
+
 }, false);
 
 
@@ -258,11 +259,11 @@ async function paint25() {
 
 	paint("ch_s", cd_s, "Supply Classification", ["Circulating", "Outstanding", "Diluted"], [0,1,1], 1)
 	paint("ch_s2", cd_s2, "Non-circulating Supply", ["Locked in veNFTs", "Unclaimed Gauge Rewards", "Other Excluded Supply"], [0,1,1], 1)
-	paint("ch_v", cd_v, "Vote Escrowed Supply", ["Total EQUAL", "Locked EQUAL", "veEQUAL Power"], [1,1,0], 1)
+	paint("ch_v", cd_v, "Vote Escrowed Supply", ["Total EQUAL", "Locked EQUAL", "veEQUAL Voting Power"], [1,1,0], 1)
 	paint("ch_lr", cd_lr, "Locked Supply (in %)", ["", "", ""], [1,0,1], 0)
 	paint("ch_p", cd_p, "Price of EQUAL in USD ($)", ["Circ. Mkt. Cap.", "Pool2 Liquidity", ""], [0,1,1], 0)
 	paint("ch_lqmc", cd_lqmc, "Day-Trading Vitals", ["Circ. Mkt. Cap.", "Pool2 Liquidity", ""], [0,0,1], 1)
 	paint("ch_lqmcr", cd_lqmcr, "Pool2 Liquidity to Mkt.Cap Ratio (in %)", ["", "", ""], [1,0,1], 0)
-	paint("ch_mc", cd_mc, "Market Capitalization", ["Total Issued", "Locked", "Circulating"], [0,0,0], 1)
+	paint("ch_mc", cd_mc, "Market Capitalization in USD ($)", ["Total Issued", "Locked", "Circulating"], [0,0,0], 1)
 
 }
