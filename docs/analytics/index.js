@@ -87,7 +87,7 @@ SBLOCK = 52500821;
 
 
 Chart.defaults.color="#fff";
-function paint(el,da,na,la,hi,ld) {
+function paint(el,da,na,la,hi,ld,fi) {
 
 	new Chart(el, {
 		type: "line",
@@ -99,6 +99,10 @@ function paint(el,da,na,la,hi,ld) {
 					backgroundColor: 'rgb(255, 255, 255)',
 					borderColor: 'rgb(200, 200, 200)',
 					hidden: hi[0],
+					fill: {
+						target: fi[0].t,
+						above: fi[0].a
+					}
 				},
 				{
     				data: da[1],
@@ -106,6 +110,10 @@ function paint(el,da,na,la,hi,ld) {
 					backgroundColor: 'rgb(0, 255, 255)',
 					borderColor: 'rgb(20, 200, 200)',
 					hidden: hi[1],
+					fill: {
+						target: fi[1].t,
+						above: fi[1].a
+					}
 				},
 				{
     				data: da[2],
@@ -113,6 +121,10 @@ function paint(el,da,na,la,hi,ld) {
 					backgroundColor: 'gold',
 					borderColor: 'goldenrod',
 					hidden: hi[2],
+					fill: {
+						target: fi[2].t,
+						above: fi[2].a
+					}
 				}
 			]
 		},
@@ -159,7 +171,7 @@ function paint(el,da,na,la,hi,ld) {
                             	label += ': ';
                         	}
                         	if (context.parsed.y !== null) {
-                            	label += "$"+fornum(context.parsed.y,0);
+                            	label += fornum(context.parsed.y,0);
                         	}
                         	return label;
                     	}
@@ -253,17 +265,15 @@ async function paint25() {
 		cd_mc[2].push( [ Number(RPP[i][0])*1e3, Number(RPP[i][11])/1e18 ] )	//s.cir
 
 
-
-
 	}
 
-	paint("ch_s", cd_s, "Supply Classification", ["Circulating", "Outstanding", "Diluted"], [0,1,1], 1)
-	paint("ch_s2", cd_s2, "Non-circulating Supply", ["Locked in veNFTs", "Unclaimed Gauge Rewards", "Other Excluded Supply"], [0,1,1], 1)
-	paint("ch_v", cd_v, "Vote Escrowed Supply", ["Total EQUAL", "Locked EQUAL", "veEQUAL Voting Power"], [1,1,0], 1)
-	paint("ch_lr", cd_lr, "Locked Supply (in %)", ["", "", ""], [1,0,1], 0)
-	paint("ch_p", cd_p, "Price of EQUAL in USD ($)", ["Circ. Mkt. Cap.", "Pool2 Liquidity", ""], [0,1,1], 0)
-	paint("ch_lqmc", cd_lqmc, "Day-Trading Vitals", ["Circ. Mkt. Cap.", "Pool2 Liquidity", ""], [0,0,1], 1)
-	paint("ch_lqmcr", cd_lqmcr, "Pool2 Liquidity to Mkt.Cap Ratio (in %)", ["", "", ""], [1,0,1], 0)
-	paint("ch_mc", cd_mc, "Market Capitalization in USD ($)", ["Total Issued", "Locked", "Circulating"], [0,0,0], 1)
+	paint("ch_s", cd_s, "Supply Classification", ["Circulating", "Outstanding", "Diluted"], [0,1,1], 1, [{t:'origin',a:'rgba(255, 255, 255,0.5)'},{t:'origin',a:'rgba(0, 255, 255,1)'},{t:'origin',a:'rgba(255, 255, 0, 1)'}])
+	paint("ch_s2", cd_s2, "Non-circulating Supply", ["Locked in veNFTs", "Unclaimed Gauge Rewards", "Other Excluded Supply"], [0,1,1], 1, [{t:'origin',a:'rgba(255, 255, 255,0.5)'},false,false])
+	paint("ch_v", cd_v, "Vote Escrowed Supply", ["Total EQUAL", "Locked EQUAL", "veEQUAL Voting Power"], [1,1,0], 1,  [{t:'origin',a:'rgba(255, 255, 255,0.5)'},{t:'origin',a:'rgba(0, 255, 255,1)'},{t:'origin',a:'rgba(255, 223, 0, 0.1)'}])
+	paint("ch_lr", cd_lr, "Locked Supply (in %)", ["", "", ""], [1,0,1], 0, [false,{t:'origin',a:'rgba(0, 255, 255,0.5)'},false])
+	paint("ch_p", cd_p, "Price of EQUAL in USD ($)", ["Circ. Mkt. Cap.", "Pool2 Liquidity", ""], [0,1,1], 0, [false,false,false])
+	paint("ch_lqmc", cd_lqmc, "Day-Trading Vitals", ["Circ. Mkt. Cap.", "Pool2 Liquidity", ""], [0,0,1], 1, [false,false,false])
+	paint("ch_lqmcr", cd_lqmcr, "Pool2 Liquidity to Mkt.Cap Ratio (in %)", ["", "", ""], [1,0,1], 0, [false,{t:'origin',a:'rgba(0, 255, 255,0.5)'},false])
+	paint("ch_mc", cd_mc, "Market Capitalization in USD ($)", ["Total Issued", "Locked", "Circulating"], [0,0,0], 1, [false,false,false])
 
 }
