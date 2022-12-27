@@ -196,14 +196,14 @@ async function paint25() {
 	bbh = 52500821;
 	cbh = await provider.getBlockNumber()
 	TBH = [];
-	imax = 25;
-	step = Math.floor((cbh-bbh)/25)
+	imax = 47;
+	step = Math.floor((cbh-bbh)/imax)
 	if(step< 2e3) {
 		step = 1e3;
 		imax = Math.floor((cbh-bbh)/step)
 	}
 	for(i=0;i<= imax; i++) { TBH.push(bbh+i*step) }
-	if(TBH[TBH.length-1]!=cbh){TBH.push(cbh)}
+	if(TBH[TBH.length-1]<cbh){TBH.push(cbh)}
 	pp = [];
 	ES = new ethers.Contract(E_S,ESABI,provider);
 	for(i=0;i< TBH.length; i++) {
@@ -247,16 +247,16 @@ async function paint25() {
 		cd_s2[1].push( [ Number(RPP[i][0])*1e3, Number(RPP[i][6])/1e18 ] )	//s.gau
 		cd_s2[2].push( [ Number(RPP[i][0])*1e3, Number(RPP[i][7])/1e18 ] )	//s.exc
 
-		cd_v[0].push( [ Number(RPP[i][0])*1e3, Number(RPP[i][3])/1e18 ] )	//s.out
+		cd_v[0].push( [ Number(RPP[i][0])*1e3, Number(RPP[i][8])/1e18 ] )	//s.vee
 		cd_v[1].push( [ Number(RPP[i][0])*1e3, Number(RPP[i][5])/1e18 ] )	//s.nft
-		cd_v[2].push( [ Number(RPP[i][0])*1e3, Number(RPP[i][8])/1e18 ] )	//s.vee
+		cd_v[2].push( [ Number(RPP[i][0])*1e3, Number(RPP[i][3])/1e18 ] )	//s.out
 
-		cd_p[0].push( [ Number(RPP[i][0])*1e3, Number(RPP[i][1])/1e18 ] )	//price
+		cd_p[1].push( [ Number(RPP[i][0])*1e3, Number(RPP[i][1])/1e18 ] )	//price
 
 		cd_lr[1].push( [ Number(RPP[i][0])*1e3, Number(RPP[i][9])/1e18 * 100 ] )//s.lqmcr
 
-		cd_lqmc[0].push( [ Number(RPP[i][0])*1e3, Number(RPP[i][11])/1e18 ] )	//s.mc
 		cd_lqmc[1].push( [ Number(RPP[i][0])*1e3, Number(RPP[i][10])/1e18 ] )	//s.lq
+		cd_lqmc[2].push( [ Number(RPP[i][0])*1e3, Number(RPP[i][11])/1e18 ] )	//s.mc
 
 		cd_lqmcr[1].push( [ Number(RPP[i][0])*1e3, Number(RPP[i][10])/Number(RPP[i][11]) * 100 ] )	//s.lr
 
@@ -267,13 +267,21 @@ async function paint25() {
 
 	}
 
-	paint("ch_s", cd_s, "Supply Classification", ["Circulating", "Outstanding", "Diluted"], [0,1,1], 1, [{t:'origin',a:'rgba(255, 255, 255,0.5)'},{t:'origin',a:'rgba(0, 255, 255,1)'},{t:'origin',a:'rgba(255, 255, 0, 1)'}])
-	paint("ch_s2", cd_s2, "Non-circulating Supply", ["Locked in veNFTs", "Unclaimed Gauge Rewards", "Other Excluded Supply"], [0,1,1], 1, [{t:'origin',a:'rgba(255, 255, 255,0.5)'},false,false])
-	paint("ch_v", cd_v, "Vote Escrowed Supply", ["Total EQUAL", "Locked EQUAL", "veEQUAL Voting Power"], [1,1,0], 1,  [{t:'origin',a:'rgba(255, 255, 255,0.5)'},{t:'origin',a:'rgba(0, 255, 255,1)'},{t:'origin',a:'rgba(255, 223, 0, 0.1)'}])
-	paint("ch_lr", cd_lr, "Locked Supply (in %)", ["", "", ""], [1,0,1], 0, [false,{t:'origin',a:'rgba(0, 255, 255,0.5)'},false])
-	paint("ch_p", cd_p, "Price of EQUAL in USD ($)", ["Circ. Mkt. Cap.", "Pool2 Liquidity", ""], [0,1,1], 0, [false,false,false])
-	paint("ch_lqmc", cd_lqmc, "Day-Trading Vitals", ["Circ. Mkt. Cap.", "Pool2 Liquidity", ""], [0,0,1], 1, [false,false,false])
+	paint("ch_s", cd_s, "Supply Classification", ["Circulating", "Outstanding", "Diluted"], [0,0,1], 1, [{t:'origin',a:'rgba(255, 255, 255,1)'},{t:'origin',a:'rgba(0, 255, 255,0.5)'},{t:'origin',a:'rgba(255, 255, 0, 1)'}])
+	paint("ch_s2", cd_s2, "Non-circulating Supply", ["Locked in veNFTs", "Unclaimed Gauge Rewards", "Other Excluded Supply"], [0,0,1], 1, [{t:'origin',a:'rgba(127, 127, 127,0.5)'},{t:'origin',a:'rgba(0, 255, 255,1)'},false])
+	paint("ch_v", cd_v, "Vote Escrowed Supply", [ "veEQUAL Voting Power", "Locked EQUAL", "Total EQUAL"], [0,0,0], 1,  [{t:'origin',a:'rgba(255, 255, 255,0.5)'},{t:'origin',a:'rgba(0, 255, 255,0.5)'},{t:'origin',a:'rgba(255, 223, 0, 0.1)'}])
+	paint("ch_lr", cd_lr, "Locked Supply of EQUAL (in %)", ["", "", ""], [1,0,1], 0, [false,{t:'origin',a:'rgba(0, 255, 255,0.5)'},false])
+	paint("ch_p", cd_p, "Price of EQUAL in USD ($)", ["", "", ""], [1,0,1], 0, [false,{t:'origin',a:'rgba(255, 255, 255, 0.5)'},false])
+	paint("ch_lqmc", cd_lqmc, "Day-Trading Vitals", ["", "Pool2 Liquidity", "Circ. Mkt. Cap."], [1,0,0], 1, [false, {t:'origin',a:'rgba(0, 255, 255, 0.25)'},{t:'origin',a:'rgba(255, 255, 0.25)'}])
 	paint("ch_lqmcr", cd_lqmcr, "Pool2 Liquidity to Mkt.Cap Ratio (in %)", ["", "", ""], [1,0,1], 0, [false,{t:'origin',a:'rgba(0, 255, 255,0.5)'},false])
 	paint("ch_mc", cd_mc, "Market Capitalization in USD ($)", ["Total Issued", "Locked", "Circulating"], [0,0,0], 1, [false,false,false])
 
+
+	$("es_mp").innerHTML = "$ " + (cd_p[1][cd_p[1].length-1][1]).toLocaleString();
+	$("es_cmc").innerHTML = "$ " + Math.floor(cd_mc[2][cd_mc[2].length-1][1]).toLocaleString();
+	$("es_lr").innerHTML = (cd_lr[1][cd_lr[1].length-1][1]).toLocaleString() + " %";
+
+	$("cde_s_c").innerHTML = Math.floor(cd_s[0][cd_s[0].length-1][1]).toLocaleString() + " EQUAL";
+	$("cde_s_o").innerHTML = Math.floor(cd_s[1][cd_s[1].length-1][1]).toLocaleString() + " EQUAL";
+	$("cde_s_d").innerHTML = Math.floor(cd_s[2][cd_s[2].length-1][1]).toLocaleString() + " EQUAL";
 }

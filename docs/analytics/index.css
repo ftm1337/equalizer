@@ -520,3 +520,46 @@ textarea:focus, input:focus {
   cursor:pointer;
 }
 
+#exsum {
+  text-align: center;
+  color: white;
+}
+
+.esd {
+  display: grid;
+  grid-template-columns: 50% auto;
+  margin: auto;
+}
+
+.exsum div span:nth-of-type(2n-1){
+  text-align: right;
+}
+.exsum div span:nth-of-type(2n){
+	background: -webkit-linear-gradient(right, #039cd6, #2cfbee);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	font-family: "Etna";
+  padding-left: 10px;
+  font-size: 1.2em;
+  text-align: left
+}
+
+#charts {
+  color: #fff
+}
+
+.cde {
+  margin: 5%
+}
+
+.cdeda {
+	background: -webkit-linear-gradient(right, #039cd6, #2cfbee);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	font-family: "Etna";
+}
+
+.cde h3 svg {
+  position: relative;
+  vertical-align: middle;
+}
