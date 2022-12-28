@@ -269,12 +269,20 @@ async function paint(m) {
 	window.location="#t-top-1";
 	sd = eval($('pairlist').value);
 	rt01=sd[1].split('-')[1].split('/');
+	ibb = await Promise.all([
+		(new ethers.Contract(sd[4],["function balanceOf(address) public view returns (uint)"],provider)).balanceOf(sd[3]),
+		(new ethers.Contract(sd[5],["function balanceOf(address) public view returns (uint)"],provider)).balanceOf(sd[3])
+	])
 	$("pooldets").innerHTML = `
 		<div class="pdets"><div>Liquidity Pool</div><div><a target="_blank" href="https://ftmscan.com/address/${sd[0]}">${sd[0].substr(0,10)}</a></div></div>
 		<div class="pdets"><div>Gauge Address</div><div><a target="_blank" href="https://ftmscan.com/address/${sd[2]}">${sd[2].substr(0,10)}</a></div></div>
 		<div class="pdets"><div>Fees-Bribe Address</div><div><a target="_blank" href="https://ftmscan.com/address/${sd[3]}">${sd[3].substr(0,10)}</a></div></div>
 		<div class="pdets"><div>Reward #1</div><div><a target="_blank" href="https://ftmscan.com/address/${sd[4]}">${rt01[0]}</a></div></div>
 		<div class="pdets"><div>Reward #2</div><div><a target="_blank" href="https://ftmscan.com/address/${sd[5]}">${rt01[1]}</a></div></div>
+		<div class="pdets"><div>_</div><div>_</div></div>
+		<div class="pdets"><div><b>Unclaimed</div><div>-Rewards</b></div></div>
+		<div class="pdets"><div><a target="_blank" href="https://ftmscan.com/token/${sd[4]}?a=${sd[3]}">${rt01[0]}</a></div><div>${(ibb[0]/10**sd[6]).toFixed(6)}</div></div>
+		<div class="pdets"><div><a target="_blank" href="https://ftmscan.com/token/${sd[4]}?a=${sd[3]}">${rt01[1]}</a></div><div>${(ibb[1]/10**sd[7]).toFixed(6)}</div></div>
 	`
 	await paintall(sd,0,50)
 }
