@@ -208,14 +208,14 @@ async function sell() {
 	_id = $("nft-sel").value;
 	veq = new ethers.Contract(VENFT, VEABI, signer);
 	vm = new ethers.Contract(VENAMM,VMABI,signer);
-	al = await veq.isApprovedForAll(window.ethereum.selectedAddress,VENAMM);
+	al = await veq.isApprovedOrOwner(VENAMM,_id);
 	if(al==false) {
 		notice(`
 			<h3>Approval required</h3>
 			VeNAMM requires your approval to complete this trade.<br><br>
 			<h4><u><i>Please Confirm this transaction in your wallet!</i></u></h4>
 		`);
-		let _tr = await veq.setApprovalForAll(VENAMM,true);
+		let _tr = await veq.approve(VENAMM,_id);
 		console.log(_tr)
 		notice(`
 			<h3>Submitting Approval Transction!</h3>

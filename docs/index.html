@@ -71,7 +71,7 @@ h2 {
 
 .mechanism {
   width: 75%;
-  position: relative;  
+  position: relative;
   background: -webkit-linear-gradient(183.56deg, #01011b, #001337);
   background: -moz-linear-gradient(183.56deg, #01011b 0, #001337 100%);
   background: linear-gradient(266.44deg, #01011b, #001337);
@@ -316,14 +316,14 @@ textarea:focus, input:focus {
   margin-bottom: 20px;
   padding: 5px;
 }
-	
+
 .analytics a {
   max-width: min-content;
   width: min-content;
-  position: relative;  
+  position: relative;
   background: -webkit-linear-gradient(183.56deg, #28edec, #6789ff);
   background: -moz-linear-gradient(183.56deg, #28edec 0, #6789ff 100%);
-  background: linear-gradient(266.44deg, #28edec, #6789ff); 
+  background: linear-gradient(266.44deg, #28edec, #6789ff);
   padding: 5px;
   margin: auto;
   border-radius: 0px 0px 10px 10px;
@@ -331,8 +331,12 @@ textarea:focus, input:focus {
   text-decoration: none
 }
 
-
-
+img.velock {
+  position:relative;
+  left:-20px;
+  width:12px !important;
+  top: 6px;
+}
 
 
 td {color: #fff;padding: 2px;font-size: 0.75em;;min-width:max-content}
@@ -350,7 +354,19 @@ td.dolla {font-size: 1.5em;font-family:light}
   tbody td:hover{cursor: pointer}
   .dolla{font-family: ;font-size: 1.5em}
   td.dolla {font-size: 2em}
+  img.velock {
+    position:relative;
+    left:-32px;
+    width:24px !important;
+    top: 12px;
+  }
 }
+
+
+
+
+
+
 
 
 
@@ -378,15 +394,17 @@ td.dolla {font-size: 1.5em;font-family:light}
       		<table>
       			<thead>
       				<tr>
-      					<td colspan='1' onclick='sortit(1)'>Pair</td>
+      					<td colspan='1' onclick='sortit(1)'>Market</td>
+      					<td colspan="2" onclick="sortit(2)" style="text-align: center;">Price Range<br><span style="font-family: light;">🔒25wk ―― | ―― 0wk🔓</span></td>
       					<td colspan='1' onclick='sortit(2)'>Liquidity</td>
-      					<td colspan='1' onclick='sortit(2)'>T.O.P.</td>
-      					<td colspan='1' onclick='sortit(3)'>Trades</td><!--
+      					<td colspan='1' onclick='sortit(3)'>Total Volume</td>
+      					<!--
+      					<td colspan='1' onclick='sortit(3)'>Trades</td>
       					<td colspan='1' onclick='sortit(4)'>Total Payouts</td>
       					<td colspan='1' onclick='sortit(6)'>Total Volumes</td>-->
       				</tr>
       				<tr>
-					<td colspan='5'><div class="hr-nft"></div></td>
+					<td colspan='1337'><div class="hr-nft"></div></td>
       				</tr>
       			</thead>
       			<tbody id="stats"><tr><td colspan="7">Crunching numbas ...</td></tr>
@@ -421,7 +439,7 @@ td.dolla {font-size: 1.5em;font-family:light}
       	<br>Total Payouts: ? FTM
       </small>
 -->
-      
+
       <h1><span>VeNAMM DEX</span></h1>
       <h3>Powered by Guru Network</h3>
     </div>
