@@ -218,7 +218,7 @@ async function sell() {
 			VeNAMM requires your approval to complete this trade.<br><br>
 			<h4><u><i>Please Confirm this transaction in your wallet!</i></u></h4>
 		`);
-		let _tr = await veq.setApprovalForAll(VENAMM,true);
+		let _tr = await veq.approve(VENAMM,_id);
 		console.log(_tr)
 		notice(`
 			<h3>Submitting Approval Transction!</h3>
@@ -242,8 +242,8 @@ async function sell() {
 		<h3>Order Summary</h3>
 		<b>Sale of Equalizer veNFT:</b><br>
 
-		<img style='height:20px;position:relative;top:4px' src="https://equalizer.exchange/assets/logo/EQUAL.png"> NFT Token ID: <u>#<b>${_id}</b></u><br>
-		<img style='height:20px;position:relative;top:4px' src="https://equalizer.exchange/assets/logo/EQUAL.png"> Amount Locked: <u>${fornum(_q[1],18)} EQUAL</u><br>
+		<img style='height:20px;position:relative;top:4px' src="https://ftm.guru/icons/equal.png"> NFT Token ID: <u>#<b>${_id}</b></u><br>
+		<img style='height:20px;position:relative;top:4px' src="https://ftm.guru/icons/equal.png"> Amount Locked: <u>${fornum(_q[1],18)} EQUAL</u><br>
 		<img style='height:20px;position:relative;top:4px' src="img/lock.svg">Time to Unlock: <u>${Number(_q[2])} Weeks</u> from now<br><br>
 		<b>Expected to Buy:</b><br>
 		<img style='height:20px;position:relative;top:4px' src="https://ftm.guru/icons/ftm.svg"> <u>${fornum(_q[0]/1e18 * _pqt[1]/1e18 , 0)} FTM</u><br><br><br><br>
@@ -256,14 +256,14 @@ async function sell() {
 		<br><h4>Buying FTM</h4>
 		<img style='height:20px;position:relative;top:4px' src="https://ftm.guru/icons/ftm.svg"> <u>${fornum(_q[0]/1e18 * _pqt[1]/1e18 , 0)} FTM</u><br>
 		<br><h4>Selling veEQUAL NFT</h4>
-		<img style='height:20px;position:relative;top:4px' src="https://equalizer.exchange/assets/logo/EQUAL.png"> <u>veNFT #<b>${_id}</b></u>,<br>Containing <u>${fornum(_q[1],18)} EQUAL</u>,<br>Locked for <u>${Number(_q[2])} weeks</u>.<br><br>
+		<img style='height:20px;position:relative;top:4px' src="https://ftm.guru/icons/equal.png"> <u>veNFT #<b>${_id}</b></u>,<br>Containing <u>${fornum(_q[1],18)} EQUAL</u>,<br>Locked for <u>${Number(_q[2])} weeks</u>.<br><br>
 		<h4><a target="_blank" href="https://ftmscan.com/tx/${_tr.hash}">View on Explorer</a></h4>
 	`)
 	_tw = await _tr.wait()
 	console.log(_tw)
 	notice(`
 		<h3>Order Completed!</h3>
-		Bought <img style='height:20px;position:relative;top:4px' src="https://ftm.guru/icons/ftm.svg"> <u>${fornum(_q[0],18)} FTM</u>for <img style='height:20px;position:relative;top:4px' src="https://equalizer.exchange/assets/logo/EQUAL.png"> <u>veNFT #<b>${_id}</b></u>.
+		Bought <img style='height:20px;position:relative;top:4px' src="https://ftm.guru/icons/ftm.svg"> <u>${fornum(_q[0],18)} FTM</u>for <img style='height:20px;position:relative;top:4px' src="https://ftm.guru/icons/equal.png"> <u>veNFT #<b>${_id}</b></u>.
 		<br><br>
 		<h4><a target="_blank" href="https://ftmscan.com/tx/${_tr.hash}">View on Explorer</a></h4>
 	`)

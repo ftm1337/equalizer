@@ -215,7 +215,7 @@ async function sell() {
 			VeNAMM requires your approval to complete this trade.<br><br>
 			<h4><u><i>Please Confirm this transaction in your wallet!</i></u></h4>
 		`);
-		let _tr = await veq.setApprovalForAll(VENAMM,true);
+		let _tr = await veq.approve(VENAMM,_id);
 		console.log(_tr)
 		notice(`
 			<h3>Submitting Approval Transction!</h3>
@@ -237,10 +237,10 @@ async function sell() {
 		<b>Sale of Equalizer veNFT:</b><br>
 
 		<img style='height:20px;position:relative;top:4px' src="${BASELOGO}"> NFT Token ID: <u>#<b>${_id}</b></u><br>
-		<img style='height:20px;position:relative;top:4px' src="https://equalizer.exchange/assets/logo/EQUAL.png"> Amount Locked: <u>${fornum(_q[1],18)} ${BASENAME}</u><br>
+		<img style='height:20px;position:relative;top:4px' src="https://ftm.guru/icons/equal.png"> Amount Locked: <u>${fornum(_q[1],18)} ${BASENAME}</u><br>
 		<img style='height:20px;position:relative;top:4px' src="img/lock.svg">Time to Unlock: <u>${Number(_q[2])} Weeks</u> from now<br><br>
 		<b>Expected to Buy:</b><br>
-		<img style='height:20px;position:relative;top:4px' src="https://ftm.guru/icons/ftm.svg"> <u>${fornum(_q[0],18)} ${TOKENNAME}</u><br><br><br><br>
+		<img style='height:20px;position:relative;top:4px' src="https://ftm.guru/icons/equal.png"> <u>${fornum(_q[0],18)} ${TOKENNAME}</u><br><br><br><br>
 		<h4><u><i>Please Confirm this transaction in your wallet!</i></u></h4>
 	`)
 	let _tr = await vm.sell(_id);
@@ -248,16 +248,16 @@ async function sell() {
 	notice(`
 		<h3>Order Submitted!</h3>
 		<br><h4>Buying ${TOKENNAME}</h4>
-		<img style='height:20px;position:relative;top:4px' src="https://ftm.guru/icons/ftm.svg"> <u>${fornum(_q[0],18)} ${TOKENNAME}</u><br>
+		<img style='height:20px;position:relative;top:4px' src="https://ftm.guru/icons/equal.png"> <u>${fornum(_q[0],18)} ${TOKENNAME}</u><br>
 		<br><h4>Selling ve${BASENAME} NFT</h4>
-		<img style='height:20px;position:relative;top:4px' src="https://equalizer.exchange/assets/logo/EQUAL.png"> <u>veNFT #<b>${_id}</b></u>,<br>Containing <u>${fornum(_q[1],18)} ${BASENAME}</u>,<br>Locked for <u>${Number(_q[2])} weeks</u>.<br><br>
+		<img style='height:20px;position:relative;top:4px' src="https://ftm.guru/icons/equal.png"> <u>veNFT #<b>${_id}</b></u>,<br>Containing <u>${fornum(_q[1],18)} ${BASENAME}</u>,<br>Locked for <u>${Number(_q[2])} weeks</u>.<br><br>
 		<h4><a target="_blank" href="https://ftmscan.com/tx/${_tr.hash}">View on Explorer</a></h4>
 	`)
 	_tw = await _tr.wait()
 	console.log(_tw)
 	notice(`
 		<h3>Order Completed!</h3>
-		Bought <img style='height:20px;position:relative;top:4px' src="https://ftm.guru/icons/ftm.svg"> <u>${fornum(_q[0],18)} ${TOKENNAME}</u> for <img style='height:20px;position:relative;top:4px' src="https://equalizer.exchange/assets/logo/EQUAL.png"> <u>veNFT #<b>${_id}</b></u>.
+		Bought <img style='height:20px;position:relative;top:4px' src="https://ftm.guru/icons/equal.png"> <u>${fornum(_q[0],18)} ${TOKENNAME}</u> for <img style='height:20px;position:relative;top:4px' src="https://ftm.guru/icons/equal.png"> <u>veNFT #<b>${_id}</b></u>.
 		<br><br>
 		<h4><a target="_blank" href="https://ftmscan.com/tx/${_tr.hash}">View on Explorer</a></h4>
 	`)
@@ -279,7 +279,7 @@ async function dexstats() {
 	Promise.all([_b, _p, _v, _t])
 	.then(rp=>{
 		$("stats").innerHTML = `
-    		Available Liquidity: ${(fornum(rp[0],18)) + " " + TOKENNAME} 
+    		Available Liquidity: ${(fornum(rp[0],18)) + " " + TOKENNAME}
     		<br>Total Converted: ${Number(rp[3])} veNFTs
     		<br>Total Volume: ${(fornum(rp[2],18)) + " " + BASENAME}
     		<br>Total Payouts: ${(fornum(rp[1],18)) + " " + TOKENNAME}
