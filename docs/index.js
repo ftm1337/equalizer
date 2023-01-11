@@ -111,10 +111,11 @@ async function dexstats() {
 	.then(rp=>{ console.log("rp:",rp);
 		$("stats").innerHTML = "";
 		$("stats").innerHTML = `
-    		<tr onclick="window.location='3'">
+    		<tr class= onclick="window.location='3'">
 				<td><img src="https://equalizer.exchange/assets/logo/EQUAL.png" style="position:relative;z-index:1"/><img src="https://equalizer.exchange/assets/logo/EQUAL.png" style="position:relative;left:-12px"/><img src="img/lock.svg" class="velock"></td>
 				<td><span class="dolla">$${(rp[17]/1e18 * rp[9]/1e18 * 0.44722886752142654).toLocaleString(undefined, {minimumFractionDigits: 4, maximumFractionDigits: 4}) } </span><br> (${Number(rp[17]/1e18 * 0.44722886752142654).toLocaleString(undefined, {minimumFractionDigits: 4, maximumFractionDigits: 4}) } EQUAL)</td>
 				<td><span class="dolla">$${(rp[17]/1e18 * rp[9]/1e18).toLocaleString(undefined, {minimumFractionDigits: 4, maximumFractionDigits: 4}) } </span><br> (${Number(rp[17]/1e18).toLocaleString(undefined, {minimumFractionDigits: 4, maximumFractionDigits: 4}) } EQUAL)</td>
+				<td><span class="dolla">$${(rp[13]/1e18 * rp[9]/1e18/0.44722886752142654).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) } </span> <br> (${Number(rp[13]/1e18/0.44722886752142654).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) } EQUAL)</td>
 				<td><span class="dolla">$${(rp[13]/1e18 * rp[9]/1e18).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) } </span> <br> (${Number(rp[13]/1e18).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) } EQUAL)</td>
 				<td><span class="dolla">$${(rp[15]/1e18 * rp[9]/1e18).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) } </span> <br> (${Number(rp[15]/1e18).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) } EQUAL)</td>
 				<!--<td><span class="dolla">${Number(rp[16])}</span></td>-->
@@ -123,6 +124,7 @@ async function dexstats() {
 				<td><img src="https://ftm.guru/icons/ftm.svg"  style="position:relative;z-index:1"/><img src="https://equalizer.exchange/assets/logo/EQUAL.png"  style="position:relative;left:-12px"/><img src="img/lock.svg" class="velock"></td>
 				<td><span class="dolla">$${(rp[10]/1e18 * rp[8]/1e18 * 0.2).toLocaleString(undefined, {minimumFractionDigits: 4, maximumFractionDigits: 4}) } </span><br> (${Number(rp[10]/1e18 * 0.2).toLocaleString(undefined, {minimumFractionDigits: 4, maximumFractionDigits: 4}) } FTM)</td>
 				<td><span class="dolla">$${(rp[10]/1e18 * rp[8]/1e18).toLocaleString(undefined, {minimumFractionDigits: 4, maximumFractionDigits: 4}) } </span><br> (${Number(rp[10]/1e18).toLocaleString(undefined, {minimumFractionDigits: 4, maximumFractionDigits: 4}) } FTM)</td>
+				<td><span class="dolla">$${(rp[0]/1e18 * rp[8]/1e18/0.2).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) } </span> <br> (${Number(rp[0]/1e18/0.2).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) } FTM)</td>
 				<td><span class="dolla">$${(rp[0]/1e18 * rp[8]/1e18).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) } </span> <br> (${Number(rp[0]/1e18).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) } FTM)</td>
 				<td><span class="dolla">$${(rp[4]/1e18 * rp[9]/1e18).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) } </span> <br> (${Number(rp[4]/1e18).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) } EQUAL)</td>
 				<!--<td><span class="dolla">${Number(rp[6])}</span></td>-->
@@ -131,6 +133,7 @@ async function dexstats() {
 				<td><img src="https://equalizer.exchange/assets/logo/EQUAL.png" style="position:relative;z-index:1"/><img src="https://equalizer.exchange/assets/logo/EQUAL.png" style="position:relative;left:-12px"/><img src="img/lock.svg" class="velock"></td>
 				<td><span class="dolla">$${(rp[11]/1e18 * rp[9]/1e18 * 0.2).toLocaleString(undefined, {minimumFractionDigits: 4, maximumFractionDigits: 4}) } </span><br> (${Number(rp[11]/1e18 * 0.2).toLocaleString(undefined, {minimumFractionDigits: 4, maximumFractionDigits: 4}) } EQUAL)</td>
 				<td><span class="dolla">$${(rp[11]/1e18 * rp[9]/1e18).toLocaleString(undefined, {minimumFractionDigits: 4, maximumFractionDigits: 4}) } </span><br> (${Number(rp[11]/1e18).toLocaleString(undefined, {minimumFractionDigits: 4, maximumFractionDigits: 4}) } EQUAL)</td>
+				<td><span class="dolla">$${(rp[1]/1e18 * rp[9]/1e18/0.2).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) } </span> <br> (${Number(rp[1]/1e18/0.2).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) } EQUAL)</td>
 				<td><span class="dolla">$${(rp[1]/1e18 * rp[9]/1e18).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) } </span> <br> (${Number(rp[1]/1e18).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) } EQUAL)</td>
 				<td><span class="dolla">$${(rp[5]/1e18 * rp[9]/1e18).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) } </span> <br> (${Number(rp[5]/1e18).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) } EQUAL)</td>
 				<!--<td><span class="dolla">${Number(rp[7])}</span></td>-->
