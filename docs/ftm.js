@@ -211,28 +211,58 @@ async function sell() {
 	_id = $("nft-sel").value;
 	veq = new ethers.Contract(VENFT, VEABI, signer);
 	vm = new ethers.Contract(VENAMM,VMABI,signer);
-	al = await veq.isApprovedForAll(window.ethereum.selectedAddress,VENAMM);
-	if(al==false) {
+	alvo = await Promise.all([
+		ve.isApprovedOrOwner(VENAMM,_id),
+		ve.voted(_id)
+	]);
+	console.log("alvo: ",alvo);
+	if(alvo[0]==false) {
 		notice(`
 			<h3>Approval required</h3>
 			VeNAMM requires your approval to complete this trade.<br><br>
 			<h4><u><i>Please Confirm this transaction in your wallet!</i></u></h4>
 		`);
 		let _tr = await veq.approve(VENAMM,_id);
-		console.log(_tr)
+		console.log(_tr);
 		notice(`
 			<h3>Submitting Approval Transction!</h3>
-			<h4><a target="_blank" href="https://ftmscan.com/tx/${_tr.hash}">View on Explorer</a></h4>
+			<h4><a target="_blank" href="${EXPLORE}/tx/${_tr.hash}">View on Explorer</a></h4>
 		`);
 		_tw = await _tr.wait()
 		console.log(_tw)
 		notice(`
 			<h3>Approval Completed!</h3>
 			<br><br>
-			<h4><a target="_blank" href="https://ftmscan.com/tx/${_tr.hash}">View on Explorer</a></h4>
+			<h4><a target="_blank" href="${EXPLORE}/tx/${_tr.hash}">View on Explorer</a></h4>
 			<br><br>
 			Please confirm the Trade at your wallet provider now.
-		`)
+		`);
+	}
+	if(alvo[1]==true) {
+		notice(`
+			<h3>Vote-Reset required</h3>
+			eTHENA Depositor requires your veNFT to be in a non-voted state to complete this conversion.
+			<br><br>
+			Resetting your Votes..
+			<br><br>
+			<h4><u><i>Please Confirm this transaction in your wallet!</i></u></h4>
+		`);
+		voter = new ethers.Contract(VOTER, ["function reset(uint)"], signer);
+		let _tr = await voter.reset(_id);
+		console.log(_tr);
+		notice(`
+			<h3>Submitting Vote-Reset Transaction!</h3>
+			<h4><a target="_blank" href="${EXPLORE}/tx/${_tr.hash}">View on Explorer</a></h4>
+		`);
+		_tw = await _tr.wait()
+		console.log(_tw)
+		notice(`
+			<h3>Vote-Reset Completed!</h3>
+			<br><br>
+			<h4><a target="_blank" href="${EXPLORE}/tx/${_tr.hash}">View on Explorer</a></h4>
+			<br><br>
+			Please confirm the Trade at your wallet provider now.
+		`);
 	}
 	_qq = vm.getQuoted(_id);
 	_top = vm.offerPrice();
