@@ -171,7 +171,10 @@ VMABI = [{"anonymous": false,"inputs": [{"indexed": true,"internalType": "addres
 async function gubs() {
 	ve = new ethers.Contract(VENFT, VEABI, provider);
 	bal = await ve.balanceOf(window.ethereum.selectedAddress);
-	if (bal == 0) $("nft-bal").innerHTML = "No NFTs owned!";
+	if (bal == 0) {
+		$("nft-bal").innerHTML = "No NFTs owned!";
+		$("nft-sel").innerHTML = "";
+	}
 	else {
 		$("nft-bal").innerHTML = "Balance: "+bal+" veNFT";
 		nid=[];
@@ -193,7 +196,7 @@ async function gubs() {
 						<div>Amount of EQUAL</div> <div>${fornum(Number(balids[i][0]),18)}</div>
 					</div>
 					<br>
-					<button class="equal-gradient" onclick="reset(nids[i])">Reset</button>
+					<button class="equal-gradient" onclick="reset(${nids[i]})">Reset</button>
 					<br>
 				</div>
 			`
