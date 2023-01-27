@@ -171,9 +171,9 @@ VMABI = [{"anonymous": false,"inputs": [{"indexed": true,"internalType": "addres
 async function gubs() {
 	ve = new ethers.Contract(VENFT, VEABI, provider);
 	bal = await ve.balanceOf(window.ethereum.selectedAddress);
+	$("nft-sel").innerHTML = "";
 	if (bal == 0) {
 		$("nft-bal").innerHTML = "No NFTs owned!";
-		$("nft-sel").innerHTML = "";
 	}
 	else {
 		$("nft-bal").innerHTML = "Balance: "+bal+" veNFT";
