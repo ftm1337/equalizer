@@ -1,33 +1,158 @@
-<!doctype html>
-<html>
-<meta charset="UTF-8">
-<head>
-<meta name="description" content="Swap your Equalizer veNFT for FTM | ftm.guru/equalizer/airdrop">
-<meta name="keywords" content="Ftm.guru, Guru Network, Finance, Decentralized Finance, defi, Airdrop, EQUAL, veNFT, Solidly, Equalizer, Fantom Opera, FTM">
-<title>Swap Equalizer veNFTs for FTM | FTM.guru</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="shortcut icon" href="https://ftm.guru/img/64.png"/>
-<style>
+@font-face { font-family:bold;src: url("https://ftm.guru/font/bold.ttf");}
+@font-face { font-family:italic;src: url("https://ftm.guru/font/italic.ttf");}
+@font-face { font-family:light;src: url("https://ftm.guru/font/light.ttf");}
+@font-face { font-family:light_italic;src: url("https://ftm.guru/font/light_italic.ttf");}
+@font-face { font-family:regular;src: url("https://ftm.guru/font/regular.ttf");}
+@font-face { font-family:regular_italic;src: url("https://ftm.guru/font/regular_italic.ttf");}
+@font-face {
+  font-family: Etna;
+  src: url("../fonts/etna.otf");
+}
 
 
-
-@font-face{font-family:bold;src: url(https://ftm.guru/font/bold.ttf);}
-@font-face{ font-family:italic;src: url(https://ftm.guru/font/italic.ttf);}
-@font-face{ font-family:light;src: url(https://ftm.guru/font/light.ttf);}
-@font-face{ font-family:light_italic;src: url(https://ftm.guru/font/light_italic.ttf);}
-@font-face{ font-family:regular;src: url(https://ftm.guru/font/regular.ttf);}
-@font-face{ font-family:regular_italic;src: url(https://ftm.guru/font/regular_italic.ttf);}
 *{
   font-family:regular;
   scroll-behavior: smooth !important;
+  transition:0.25s
 }
 
 .equal-gradient {
   background: -webkit-linear-gradient(left, #035cd6, #2cfbee);
 }
 
+.connect-wallet{
+  font-family: Etna,sans-serif!important;
+  background: linear-gradient(266.44deg,#28edec,#0564d7);
+    border-radius: 32px 0;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 100;
+    position: relative;
+    font-size:12px;
+    padding: 20px;
+    margin: 0 10px;
+}
+
+header {
+  overflow: hidden;
+  padding: 0 20px;
+}
+
+header a, header label {
+  display: block;
+  padding-top:20px;
+  color: #fff;
+  text-decoration: none;
+  line-height: 20px;
+}
+
+header a:hover, header label:hover { color: #aaa; }
+
+header label {
+  float: right;
+  padding: 18px 20px;
+  cursor: pointer;
+}
+
+header label:after {
+}
+
+.logo {
+  float: left;
+  font-weight: bold;
+  font-size: 1.5em;
+
+}
+.logo img{
+  max-width:200px;
+}
+
+nav {
+  float: right;
+  max-height: 0;
+  width: 100%;
+  -webkit-transition: max-height 0.3s;
+     -moz-transition: max-height 0.3s;
+       -o-transition: max-height 0.3s;
+          transition: max-height 0.3s;
+          margin-top:20px;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+   padding-bottom: 10px;
+}
+
+nav li:not(:last-of-type):hover {
+  text-decoration: none;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius:15px;
+}
+
+
+nav li {
+  display: block;
+  text-align: center;
+}
+
+nav a {
+  padding: 10px;
+  width: 100%;
+  font-size:16px;
+  font-weight: normal;
+    line-height: 1.5;
+}
+
+#burger-menu img{
+  width:40px;
+  margin-top:10px;
+}
+
+#nav { display: none; }
+
+#nav:checked ~ nav {
+  max-height: 400px;
+}
+
+@media only screen and (min-width: 700px) {
+
+  header label { display: none; }
+
+  nav {
+    width: auto;
+    max-height: none;
+  }
+
+  nav ul {
+    padding: 0;
+  }
+
+  nav li {
+    display: inline-block;
+    text-align: left;
+  }
+
+  header nav a {
+    display: inline-block;
+    padding: 10px 20px;
+    width: auto;
+    color: white!important;
+    font-family: Inter,Arial,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    font-weight: bold;
+    font-size:16px;
+  }
+
+}
+
+div{
+  font-family: Inter,Arial,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+}
+
+
 body {
-  background-color: #01011b;
+  background-color: #01011B;
 }
 
 small {
@@ -41,6 +166,10 @@ small {
   text-align: center;
 }
 
+.partnership span {
+  color: #fff;
+}
+
 p {
   font-family: sans-serif;
   font-size: 1em;
@@ -50,7 +179,7 @@ p {
 
 h1, h2 {
   color: white;
-  font-family: sans-serif;
+  font-family: "Etna";
   text-align: center;
 }
 
@@ -58,6 +187,7 @@ h1 span, h2 span {
   background: -webkit-linear-gradient(left, #035cd6, #2cfbee);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  font-family: "Etna";
 }
 
 h1 {
@@ -75,12 +205,10 @@ h2 {
 .mechanism {
   width: 75%;
   position: relative;
-  background: -webkit-linear-gradient(183.56deg, #01011b, #001337);
-  background: -moz-linear-gradient(183.56deg, #01011b 0, #001337 100%);
-  background: linear-gradient(266.44deg, #01011b, #001337);
+  background-color: rgb(1,1,27);
   border-radius: 25px;
   margin: 25px auto;
-  padding: 15px;
+  padding: 25px;
   position: relative;
   border-radius: 25px;
   margin-bottom: 0;
@@ -90,25 +218,36 @@ h2 {
   color: white;
 }
 
-button,select {
+button,select,input {
   background-color: #26e5ea;
   padding: 10px 30px;
   border-radius: 30px;
   font-family: sans-serif;
   font-weight: bold;
   color: white;
+  border:none;
 }
 
+button {
+  padding: 8px 16px !important;
+  cursor: pointer !important;
+  font-size: 16px !important;
+  border:none;
+}
+
+
+
 button.submit {
-  margin-top: 50px;
+  margin-top: 20px;
   padding: 10px;
   font-size: 0.8em;
+  min-width:80%;
+  color:white;
 }
 
 .mechanism .input-amount input, .nft-amtl {
   display: inline;
   vertical-align: middle;
-  margin-left: 10px;
 }
 
 .mechanism .input-amount img {
@@ -119,10 +258,13 @@ button.submit {
 
 .mechanism input, .nft-amtl {
   background-color: transparent;
-  color: black;
   width: 100%;
   border: 0;
   font-size: 1em;
+  color: white;
+}
+
+.input-amount {
   color: white;
 }
 
@@ -158,6 +300,8 @@ textarea:focus, input:focus {
   z-index: -1;
 }
 
+#particle-container-div{position: sticky;top:0}
+
 .hr-nft {
   border:none;
   background: -webkit-linear-gradient(183.56deg, #0564d7, #28edec);
@@ -169,8 +313,16 @@ textarea:focus, input:focus {
 #p_cw{font-size:1em;font-family:light}
 
 #nft-sel {
-  font-size: 0.8em;
-  padding: 5px
+  padding: 8px 12px;
+  border-radius: 10px;
+  margin: 2px;
+  cursor: pointer;
+  font-size: 16px;
+  border:0;
+}
+
+#nft-sel option{
+  color:black !important;
 }
 
 #cw_og {
@@ -226,10 +378,14 @@ textarea:focus, input:focus {
     color: white;
   }
   button.submit {
-    width: 80%;
-    margin-top: 50px;
-    padding: 10px;
+    min-width: 150px;
+    margin: 15px;
     font-size: 1em;
+    padding: 8px 12px;
+    border-radius: 10px;
+    margin: 2px;
+    cursor: pointer;
+    font-size: 16px;
   }
 
   h1 {
@@ -333,109 +489,77 @@ textarea:focus, input:focus {
   text-decoration: none
 }
 
-</style>
-  <body>
-    <div class="partnership">
-      <h1><span>ELITE</span> 🤝 <span>EQUAL</span></h1>
-      <h2>Swap your veEQUAL NFTs for FTM</h2>
-    </div>
-    <div class="mechanism">
-      <div class="amount">
-      	<br>
-      	<p id="p_cw"><span id="cw" onclick="cw()">Hello 👋 <span id="cw_og">Connect wallet!</span></p>
-      	<div align="center">
-      	  <select class="equal-gradient" id="nft-sel" onchange="quote()">
-      	    <option value="" selected>Choose a NFT</option>
-      	  </select>
-      	</div>
-        <p><span id="nft-bal">Balance: ? veNFT</span></p>
-      </div>
-      <div class="input-amount">
-      	<br>
-        <img src="https://ftm.guru/icons/equal.png"/>
-        <span class="nft-amtl" id="nft-amt">? EQUAL</span>
-        <br><br>
-        <img src="img/lock.svg"/>
-        <span class="nft-amtl" id="nft-tl">? Weeks</span>
-        <br> <br>
-      	<br>
-        <div class="hr-nft"></div>
-        <br>
-        <img src="img/ftm.svg"/>
-        <span class="nft-amtl" id="nft-offer">? FTM</span>
-      </div>
-      <div style="margin-top: -25px;" align="center">
-        <button class="submit equal-gradient" onclick="sell()"><span id="claim-offer">Claim ? FTM</span></button>
-      </div>
-    </div>
-    <div class="analytics">
-	    <a href="https://dune.com/1337/venamm" target="_blank">Analytics</a>
-	    <a onclick="notice('<h2>C0M1N6 500N</h2>')">Multi-Merge</a>
-    </div>
+.lowerbar{
+  font-size: 1.25em;
+  font-weight: bolder;
+}
 
+.socialIcon{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
 
-	<div id="note" class="overlay">
-		<div class="popup">
-			<a class="close" href="#">&times;</a>
-			<div class="content" id="content1">
-				w31c0m3 fren!<br>trade well :)
-			</div>
-		</div>
-	</div>
+.socialIcon a{
+  width: 40px;
+    height: 40px;
+    background: -webkit-linear-gradient(left,#035cd6,#2cfbee);
+    background: -moz-linear-gradient(left,#035cd6 0,#2cfbee 100%);
+    background: linear-gradient(90deg,#035cd6,#2cfbee);
+    border-radius: 50%;
+    padding: 10px;
+    display:flex;
+    margin-left: 15px;
+    -moz-box-align: center;
+    align-items: center;
+    -moz-box-pack: center;
+    justify-content: center;
+}
 
+.getbonus {
+  cursor:pointer;
+}
 
-    <div class="extra">
-      <small id="stats">
-      	Available Liquidity: ? FTM
-      	<br>Total Converted: ? veNFTs
-      	<br>Total Volume: ? EQUAL
-      	<br>Total Payouts: ? FTM
-      </small>
-      <br><br>
-      <h1><span>VeNAMM DEX</span></h1>
-      <h3>Powered by Guru Network</h3>
-    </div>
+#exsum {
+  text-align: center;
+  color: white;
+}
 
+.esd {
+  display: grid;
+  grid-template-columns: 50% auto;
+  margin: auto;
+}
 
+.exsum div span:nth-of-type(2n-1){
+  text-align: right;
+}
+.exsum div span:nth-of-type(2n){
+	background: -webkit-linear-gradient(right, #039cd6, #2cfbee);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	font-family: "Etna";
+  padding-left: 10px;
+  font-size: 1.2em;
+  text-align: left
+}
 
+#charts {
+  color: #fff
+}
 
+.cde {
+  margin: 5%
+}
 
+.cdeda {
+	background: -webkit-linear-gradient(right, #039cd6, #2cfbee);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	font-family: "Etna";
+}
 
-<!-- IGNORE BELOW BLOCK : DEV LOGS -->
-    <div style="display:none">
-		<span id="cw_m"></span>
-		<div id="connect">
-			Please connect your web3 wallet.
-			<br><br>
-			<button onclick="cw()" id="btn-connect">Connect</button>
-		</div>
-		<div id="switch">
-			<b id="btn-switch" onclick="cw()">
-				<img src="img/wallet.svg" width="24px" style="position:relative;top:4px">
-				<span id="cw"></span>
-			</b>
-			<br>Balance: <b style="font-family:bold" id="usb-mtv">?</b> <img class="imgmtv" src="https://ftm.guru/icons/usdc.svg" width="20px" style="position:relative;top:4px">USDC<br>
-			<span style="font-size:0.9em">Wallet at <img class="imgmtv" src="https://ftm.guru/icons/ftm.svg" width="20px" style="position:relative;top:4px">Fantom Opera. <a href="index.html" style="color:aqua;font-family:bold">Change?</a></span>
-		</div>
-	</div>
-<!-- IGNORE ABOVE BLOCK : DEV LOGS -->
-
-    <div id="particle-container">
-  	  <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
-  	</div>
-      <script src="https://ftm.guru/ethers-5.2.umd.min.js" type="application/javascript" defer="true"></script>
-      <script src="https://ftm.guru/chart.min.js" type="application/javascript"></script>
-      <script src="https://ftm.guru/chartjs-adapter-date-fns.bundle.min.js" type="application/javascript"></script>
-      <script src="ftm.js?v=2"></script>
-      <script>
-        CHAINID = 250;
-        RPC_URL = "https://rpc.ftm.tools";
-        EXPLORE = "https://ftmscan.com/";
-        CHAIN_NAME = "Fantom Opera Mainnet";
-        VENFT = "0x8313f3551C4D3984FfbaDFb42f780D0c8763Ce94";
-        VENAMM = "0x6b4a8b8e5e83a0e1631e5c01faf44fb371bd2956";
-        WFTM = "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83";
-        VOTER = "0x4bebEB8188aEF8287f9a7d1E4f01d76cBE060d5b";
-      </script>
-  </body>
-</html>
+.cde h3 svg {
+  position: relative;
+  vertical-align: middle;
+}

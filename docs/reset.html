@@ -2,9 +2,9 @@
 <html>
 <meta charset="UTF-8">
 <head>
-<meta name="description" content="Swap your Equalizer veNFT for FTM | ftm.guru/equalizer/airdrop">
+<meta name="description" content="Reset Your Equalizer veNFT | ftm.guru/equalizer/reset">
 <meta name="keywords" content="Ftm.guru, Guru Network, Finance, Decentralized Finance, defi, Airdrop, EQUAL, veNFT, Solidly, Equalizer, Fantom Opera, FTM">
-<title>Swap Equalizer veNFTs for FTM | FTM.guru</title>
+<title>Reset Your Equalizer veNFT | FTM.guru</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="shortcut icon" href="https://ftm.guru/img/64.png"/>
 <style>
@@ -28,6 +28,7 @@
 
 body {
   background-color: #01011b;
+  color:white;
 }
 
 small {
@@ -202,7 +203,9 @@ textarea:focus, input:focus {
 @media(min-width:641px) {
 
   .mechanism {
-    width: 500px;
+    width: 18%;
+    float:left;
+    margin: 20px
   }
 
   .mechanism .amount {
@@ -333,22 +336,33 @@ textarea:focus, input:focus {
   text-decoration: none
 }
 
+.twocol {display:grid;grid-template-columns:auto auto;}
+
 </style>
   <body>
     <div class="partnership">
-      <h1><span>ELITE</span> 🤝 <span>EQUAL</span></h1>
-      <h2>Swap your veEQUAL NFTs for FTM</h2>
+      <h1><span>Reset veNFTs</span></h1>
+      <h2>To move your veEQUAL NFT, reset it's votes first!</h2>
+      <br><br>
+      <p id="p_cw"><span id="cw" onclick="cw()">Hello 👋 <span id="cw_og">Connect wallet!</span></p>
+      <p><span id="nft-bal">Balance: ? veNFT</span></p>
+      <br><br>
     </div>
+
+	<div align="center" id="nft-sel">
+	...No veNFTs found!
+	</div>
+
+	<!--
     <div class="mechanism">
       <div class="amount">
       	<br>
-      	<p id="p_cw"><span id="cw" onclick="cw()">Hello 👋 <span id="cw_og">Connect wallet!</span></p>
       	<div align="center">
       	  <select class="equal-gradient" id="nft-sel" onchange="quote()">
       	    <option value="" selected>Choose a NFT</option>
       	  </select>
       	</div>
-        <p><span id="nft-bal">Balance: ? veNFT</span></p>
+
       </div>
       <div class="input-amount">
       	<br>
@@ -361,17 +375,19 @@ textarea:focus, input:focus {
       	<br>
         <div class="hr-nft"></div>
         <br>
-        <img src="img/ftm.svg"/>
-        <span class="nft-amtl" id="nft-offer">? FTM</span>
+        <img src="https://ftm.guru/icons/equal.png"/>
+        <span class="nft-amtl" id="nft-offer">? EQUAL</span>
       </div>
       <div style="margin-top: -25px;" align="center">
-        <button class="submit equal-gradient" onclick="sell()"><span id="claim-offer">Claim ? FTM</span></button>
+        <button class="submit equal-gradient" onclick="sell()"><span id="claim-offer">Claim ? EQUAL</span></button>
       </div>
     </div>
+
     <div class="analytics">
 	    <a href="https://dune.com/1337/venamm" target="_blank">Analytics</a>
 	    <a onclick="notice('<h2>C0M1N6 500N</h2>')">Multi-Merge</a>
     </div>
+    -->
 
 
 	<div id="note" class="overlay">
@@ -386,14 +402,10 @@ textarea:focus, input:focus {
 
     <div class="extra">
       <small id="stats">
-      	Available Liquidity: ? FTM
-      	<br>Total Converted: ? veNFTs
-      	<br>Total Volume: ? EQUAL
-      	<br>Total Payouts: ? FTM
       </small>
       <br><br>
-      <h1><span>VeNAMM DEX</span></h1>
-      <h3>Powered by Guru Network</h3>
+      <h1><span>Equalizer.exchange</span></h1>
+      <h3></h3>
     </div>
 
 
@@ -424,17 +436,25 @@ textarea:focus, input:focus {
   	  <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
   	</div>
       <script src="https://ftm.guru/ethers-5.2.umd.min.js" type="application/javascript" defer="true"></script>
+      <!--
       <script src="https://ftm.guru/chart.min.js" type="application/javascript"></script>
       <script src="https://ftm.guru/chartjs-adapter-date-fns.bundle.min.js" type="application/javascript"></script>
-      <script src="ftm.js?v=2"></script>
+      -->
+      <script src="reset.js"></script>
       <script>
         CHAINID = 250;
         RPC_URL = "https://rpc.ftm.tools";
-        EXPLORE = "https://ftmscan.com/";
+        EXPLORE = "https://ftmscan.com/address/";
         CHAIN_NAME = "Fantom Opera Mainnet";
         VENFT = "0x8313f3551C4D3984FfbaDFb42f780D0c8763Ce94";
-        VENAMM = "0x6b4a8b8e5e83a0e1631e5c01faf44fb371bd2956";
-        WFTM = "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83";
+        VENAMM = "0x6Fd26870883Ee74e3cbbed4Bca20aD5b4E207121";
+        POOLID = "v0.1.3"
+        BASENAME = "EQUAL";
+        BASE = "0x3Fd3A0c85B70754eFc07aC9Ac0cbBDCe664865A6";
+        BASELOGO = "https://ftm.guru/icons/equal.png";
+        TOKENNAME = "EQUAL";
+        TOKEN = "0x3Fd3A0c85B70754eFc07aC9Ac0cbBDCe664865A6";
+        TOKENLOGO = "https://ftm.guru/icons/equal.png";
         VOTER = "0x4bebEB8188aEF8287f9a7d1E4f01d76cBE060d5b";
       </script>
   </body>

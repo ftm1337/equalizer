@@ -12,7 +12,7 @@ window.addEventListener('load',async function()
 
 async function basetrip()
 {
-	provider = new ethers.providers.JsonRpcProvider(RPC_URL); 
+	provider = new ethers.providers.JsonRpcProvider(RPC_URL);
 	await dexstats();
 }
 
@@ -75,9 +75,12 @@ WFTM = "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83";
 EQUAL = "0x3Fd3A0c85B70754eFc07aC9Ac0cbBDCe664865A6";
 P1 = "0x6b4a8b8e5e83a0e1631e5c01faf44fb371bd2956";
 P2 = "0xbDA1D1FbCECE78D424FD97B3dE251CEb678c20df";
+P3 = "0x6Fd26870883Ee74e3cbbed4Bca20aD5b4E207121";
 TVLGURU = "0x0786c3a78f5133F08C1c70953B8B10376bC6dCad";
 LPT_1 = "0x2b4C76d0dc16BE1C31D4C1DC53bF9B45987Fc75c";
 LPT_2 = "0x3d6c56f6855b7cc746fb80848755b0a9c3770122";
+LPT_3 = "0x3d6c56f6855b7cc746fb80848755b0a9c3770122";
+
 
 async function dexstats() {
 	tg = new ethers.Contract(TVLGURU, ["function coinusd() public view returns(uint)", "function p_t_coin_usd(address) public view returns(uint)"], provider);
@@ -95,21 +98,45 @@ async function dexstats() {
 	_mp_e = tg.p_t_coin_usd(LPT_2);	//9
 	_top_1 = vm_1.offerPrice();	//10
 	_top_2 = vm_2.offerPrice();	//11
-	Promise.all([_b_1, _b_2, _p_1, _p_2, _v_1, _v_2, _t_1, _t_2, _mp_f, _mp_e, _top_1, _top_2]) //[11]=12th
+
+	vm_3 = new ethers.Contract(P3,VMABI,provider);	//12
+	_b_3 = (new ethers.Contract(EQUAL, VEABI, provider)).balanceOf(P3);	//13
+	_p_3 = vm_3.tokensPaid(EQUAL);	//14
+	_v_3 = vm_3.totalVolume();	//15
+	_t_3 = vm_3.totalTrades();	//16
+	_top_3 = vm_3.offerPrice();	//17
+
+
+	Promise.all([_b_1, _b_2, _p_1, _p_2, _v_1, _v_2, _t_1, _t_2, _mp_f, _mp_e, _top_1, _top_2, vm_3, _b_3, _p_3, _v_3, _t_3, _top_3]) //[11]=12th
 	.then(rp=>{ console.log("rp:",rp);
 		$("stats").innerHTML = "";
 		$("stats").innerHTML = `
-    			<tr onclick="window.location='ftm'">
-				<td><img src="https://ftm.guru/icons/ftm.svg"  style="position:relative;z-index:1"/><img src="https://equalizer.exchange/assets/logo/EQUAL.png"  style="position:relative;left:-12px"/></td>
-				<td><span class="dolla">$${(rp[0]/1e18 * rp[8]/1e18).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) } </span> <br> (${Number(rp[0]/1e18).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) } FTM)</td>
-				<td><span class="dolla">$${(rp[10]/1e18 * rp[8]/1e18).toLocaleString(undefined, {minimumFractionDigits: 4, maximumFractionDigits: 4}) } </span><br> (${Number(rp[10]/1e18).toLocaleString(undefined, {minimumFractionDigits: 4, maximumFractionDigits: 4}) } FTM)</td>
-				<td class="dolla">${Number(rp[6])}</td>
+    		<tr  onclick="window.location='3'">
+				<td><img src="https://equalizer.exchange/assets/logo/EQUAL.png" style="position:relative;z-index:1"/><img src="https://equalizer.exchange/assets/logo/EQUAL.png" style="position:relative;left:-12px"/><img src="img/lock.svg" class="velock"></td>
+				<td><span class="dolla">$${(rp[17]/1e18 * rp[9]/1e18 * 0.44722886752142654).toLocaleString(undefined, {minimumFractionDigits: 4, maximumFractionDigits: 4}) } </span><br> (${Number(rp[17]/1e18 * 0.44722886752142654).toLocaleString(undefined, {minimumFractionDigits: 4, maximumFractionDigits: 4}) } EQUAL)</td>
+				<td><span class="dolla">$${(rp[17]/1e18 * rp[9]/1e18).toLocaleString(undefined, {minimumFractionDigits: 4, maximumFractionDigits: 4}) } </span><br> (${Number(rp[17]/1e18).toLocaleString(undefined, {minimumFractionDigits: 4, maximumFractionDigits: 4}) } EQUAL)</td>
+				<td><span class="dolla">$${(rp[13]/1e18 * rp[9]/1e18/0.44722886752142654).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) } </span> <br> (${Number(rp[13]/1e18/0.44722886752142654).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) } EQUAL)</td>
+				<td><span class="dolla">$${(rp[13]/1e18 * rp[9]/1e18).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) } </span> <br> (${Number(rp[13]/1e18).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) } EQUAL)</td>
+				<td><span class="dolla">$${(rp[15]/1e18 * rp[9]/1e18).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) } </span> <br> (${Number(rp[15]/1e18).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) } EQUAL)</td>
+				<!--<td><span class="dolla">${Number(rp[16])}</span></td>-->
 			</tr>
-    			<tr onclick="window.location='equal'">
-				<td><img src="https://equalizer.exchange/assets/logo/EQUAL.png"/  style="position:relative;z-index:1"><img src="https://equalizer.exchange/assets/logo/EQUAL.png" style="position:relative;left:-12px"/></td>
-				<td><span class="dolla">$${(rp[1]/1e18 * rp[9]/1e18).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) } </span> <br> (${Number(rp[1]/1e18).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) } EQUAL)</td>
+    		<tr onclick="window.location='ftm'">
+				<td><img src="https://ftm.guru/icons/ftm.svg"  style="position:relative;z-index:1"/><img src="https://equalizer.exchange/assets/logo/EQUAL.png"  style="position:relative;left:-12px"/><img src="img/lock.svg" class="velock"></td>
+				<td><span class="dolla">$${(rp[10]/1e18 * rp[8]/1e18 * 0.2).toLocaleString(undefined, {minimumFractionDigits: 4, maximumFractionDigits: 4}) } </span><br> (${Number(rp[10]/1e18 * 0.2).toLocaleString(undefined, {minimumFractionDigits: 4, maximumFractionDigits: 4}) } FTM)</td>
+				<td><span class="dolla">$${(rp[10]/1e18 * rp[8]/1e18).toLocaleString(undefined, {minimumFractionDigits: 4, maximumFractionDigits: 4}) } </span><br> (${Number(rp[10]/1e18).toLocaleString(undefined, {minimumFractionDigits: 4, maximumFractionDigits: 4}) } FTM)</td>
+				<td><span class="dolla">$${(rp[0]/1e18 * rp[8]/1e18/0.2).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) } </span> <br> (${Number(rp[0]/1e18/0.2).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) } FTM)</td>
+				<td><span class="dolla">$${(rp[0]/1e18 * rp[8]/1e18).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) } </span> <br> (${Number(rp[0]/1e18).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) } FTM)</td>
+				<td><span class="dolla">$${(rp[4]/1e18 * rp[9]/1e18).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) } </span> <br> (${Number(rp[4]/1e18).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) } EQUAL)</td>
+				<!--<td><span class="dolla">${Number(rp[6])}</span></td>-->
+			</tr>
+    		<tr onclick="window.location='equal'">
+				<td><img src="https://equalizer.exchange/assets/logo/EQUAL.png" style="position:relative;z-index:1"/><img src="https://equalizer.exchange/assets/logo/EQUAL.png" style="position:relative;left:-12px"/><img src="img/lock.svg" class="velock"></td>
+				<td><span class="dolla">$${(rp[11]/1e18 * rp[9]/1e18 * 0.2).toLocaleString(undefined, {minimumFractionDigits: 4, maximumFractionDigits: 4}) } </span><br> (${Number(rp[11]/1e18 * 0.2).toLocaleString(undefined, {minimumFractionDigits: 4, maximumFractionDigits: 4}) } EQUAL)</td>
 				<td><span class="dolla">$${(rp[11]/1e18 * rp[9]/1e18).toLocaleString(undefined, {minimumFractionDigits: 4, maximumFractionDigits: 4}) } </span><br> (${Number(rp[11]/1e18).toLocaleString(undefined, {minimumFractionDigits: 4, maximumFractionDigits: 4}) } EQUAL)</td>
-				<td class="dolla">${Number(rp[7])}</td>
+				<td><span class="dolla">$${(rp[1]/1e18 * rp[9]/1e18/0.2).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) } </span> <br> (${Number(rp[1]/1e18/0.2).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) } EQUAL)</td>
+				<td><span class="dolla">$${(rp[1]/1e18 * rp[9]/1e18).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) } </span> <br> (${Number(rp[1]/1e18).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) } EQUAL)</td>
+				<td><span class="dolla">$${(rp[5]/1e18 * rp[9]/1e18).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) } </span> <br> (${Number(rp[5]/1e18).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) } EQUAL)</td>
+				<!--<td><span class="dolla">${Number(rp[7])}</span></td>-->
 			</tr>
 		`
 	});
