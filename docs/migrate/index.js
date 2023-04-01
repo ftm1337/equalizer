@@ -91,8 +91,9 @@ function fornum(n,d)
 
 async function cw()
 {
-	let cs = await cw2(); cs?console.log("Good to Transact"):cw2();
-	cw2();
+	let cs = await cw2(); cs?console.log("Good to Transact"):console.log("hmm.. we're late on schedule..");
+	//cw2();
+	//cw2();
 }
 async function cw2()
 {
