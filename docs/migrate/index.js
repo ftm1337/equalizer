@@ -198,6 +198,7 @@ async function dexstats() {
 }
 
 async function paint(b) {
+	$("mainstage").innerHTML = "";
 	for(i=0;i<b.length/3;i++) {
 		let v1 = Number(b[i*3+1]);
 		if(v1>1) {
@@ -215,7 +216,7 @@ async function paint(b) {
 					</td>
 				</tr>
 			`;
-			Console.log("Found "+ v1 + " " + GAUGES[i][0] );
+			console.log("Found "+ v1 + " " + GAUGES[i][0] );
 		}
 	}
 }
