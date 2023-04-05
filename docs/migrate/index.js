@@ -189,12 +189,190 @@ async function gubs() {
 	paint(bals);
 }
 
+GABI = [{"inputs":[{"internalType":"address","name":"_stake","type":"address"},{"internalType":"address","name":"_ebribe","type":"address"},{"internalType":"address","name":"__ve","type":"address"},{"internalType":"address","name":"_voter","type":"address"},{"internalType":"bool","name":"_forPair","type":"bool"},{"internalType":"address[]","name":"_allowedRewardTokens","type":"address[]"}],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"token","type":"address"},{"indexed":true,"internalType":"address","name":"bribe","type":"address"},{"indexed":true,"internalType":"bool","name":"active","type":"bool"}],"name":"BribeTokenSet","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"initiator","type":"address"},{"indexed":true,"internalType":"address","name":"bribe","type":"address"},{"indexed":true,"internalType":"address","name":"token","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"ClaimFees","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"token","type":"address"},{"indexed":true,"internalType":"address","name":"user","type":"address"},{"indexed":false,"internalType":"uint256","name":"reward","type":"uint256"}],"name":"ClaimRewards","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"user","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"Deposit","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"initiator","type":"address"},{"indexed":true,"internalType":"address","name":"taker","type":"address"},{"indexed":true,"internalType":"address","name":"token","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"ProtocolFees","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"token","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"Recovered","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"token","type":"address"},{"indexed":true,"internalType":"address","name":"notifier","type":"address"},{"indexed":false,"internalType":"uint256","name":"reward","type":"uint256"}],"name":"RewardAdded","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"token","type":"address"},{"indexed":false,"internalType":"uint256","name":"newDuration","type":"uint256"}],"name":"RewardsDurationUpdated","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"user","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"Withdrawn","type":"event"},{"inputs":[],"name":"_ve","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_t","type":"address"}],"name":"addBribeToken","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address[]","name":"_tks","type":"address[]"}],"name":"addBribeTokens","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_rewardsToken","type":"address"},{"internalType":"address","name":"_rewardsDistributor","type":"address"},{"internalType":"uint256","name":"_rewardsDuration","type":"uint256"}],"name":"addReward","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"bribe","outputs":[{"internalType":"contract IBribe","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"bribeTokens","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"bribesListLength","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"claimFees","outputs":[{"internalType":"uint256","name":"claimed0","type":"uint256"},{"internalType":"uint256","name":"claimed1","type":"uint256"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"deposit","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"depositAll","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_user","type":"address"}],"name":"depositAllFor","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_user","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"depositFor","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_rewardsToken","type":"address"},{"internalType":"address","name":"account","type":"address"}],"name":"earned","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"},{"internalType":"address","name":"_rewardsToken","type":"address"}],"name":"earnedBy","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"},{"internalType":"address","name":"","type":"address"}],"name":"earnings","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"exit","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"feeTaker","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"},{"internalType":"address[]","name":"tokens","type":"address[]"}],"name":"getReward","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"getReward","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_rewardsToken","type":"address"}],"name":"getRewardForDuration","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"isBribeToken","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"isForPair","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"isReward","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_rewardsToken","type":"address"}],"name":"lastTimeRewardApplicable","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_tkn","type":"address"}],"name":"lastUpdateTime","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_rewardsToken","type":"address"}],"name":"left","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_rewardsToken","type":"address"},{"internalType":"uint256","name":"_reward","type":"uint256"}],"name":"notifyRewardAmount","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"paused","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"payouts","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"payoutsNotified","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_tkn","type":"address"}],"name":"periodFinish","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_t","type":"address"}],"name":"removeBribeToken","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address[]","name":"_tks","type":"address[]"}],"name":"removeBribeTokens","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_amt","type":"uint256"},{"internalType":"address","name":"_token","type":"address"},{"internalType":"address","name":"_to","type":"address"}],"name":"rescue","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"rewardData","outputs":[{"internalType":"address","name":"rewardsDistributor","type":"address"},{"internalType":"uint256","name":"rewardsDuration","type":"uint256"},{"internalType":"uint256","name":"periodFinish","type":"uint256"},{"internalType":"uint256","name":"rewardRate","type":"uint256"},{"internalType":"uint256","name":"lastUpdateTime","type":"uint256"},{"internalType":"uint256","name":"rewardPerTokenStored","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_rewardsToken","type":"address"}],"name":"rewardPerToken","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_tkn","type":"address"}],"name":"rewardRate","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"rewardTokens","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"},{"internalType":"address","name":"","type":"address"}],"name":"rewards","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"rewardsListLength","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_b","type":"address"}],"name":"setBribe","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_ft","type":"address"}],"name":"setFeeTaker","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bool","name":"_b","type":"bool"}],"name":"setPaused","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_rewardsToken","type":"address"},{"internalType":"address","name":"_rewardsDistributor","type":"address"}],"name":"setRewardsDistributor","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_rewardsToken","type":"address"},{"internalType":"uint256","name":"_rewardsDuration","type":"uint256"}],"name":"setRewardsDuration","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"stake","outputs":[{"internalType":"contract IERC20","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"totalFeesPayouts","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"},{"internalType":"address","name":"","type":"address"}],"name":"userRewardPerTokenPaid","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"ve","outputs":[{"internalType":"contract IVotingEscrow","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"voter","outputs":[{"internalType":"contract IVoter","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"withdraw","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"withdrawAll","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"approve","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"}]
 
-async function mi() {
+async function mi(ni) {
+	//notice(`
+	//	<h2>Migration starts on 6th April</h2>
+	//	Visit <a href="https://legacy.equalizer.exchange/" target="_blank">legacy.equalizer.exchange</a> to view your current <b>v1</b> deposits and Claim your earnings!
+	//`);
+
 	notice(`
-		<h2>Migration starts on 6th April</h2>
-		Visit <a href="https://legacy.equalizer.exchange/" target="_blank">legacy.equalizer.exchange</a> to view your current <b>v1</b> deposits and Claim your earnings!
+		<h2><span class="bonus-percentage lpimg">
+			<img src="https://equalizer.exchange/assets/logo/${POOLS[ni][0]}.png"/>
+			<img src="https://equalizer.exchange/assets/logo/${POOLS[ni][1]}.png"/>
+			<br>
+			${GAUGES[ni][0]}</span>
+		</h2>
+		<b>Starting Migration from v1 to v2</b>
 	`);
+	console.log(GAUGES[ni])
+	pc = new ethers.Contract(GAUGES[ni][1],GABI,signer);
+	g1 = new ethers.Contract(GAUGES[ni][2],GABI,signer);
+	g2 = new ethers.Contract(GAUGES[ni][3],GABI,signer);
+	ba = await Promise.all([
+		pc.balanceOf(window.ethereum.selectedAddress),
+		g1.balanceOf(window.ethereum.selectedAddress),
+		g2.address == "0x0000000000000000000000000000000000000000"
+			? 0
+			: g2.balanceOf(window.ethereum.selectedAddress)
+	]);
+
+	notice(`
+		<h2><span class="bonus-percentage lpimg">
+			<img src="https://equalizer.exchange/assets/logo/${POOLS[ni][0]}.png"/>
+			<img src="https://equalizer.exchange/assets/logo/${POOLS[ni][1]}.png"/>
+			<br>
+			${GAUGES[ni][0]}</span>
+		</h2>
+		LP in wallet: ${ba[0] > 1e18 ? (ba[0]/1e18).toLocaleString() : (ba[0]/1e18).toFixed(18)}<br>
+		Staked in v1: ${ba[1] > 1e18 ? (ba[1]/1e18).toLocaleString() : (ba[1]/1e18).toFixed(18)}<br>
+		Staked in v2: ${ba[2] > 1e18 ? (ba[2]/1e18).toLocaleString() : (ba[2]/1e18).toFixed(18)}<br>
+	`);
+
+	if(ba[1] > 0) {
+		notice(`
+			<h2><span class="bonus-percentage lpimg">
+				<img src="https://equalizer.exchange/assets/logo/${POOLS[ni][0]}.png"/>
+				<img src="https://equalizer.exchange/assets/logo/${POOLS[ni][1]}.png"/>
+				<br>
+				${GAUGES[ni][0]}</span>
+			</h2>
+			<br>
+			<h2>Unstaking LP from v1</h2>
+			Withdrawing ${ba[1] > 1e18 ? (ba[1]/1e18).toLocaleString() : (ba[1]/1e18).toFixed(18)} ${GAUGES[ni][0]} LP tokens...<br>
+			<b>Please confirm this tx in your wallet.<b>
+		`);
+
+		txh = await g1.withdrawAll();
+		notice(`
+			<h2><span class="bonus-percentage lpimg">
+				<img src="https://equalizer.exchange/assets/logo/${POOLS[ni][0]}.png"/>
+				<img src="https://equalizer.exchange/assets/logo/${POOLS[ni][1]}.png"/>
+				<br>
+				${GAUGES[ni][0]}</span>
+			</h2>
+			<br>
+			<h2>Unstaking LP from v1</h2>
+			Withdrawing ${ba[1] > 1e18 ? (ba[1]/1e18).toLocaleString() : (ba[1]/1e18).toFixed(18)} ${GAUGES[ni][0]} LP tokens...<br>
+			<b>Broadcasting transaction to Fantom Network. Please wait . . .<b>
+		`);
+
+		txr = await txh.wait();
+		notice(`
+			<h2><span class="bonus-percentage lpimg">
+				<img src="https://equalizer.exchange/assets/logo/${POOLS[ni][0]}.png"/>
+				<img src="https://equalizer.exchange/assets/logo/${POOLS[ni][1]}.png"/>
+				<br>
+				${GAUGES[ni][0]}</span>
+			</h2>
+			<br>
+			<h2>Withdraw from v1 was Successful!</h2>
+			<br>
+			<h2>Approve v2 gauge for deposit</h2>
+			Equalizer v2 needs your approval to stake your ${GAUGES[ni][0]} LP tokens into the new v2 gauges.
+			<br><b>Please confirm this tx in your wallet.<b>
+		`);
+
+	}
+
+	ba = await Promise.all([
+		pc.balanceOf(window.ethereum.selectedAddress),
+		g1.balanceOf(window.ethereum.selectedAddress),
+		g2.address == "0x0000000000000000000000000000000000000000"
+			? 0
+			: g2.balanceOf(window.ethereum.selectedAddress)
+	]);
+
+	notice(`
+		<h2><span class="bonus-percentage lpimg">
+			<img src="https://equalizer.exchange/assets/logo/${POOLS[ni][0]}.png"/>
+			<img src="https://equalizer.exchange/assets/logo/${POOLS[ni][1]}.png"/>
+			<br>
+			${GAUGES[ni][0]}</span>
+		</h2>
+		Staked in v1: ${ba[1] > 1e18 ? (ba[1]/1e18).toLocaleString() : (ba[1]/1e18).toFixed(18)}<br>
+		LP in wallet: ${ba[0] > 1e18 ? (ba[0]/1e18).toLocaleString() : (ba[0]/1e18).toFixed(18)}<br>
+		Staked in v2: ${ba[2] > 1e18 ? (ba[2]/1e18).toLocaleString() : (ba[2]/1e18).toFixed(18)}<br>
+	`);
+
+	if(ba[0] > 0) {
+		notice(`
+			<h2><span class="bonus-percentage lpimg">
+				<img src="https://equalizer.exchange/assets/logo/${POOLS[ni][0]}.png"/>
+				<img src="https://equalizer.exchange/assets/logo/${POOLS[ni][1]}.png"/>
+				<br>
+				${GAUGES[ni][0]}</span>
+			</h2>
+			<br>
+			<h2>Approve v2 gauge for deposit</h2>
+			Equalizer v2 needs your approval to stake your ${GAUGES[ni][0]} LP tokens into the new v2 gauges.
+			<br><b>Please confirm this tx in your wallet.<b>
+		`);
+		txh = await pc.approve(g1.address, ethers.constants.MaxUint256);
+		notice(`
+			<h2><span class="bonus-percentage lpimg">
+				<img src="https://equalizer.exchange/assets/logo/${POOLS[ni][0]}.png"/>
+				<img src="https://equalizer.exchange/assets/logo/${POOLS[ni][1]}.png"/>
+				<br>
+				${GAUGES[ni][0]}</span>
+			</h2>
+			<br>
+			<h2>Approving the v2 gauge...</h2>
+			<b>Awaiting confirmation from the network . . ..<b>
+		`);
+		txr = await txh.wait();
+		notice(`
+			<h2><span class="bonus-percentage lpimg">
+				<img src="https://equalizer.exchange/assets/logo/${POOLS[ni][0]}.png"/>
+				<img src="https://equalizer.exchange/assets/logo/${POOLS[ni][1]}.png"/>
+				<br>
+				${GAUGES[ni][0]}</span>
+			</h2>
+			<br>
+			<h2>Approval Granted Successfully</h2>
+			<h2>Depositing LP</h2>
+			Staking ${ba[0] > 1e18 ? (ba[0]/1e18).toLocaleString() : (ba[0]/1e18).toFixed(18)} ${GAUGES[ni][0]} LP Tokens into the New Equalizer v2 Gauge.}</h2>
+			<br><b>Please confirm this tx in your wallet.<b>
+		`);
+		txh = await g2.depositAll();
+		notice(`
+			<h2><span class="bonus-percentage lpimg">
+				<img src="https://equalizer.exchange/assets/logo/${POOLS[ni][0]}.png"/>
+				<img src="https://equalizer.exchange/assets/logo/${POOLS[ni][1]}.png"/>
+				<br>
+				${GAUGES[ni][0]}</span>
+			</h2>
+			<br>
+			<h2>Staking LP into the v2 gauge...</h2>
+			<b>Awaiting confirmation from the network . . ..<b>
+		`);
+		txr = await txh.wait();
+		ba = await Promise.all([
+			pc.balanceOf(window.ethereum.selectedAddress),
+			g1.balanceOf(window.ethereum.selectedAddress),
+			g2.address == "0x0000000000000000000000000000000000000000"
+				? 0
+				: g2.balanceOf(window.ethereum.selectedAddress)
+		]);
+		notice(`
+			<h2><span class="bonus-percentage lpimg">
+				<img src="https://equalizer.exchange/assets/logo/${POOLS[ni][0]}.png"/>
+				<img src="https://equalizer.exchange/assets/logo/${POOLS[ni][1]}.png"/>
+				<br>
+				${GAUGES[ni][0]}</span>
+			</h2>
+			<br>
+			<h2>v2 Deposit Successful!</h2>
+			Staked in v2: ${ba[2] > 1e18 ? (ba[2]/1e18).toLocaleString() : (ba[2]/1e18).toFixed(18)}<br>
+			LP in wallet: ${ba[0] > 1e18 ? (ba[0]/1e18).toLocaleString() : (ba[0]/1e18).toFixed(18)}<br>
+			Staked in v1: ${ba[1] > 1e18 ? (ba[1]/1e18).toLocaleString() : (ba[1]/1e18).toFixed(18)}<br>
+		`);
+
+
+	}
+
+
 }
 
 POOLS = [["WFTM","BTC"],["WFTM","TAROT"],["USDC","WFTM"],["WFTM","BNB"],["USDC","ETH"],["WFTM","MIM"],["WFTM","DAI"],["USDC","FRAX"],["BTC","ETH"],["WFTM","EQUAL"],["USDC","DAI"],["OATH","WFTM"],["WFTM","ETH"],["WFTM","LINK"],["WFTM","DEUS"],["fUSDT","WFTM"],["WFTM","AVAX"],["WFTM","ELITE"],["WFTM","BOO"],["WFTM","BIFI"],["ETH","ELITE"],["WFTM","SCARAB"],["SCARAB","ELITE"],["USDC","FRAX"],["SCARAB","GSCARAB"],["WFTM","GSCARAB"],["GSCARAB","ELITE"],["WFTM","TOMB"],["GSCARAB","FRAX"],["DEI","DEUS"],["MIM","FRAX"],["USDC","MIM"],["WFTM","wBOMB"],["WFTM","WPGUNK"],["WFTM","BEETS"],["WFTM","EQUAL"],["FBA","WFTM"],["EQUAL","DEUS"],["USDC","BEETS"],["EQUAL","FXS"],["FXS","FRAX"],["BOO","BEETS"],["ETH","wBOMB"],["TOMB","wBOMB"],["USDC","wBOMB"],["USDC","fUSDT"],["WFTM","DEI"],["MMY","USDC"],["WFTM","fBOMB"],["ETH","SHRAP"],["USDC","fBOMB"],["LQDR","WFTM"],["MMY","WFTM"],["EQUAL","fBOMB"],["USDC","WPGUNK"],["fBOMB","BEETS"],["fBOMB","DAI"],["BTC","SHRAP"],["USDC","WFTM"],["TOMB","LIF3"],["EQUAL","SHRAP"],["WFTM","SPIRIT"],["USDC","SPIRIT"],["USDC","ELITE"],["USDC","BTC"],["WFTM","DAI"],["WFTM","RAVE"],["RAVE","DEUS"],["RAVE","ELITE"],["WFTM","FUSD"],["USDC","FUSD"],["DAI","FUSD"],["USDC","FUSD"],["WFTM","MAGIK"],["MCLB","fBOMB"],["EQUAL","BIFI"],["USDC","MIGHT"],["sFS","FS"],["WFTM","MPX"],["USDC","FS"],["USDC","RING"],["WFTM","RING"],["ANKR","WFTM"],["WFTM","RAVE"],["USDC","RING"],["WFTM","BRUSH"],["WFTM","MPX"],["WFTM","WIGO"],["UNIDX","WFTM"],["USDC","TREEB"],["fUSDT","DAI"],["USDC","EQUAL"],["USDC","TUSD"],["MMY","WFTM"],["fUSDT","DAI"],["EQUAL","ELITE"],["fUSDT","WFTM"],["UNIDX","WFTM"],["EQUAL","CONK"],["WFTM","CONK"],["USDC","FXS"],["ANKR","ankrFTM"],["WFTM","FXS"],["fBOMB","CONK"],["USDC","fUSDT"],["CONK","BEETS"],["USDC","CONK"],["WFTM","FGHST"],["ANKR","WFTM"],["WFTM","COMB"],["WFTM","SKULL"],["WFTM","CHILL"],["WFTM","SKULL"],["fUSDT","EQUAL"],["EQUAL","TUSD"],["EQUAL","DAI"],["EQUAL","MIM"],["EQUAL","FRAX"],["EQUAL","FUSD"],["BTC","EQUAL"],["TUSD","FRAX"],["MAGIK","CONK"],["EQUAL","SKULL"],["WFTM","SLM"],["SHRAP","BEETS"],["OATH","SHRAP"],["fUSDT","TUSD"],["TUSD","FUSD"]];
@@ -996,3 +1174,5 @@ GAUGES = [
     "0x0000000000000000000000000000000000000000"
   ]
 ];
+
+function dexstats() {return}

@@ -520,7 +520,13 @@ table {
 	border-spacing: 0 1em;
 	width: 100%;
 }
-table tbody tr td:first-child img:nth-child(2) {
+table tbody tr td:first-child img:nth-child(2), .lpimg img:nth-child(2) {
 	position: relative;
 	left: -15px;
+}
+
+.lpimg img {
+	width:48px;
+	height:48px;
+}
 }
