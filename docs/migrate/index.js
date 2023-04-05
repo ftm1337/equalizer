@@ -242,7 +242,7 @@ async function mi(ni) {
 			<br>
 			<h2>Unstaking LP from v1</h2>
 			Withdrawing ${ba[1] > 1e18 ? (ba[1]/1e18).toLocaleString() : (ba[1]/1e18).toFixed(18)} ${GAUGES[ni][0]} LP tokens...<br>
-			<b>Please confirm this tx in your wallet.<b>
+			<br><b>Please confirm this tx in your wallet.<b>
 		`);
 
 		txh = await g1.withdrawAll();
@@ -256,7 +256,7 @@ async function mi(ni) {
 			<br>
 			<h2>Unstaking LP from v1</h2>
 			Withdrawing ${ba[1] > 1e18 ? (ba[1]/1e18).toLocaleString() : (ba[1]/1e18).toFixed(18)} ${GAUGES[ni][0]} LP tokens...<br>
-			<b>Broadcasting transaction to Fantom Network. Please wait . . .<b>
+			<br><b>Broadcasting transaction to Fantom Network. Please wait . . .<b>
 		`);
 
 		txr = await txh.wait();
@@ -272,6 +272,7 @@ async function mi(ni) {
 			<br>
 			<h2>Approve v2 gauge for deposit</h2>
 			Equalizer v2 needs your approval to stake your ${GAUGES[ni][0]} LP tokens into the new v2 gauges.
+			<br>
 			<br><b>Please confirm this tx in your wallet.<b>
 		`);
 
@@ -308,6 +309,7 @@ async function mi(ni) {
 			<br>
 			<h2>Approve v2 gauge for deposit</h2>
 			Equalizer v2 needs your approval to stake your ${GAUGES[ni][0]} LP tokens into the new v2 gauges.
+			<br>
 			<br><b>Please confirm this tx in your wallet.<b>
 		`);
 		txh = await pc.approve(g1.address, ethers.constants.MaxUint256);
@@ -334,6 +336,7 @@ async function mi(ni) {
 			<h2>Approval Granted Successfully</h2>
 			<h2>Depositing LP</h2>
 			Staking ${ba[0] > 1e18 ? (ba[0]/1e18).toLocaleString() : (ba[0]/1e18).toFixed(18)} ${GAUGES[ni][0]} LP Tokens into the New Equalizer v2 Gauge.</h2>
+			<br>
 			<br><b>Please confirm this tx in your wallet.<b>
 		`);
 		txh = await g2.depositAll();
@@ -383,9 +386,11 @@ POOLS = [["WFTM","BTC"],["WFTM","TAROT"],["USDC","WFTM"],["WFTM","BNB"],["USDC",
 
 async function paint(b) {
 	$("mainstage").innerHTML = "";
+	let c=0;
 	for(i=0;i<b.length/3;i++) {
 		let v1 = Number(b[i*3+1]);
 		if(v1>1) {
+			c++;
 			$("mainstage").innerHTML += `
 				<tr>
 					<td>
@@ -396,12 +401,15 @@ async function paint(b) {
 						${ v1 > 1e18 ? (v1/1e18).toLocaleString() : (v1/1e18).toFixed(18) }
 					</td>
 					<td>
-						<button class="submit equal-gradient" onclick="mi(i)"><span>Migrate to v2</span></button>
+						<button class="submit equal-gradient" onclick="mi(${i})"><span>Migrate to v2</span></button>
 					</td>
 				</tr>
 			`;
 			console.log(i+" -- Found "+ v1 + " " + GAUGES[i][0] );
 		}
+	}
+	if(c==0) {
+		$("mainstage").innerHTML = "<tr><td colspan='3'>No v1 deposits found!</td</tr>";
 	}
 }
 
