@@ -255,28 +255,6 @@ async function mi(ni) {
 	`);
 
 	if(ba[1] > 0) {
-		if(
-			GAUGES[ni][3] == "0x0000000000000000000000000000000000000000"
-			|| g2.address == "0x0000000000000000000000000000000000000000"
-		) {
-
-			notice(`
-				<h2><span class="bonus-percentage lpimg">
-					<img src="https://equalizer.exchange/assets/logo/${POOLS[ni][0]}.png"/>
-					<img src="https://equalizer.exchange/assets/logo/${POOLS[ni][1]}.png"/>
-					<br>
-					${GAUGES[ni][0]}</span>
-				</h2>
-				<h2>v2 Gauge not found!</h2>
-				We couldnt find a corresponding v2 Gauge for your ${GAUGES[ni][0]} LP tokens.. please head to <a href="https://equalizer.exchange" target="_blank">Equalizer.Exchange</a> for more details.
-				<br><br>
-				LP in wallet: ${ba[0] > 1e18 ? (ba[0]/1e18).toLocaleString() : (ba[0]/1e18).toFixed(18)}<br>
-				Staked in v1: ${ba[1] > 1e18 ? (ba[1]/1e18).toLocaleString() : (ba[1]/1e18).toFixed(18)}<br>
-				Staked in v2: ${ba[2] > 1e18 ? (ba[2]/1e18).toLocaleString() : (ba[2]/1e18).toFixed(18)}<br>
-			`);
-
-			return;
-		}
 
 		notice(`
 			<h2><span class="bonus-percentage lpimg">
@@ -345,6 +323,28 @@ async function mi(ni) {
 	`);
 
 	if(ba[0] > 0) {
+		if(
+			GAUGES[ni][3] == "0x0000000000000000000000000000000000000000"
+			|| g2.address == "0x0000000000000000000000000000000000000000"
+		) {
+
+			notice(`
+				<h2><span class="bonus-percentage lpimg">
+					<img src="https://equalizer.exchange/assets/logo/${POOLS[ni][0]}.png"/>
+					<img src="https://equalizer.exchange/assets/logo/${POOLS[ni][1]}.png"/>
+					<br>
+					${GAUGES[ni][0]}</span>
+				</h2>
+				<h2>v2 Gauge not found!</h2>
+				We couldnt find a corresponding v2 Gauge for your ${GAUGES[ni][0]} LP tokens.. please head to <a href="https://equalizer.exchange" target="_blank">Equalizer.Exchange</a> for more details.
+				<br><br>
+				LP in wallet: ${ba[0] > 1e18 ? (ba[0]/1e18).toLocaleString() : (ba[0]/1e18).toFixed(18)}<br>
+				Staked in v1: ${ba[1] > 1e18 ? (ba[1]/1e18).toLocaleString() : (ba[1]/1e18).toFixed(18)}<br>
+				Staked in v2: ${ba[2] > 1e18 ? (ba[2]/1e18).toLocaleString() : (ba[2]/1e18).toFixed(18)}<br>
+			`);
+
+			return;
+		}
 		notice(`
 			<h2><span class="bonus-percentage lpimg">
 				<img src="https://equalizer.exchange/assets/logo/${POOLS[ni][0]}.png"/>
@@ -358,7 +358,7 @@ async function mi(ni) {
 			<br>
 			<br><b>Please confirm this tx in your wallet.<b>
 		`);
-		txh = await pc.approve(g1.address, ethers.constants.MaxUint256);
+		txh = await pc.approve(g2.address, ethers.constants.MaxUint256);
 		notice(`
 			<h2><span class="bonus-percentage lpimg">
 				<img src="https://equalizer.exchange/assets/logo/${POOLS[ni][0]}.png"/>
