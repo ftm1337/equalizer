@@ -285,3 +285,106 @@ async function paint25() {
 	$("cde_s_o").innerHTML = Math.floor(cd_s[1][cd_s[1].length-1][1]).toLocaleString() + " EQUAL";
 	$("cde_s_d").innerHTML = Math.floor(cd_s[2][cd_s[2].length-1][1]).toLocaleString() + " EQUAL";
 }
+
+async function settings() {
+	notice(`
+		<div align="center">
+			<b><img style="vertical-align: middle;"src="https://raw.githubusercontent.com/twitter/twemoji/54df6a1340154c4f5bad09c85de8b720c5373c03/assets/svg/2699.svg" width="16px"> User Settings</b>
+			<hr><br>
+			<b>Current RPC:</b> ${provider.connection.url}
+			<br><br>
+			Enter a New Custom RPC URL below
+			<br><br>
+			<input id="custom-rpc" placeholder="https://rpc.ankr.com/fantom" style="color:#000;"/>
+			<br><br>
+			<button onclick="switch_rpc()" style="color:#000;">Switch RPC</button>
+			<br><br>
+		</div>
+	`);
+}
+
+async function switch_rpc() {
+	temprov = new ethers.providers.JsonRpcProvider($("custom-rpc").value);
+	notice(`
+		<div align="center">
+			<b><img style="vertical-align: middle;"src="https://raw.githubusercontent.com/twitter/twemoji/54df6a1340154c4f5bad09c85de8b720c5373c03/assets/svg/2699.svg" width="16px"> User Settings</b>
+			<hr><br>
+			Detecting Network from the RPC URL you shared . . .
+		</div>
+	`);
+	tempn={}
+	try {tempn = await provider.detectNetwork(); }
+	catch(e) {
+		notice(`
+			<div align="center">
+				<b><img style="vertical-align: middle;"src="https://raw.githubusercontent.com/twitter/twemoji/54df6a1340154c4f5bad09c85de8b720c5373c03/assets/svg/2699.svg" width="16px"> User Settings</b>
+				<hr><br>
+				We were unable to access Fantom Network (#250) from the RPC URL you shared . . .
+			</div>
+		`);
+		return;
+	}
+	if(tempn.chainId != 250 ) {
+
+		notice(`
+			<div align="center">
+				<b><img style="vertical-align: middle;"src="https://raw.githubusercontent.com/twitter/twemoji/54df6a1340154c4f5bad09c85de8b720c5373c03/assets/svg/2699.svg" width="16px"> User Settings</b>
+				<hr><br>
+				We were unable to access Fantom Network (#250) from the RPC URL (#${tempn.chainId==null?"?":tempn.chainId}) you shared . . .
+			</div>
+		`);
+		return;
+	}
+	else if(tempn.chainId == 250) {
+		notice(`
+			<div align="center">
+				<b><img style="vertical-align: middle;"src="https://raw.githubusercontent.com/twitter/twemoji/54df6a1340154c4f5bad09c85de8b720c5373c03/assets/svg/2699.svg" width="16px"> User Settings</b>
+				<hr><br>
+				Connected Successfully to Fantom Network (#250) from the RPC URL you shared!
+				<br><br>
+				<b>Old RPC:</b> ${provider.connection.url}
+				<br>
+				<b>New RPC:</b> ${temprov.connection.url}
+			</div>
+		`);
+
+		provider = temprov;
+		try {
+			paintNewCharts();
+		} catch(e) {
+			notice(`hmm.. something went wrong.. please re-switch RPC!`)
+		}
+	}
+}
+
+async function paintNewCharts() {
+	try {
+		await destroyOldCharts();
+		await paint25();
+		notice(`Updated Data Successfully!<br><br>Please close this notification :)`)
+	} catch(e) {
+		notice(`hmm.. something went wrong..<br><br> <button onclick="paintNewCharts()">Retry?</button>`)
+	}
+}
+async function destroyOldCharts() {
+/*
+
+		<br><br><br><br><canvas id="ch_s" style="width:80%;height:50vh;max-height:500px"></canvas>
+
+		<br><br><br><br><canvas id="ch_s2" style="width:80%;height:50vh;max-height:500px"></canvas>
+		<br><br><br><br><canvas id="ch_v" style="width:80%;height:50vh;max-height:500px"></canvas>
+		<br><br><br><br><canvas id="ch_lr" style="width:80%;height:50vh;max-height:500px"></canvas>
+		<br><br><br><br><canvas id="ch_p" style="width:80%;height:50vh;max-height:500px"></canvas>
+		<br><br><br><br><canvas id="ch_lqmc" style="width:80%;height:50vh;max-height:500px"></canvas>
+		<br><br><br><br><canvas id="ch_lqmcr" style="width:80%;height:50vh;max-height:500px"></canvas>
+		<br><br><br><br><canvas id="ch_mc" style="width:80%;height:50vh;max-height:500px"></canvas>
+*/
+	ol_chart = Chart.getChart("ch_s");if (ol_chart != undefined) { ol_chart.destroy(); }
+	ol_chart = Chart.getChart("ch_s2");if (ol_chart != undefined) { ol_chart.destroy(); }
+	ol_chart = Chart.getChart("ch_v");if (ol_chart != undefined) { ol_chart.destroy(); }
+	ol_chart = Chart.getChart("ch_lr");if (ol_chart != undefined) { ol_chart.destroy(); }
+	ol_chart = Chart.getChart("ch_p");if (ol_chart != undefined) { ol_chart.destroy(); }
+	ol_chart = Chart.getChart("ch_lqmc");if (ol_chart != undefined) { ol_chart.destroy(); }
+	ol_chart = Chart.getChart("ch_lqmcr");if (ol_chart != undefined) { ol_chart.destroy(); }
+	ol_chart = Chart.getChart("ch_mc");if (ol_chart != undefined) { ol_chart.destroy(); }
+}
