@@ -309,9 +309,9 @@ async function dexstats() {
 	Promise.all([_b, _p, _v, _t])
 	.then(rp=>{
 		$("stats").innerHTML = `
-    		Available Liquidity: ${(fornum(rp[0],18)) + " " + TOKENNAME}
-    		<br>Total Converted: ${Number(rp[3])} veNFTs
-    		<br>Total Volume: ${(fornum(rp[2],18)) + " " + BASENAME}
+    		Exit Liquidity: ${(fornum(rp[0]/0.442,18)) + " ve" + TOKENNAME}
+    		<br>Total Traded: ${Number(rp[3])} veNFTs
+    		<br>Total Volume: ${(fornum(rp[2],18)) + " ve" + BASENAME}
     		<br>Total Payouts: ${(fornum(rp[1],18)) + " " + TOKENNAME}
 		`
 	});
