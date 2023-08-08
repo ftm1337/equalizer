@@ -1,0 +1,1334 @@
+<!doctype html>
+<html>
+<meta charset="UTF-8">
+<meta name="description" content="Analytics Pair Fees : Equalizer.Exchange | Powered by FTM.Guru">
+<meta name="keywords" content="Equalizer, Exchange, Analytics, Ftm.guru, Guru Network, Finance, Decentralized Finance, defi, Airdrop, EQUAL, veNFT, Solidly, Equalizer, Fantom Opera, FTM">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+  <title>EQUAL - Pair Fees : Equalizer.Exchange - EQUAL Analytics | FTM.Guru</title>
+  <link rel="shortcut icon" href="https://equalizer.exchange/assets/logo/EQUAL.png"/>
+  <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">-->
+  <link rel="stylesheet" href="index.css"/>
+  <style>
+#pairlist {
+  text-shadow: 1px 1px 1px #000
+}
+.mainstage {
+  text-align:center;
+  color:#fff;
+}
+.mainstage a {
+  color:aqua;
+}
+.pdets {
+  display:grid;
+  grid-template-columns:50% auto;
+}
+#pooldets {
+  margin:auto
+}
+.pdets div:nth-child(2n-1) { text-align: right;}
+.pdets div:nth-child(2n) { text-align: left;}
+.tab-all-d {
+  overflow:auto;
+}
+td a {color:rgba(127,255,255,0.75)}
+thead tr td {font-family: bold;font-size: 1.4em}
+tbody tr td {padding: 5px 15px;text-align:left;}
+
+.vostats {display: grid;grid-template-columns: auto auto}
+.vostats div {background: rgba(0,127,255,0.1);padding: 5%;margin: 5%;border-radius: 100px}
+.vostats div span{font-size: 2em}
+  </style>
+</head>
+  <body>
+	<div id="particle-container-div">
+		<div id="particle-container">
+			<div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
+		</div>
+	</div>
+    <header>
+      <a class="logo" href="/"><img src="https://equalizer.exchange/images/logo.png"></a>
+      <input id="nav" type="checkbox">
+      <label for="nav" id="burger-menu"><img src="img/borger.jpg" alt=""></label>
+      <nav>
+        <ul>
+          <li><a href="https://equalizer.exchange/swap">Swap</a></li>
+          <li><a href="https://equalizer.exchange/liquidity">Liquidity</a></li>
+          <li><a href="https://equalizer.exchange/vest">Vest</a></li>
+          <li><a href="https://equalizer.exchange/vote">Vote</a></li>
+          <li><a href="https://equalizer.exchange/bribe/create">Bribe</a></li>
+          <li><a href="https://equalizer.exchange/rewards">Rewards</a></li>
+          <li><a href="https://ftm.guru/equalizer/analytics">Analytics</a></li>
+          <li> <button class="connect-wallet" id="cw" onclick="window.location='https://equalizer.exchange'">Launch DApp</button></li>
+        </ul>
+      </nav>
+
+    </header>
+
+
+    <div class="partnership">
+      <h1><span>Equalizer Analytics</span></h1>
+      <h2>Fantom's <span id="bonus-percentage">2nd Biggest</span> Decentralized Exchange</h2>
+    </div>
+    <br>
+
+
+	<div class="hr-nft" id="t-top-1"></div>
+
+	<br><br><br><br>
+
+
+	<div class="mainstage">
+
+		<br><br><br><br>
+		<div class="vostats">
+			<div>
+				<span id="vostats-eff-tot">?</span>
+				<h3>Current Effective Votes</h3>
+			</div>
+			<div>
+				<span id="vostats-thep-tot">?</span>
+				<h3>Votes cast this Epoch</h3>
+			</div>
+		</div>
+
+
+		<br><br>
+		<div id="tab-all-d">
+			<div id="all-m"></div>
+
+			<br><br>
+			<table align="center">
+				<thead>
+					<tr>
+						<td></td>
+						<td colspan="2">Effective</td>
+						<td colspan="2">This Epoch</td>
+					</tr>
+					<tr>
+						<td onclick="sortit(0,'tbd-all')">Name of Pool</td>
+						<td onclick="sortit(1,'tbd-all')">Votes</td>
+						<td onclick="sortit(1,'tbd-all')">%</td>
+						<td onclick="sortit(3,'tbd-all')">Votes</td>
+						<td onclick="sortit(3,'tbd-all')">%</td>
+					</tr>
+					<tr>
+						<td>- - -</td>
+						<td>- - -</td>
+						<td>- - -</td>
+						<td>- - -</td>
+						<td>- - -</td>
+					</tr>
+				</thead>
+				<tbody id="tbd-all"></tbody>
+			</table>
+			<br><br>
+			Tap the coloumn's heading to sort results in it's ascending or descending order.
+		</div>
+
+		<br><br>
+		<div id="more-all"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</div>
+
+
+
+    <div class="partnership">
+      <h1><span>Equalizer Analytics</span></h1>
+      <h2 class="getbonus" onclick="window.location='https://lock.equalizer.exchange'">Get a <span id="bonus-percentage"> </span>bonus when locking EQUAL</h2>
+    </div>
+	<div align="center" class="lowerbar socialIcon">
+		<a href="https://twitter.com/Equalizer0x" target="_blank"><img src="https://equalizer.exchange/socials/socialcion1.svg" alt="Icon"></a>
+		<a href="https://discord.gg/6ubHeztmYV" target="_blank"><img src="https://equalizer.exchange/socials/social-cion2.svg" alt="Icon"></a>
+		<a href="https://equalizer0x.gitbook.io/equalizer-exchange-docs/" target="_blank"><img src="https://equalizer.exchange/socials/social-cion3.svg" alt="Icon"></a>
+		<a href="https://www.youtube.com/channel/UCERDeAyvqf8kEDAcorKJdTA" target="_blank"><img src="https://equalizer.exchange/socials/youtube.png" alt="Icon"></a>
+	</div>
+	<br><br>
+
+	<div id="note" class="overlay">
+		<div class="popup">
+			<a class="close" href="#">&times;</a>
+			<div class="content" id="content1">
+				<h3>Equalizer Analytics</h3>
+				Real-time On-chain Data<br>
+				Powered by FTM.Guru 🦾
+			</div>
+		</div>
+	</div>
+
+
+
+<!-- IGNORE BELOW BLOCK : DEV LOGS -->
+    <div style="display:none">
+		<span id="cw_m"></span>
+		<div id="connect">
+			Please connect your web3 wallet.
+			<br><br>
+			<button onclick="cw()" id="btn-connect">Connect</button>
+		</div>
+		<div id="switch">
+			<b id="btn-switch" onclick="cw()">
+				<img src="img/wallet.svg" width="24px" style="position:relative;top:4px">
+				<span id="cw"></span>
+			</b>
+			<br>Balance: <b style="font-family:bold" id="usb-mtv">?</b> <img class="imgmtv" src="https://ftm.guru/icons/usdc.svg" width="20px" style="position:relative;top:4px">USDC<br>
+			<span style="font-size:0.9em">Wallet at <img class="imgmtv" src="https://ftm.guru/icons/ftm.svg" width="20px" style="position:relative;top:4px">Fantom Opera. <a href="index.html" style="color:aqua;font-family:bold">Change?</a></span>
+		</div>
+	</div>
+<!-- IGNORE ABOVE BLOCK : DEV LOGS -->
+
+
+      <script src="https://ftm.guru/ethers-5.2.umd.min.js" type="application/javascript" defer="true"></script>
+      <script>
+CHAINID = 250;
+RPC_URL = "https://rpc.ftm.tools";
+EXPLORE = "https://ftmscan.com/address/";
+CHAIN_NAME = "Fantom Opera Mainnet";
+VENFT = "0x8313f3551C4D3984FfbaDFb42f780D0c8763Ce94";
+EQUAL = "0x3fd3a0c85b70754efc07ac9ac0cbbdce664865a6";
+E_S	=	"0x3a603eCEAE046828FEBBcbd097bF97Adc23DC072";
+SBLOCK = 52500821;
+L13 = "0x9257b32b8acfa5aaebf595a3a9b1e51e726be900";
+function $(_) {return document.getElementById(_);}
+let provider= {};
+window.addEventListener(
+	'load',async function() {
+		provider = new ethers.providers.JsonRpcProvider(RPC_URL);
+		paint();
+	}
+)
+/*
+	<!--
+		ctr=""
+		async function f1(){for(i=44;i<50;i++){
+		p=await v.pools(i);
+		pc=new ethers.Contract(p,["function symbol() public view returns(string)"],provider);
+		s=await pc.symbol();
+		g=await v.gauges(p);
+		b=await v.internal_bribes(g);
+		ig=new ethers.Contract(b,["function rewards(uint) public view returns(address)"],provider);
+		r1=await ig.rewards(0);
+		r2=await ig.rewards(1);
+		cc=`<option value='["${p}","${s}","${g}","${b}","${r1}","${r2}",18,18]'>${s}</option>\n`
+		ctr+=cc;console.log(cc)
+		}}
+	-->
+*/
+
+async function paint(m) {
+	$("tbd-all").innerHTML = '';
+	window.location="#t-top-1";
+
+	infoVe = new ethers.Contract("0xbe0a1f33123de01e3884b237004038944a9d091c",["function infoVoting() public view returns(uint, address[] memory, uint[] memory, uint[] memory, uint)"],provider);
+
+	pd = await infoVe.infoVoting();
+
+	$("vostats-eff-tot").innerHTML = (Number(pd[0])/1e18).toLocaleString(undefined,{minimumFractionDigits:0,maximumFractionDigits:0});
+	$("vostats-thep-tot").innerHTML = (Number(pd[4])/1e18).toLocaleString(undefined,{minimumFractionDigits:0,maximumFractionDigits:0});
+
+	for(i=0;i< pd[1].length;i++) {
+		ps=findPoolName(pd[1][i]);
+		$("tbd-all").innerHTML += `
+			<tr>
+				<td><a href="https://ftmscan.com/token/${pd[1][i]}">${ps}</a></td>
+				<td>${(Number(pd[2][i])/1e18).toLocaleString(undefined,{minimumFractionDigits:0,maximumFractionDigits:0})}</td>
+				<td>${(Number(pd[2][i])/Number(pd[0])*100).toLocaleString(undefined,{minimumFractionDigits:4,maximumFractionDigits:4})}%</td>
+				<td>${(Number(pd[3][i])/1e18).toLocaleString(undefined,{minimumFractionDigits:0,maximumFractionDigits:0})}</td>
+				<td>${(Number(pd[3][i])/Number(pd[4])*100).toLocaleString(undefined,{minimumFractionDigits:4,maximumFractionDigits:4})}%</td>
+			</tr>
+		`;
+	}
+
+	sortit(1,'tbd-all');sortit(1,'tbd-all');
+
+	return;
+}
+
+
+GD = [
+  [
+    "0x7547d05dFf1DA6B4A2eBB3f0833aFE3C62ABD9a1",
+    "v-USDC/WFTM"
+  ],
+  [
+    "0x515d84c494454835443B303a914a341e80f67278",
+    "v-USDC/ETH"
+  ],
+  [
+    "0x0f03efdce7A8cE08c238b1a0B5425Fb63Bd44b38",
+    "v-WFTM/DAI"
+  ],
+  [
+    "0xb3D5b1d35d662d8E84fdECb70BcE9FA1B6210187",
+    "s-USDC/FRAX"
+  ],
+  [
+    "0x97426Aa7A2A9A1D9E02E76Afaa4be7518BE064EE",
+    "v-BTC/ETH"
+  ],
+  [
+    "0xE3bD349BDb8203C15426b2d273f57568E658F843",
+    "v-WFTM/ETH"
+  ],
+  [
+    "0x783A3Fb9F88dF5A89fB3a5e595254Fa8f7b97b48",
+    "v-fUSDT/WFTM"
+  ],
+  [
+    "0xDA3E21477F872F30794551D908DE244b8839F723",
+    "v-WFTM/BTC"
+  ],
+  [
+    "0x456178EFb6A8898b039599985811146e18355F1f",
+    "v-WFTM/MIM"
+  ],
+  [
+    "0x6eB4Eb157C3e6f0576b8ba3C88e8C5D2e6E81D17",
+    "s-USDC/DAI"
+  ],
+  [
+    "0x9B696b6B0F1DEE0B1af1d6bc927c15e27597f556",
+    "v-WFTM/LINK"
+  ],
+  [
+    "0x3d6c56f6855b7Cc746fb80848755B0a9c3770122",
+    "v-WFTM/EQUAL"
+  ],
+  [
+    "0xD3c3E365d84Fc4e7e66244E00e5E2271176FF61E",
+    "v-WFTM/TAROT"
+  ],
+  [
+    "0x7552BFa10037356A2De0379a2EF8d4CC480B8E00",
+    "v-WFTM/BNB"
+  ],
+  [
+    "0x558DCA97c224851Cf428cbF244bEC0b897642efC",
+    "v-OATH/WFTM"
+  ],
+  [
+    "0xFfE9C27F0a12dABe5c5Bd46D144a5c0140725566",
+    "v-WFTM/DEUS"
+  ],
+  [
+    "0xF77235B283fC72514f2bb260717F981B8E7474Ed",
+    "v-WFTM/AVAX"
+  ],
+  [
+    "0x9B99bBE1EBd7415DBC859e35161a451698c5D331",
+    "v-WFTM/ELITE"
+  ],
+  [
+    "0xf1c6038C498C7f550d78720421d4E24Fe3C63Eb2",
+    "v-WFTM/BOO"
+  ],
+  [
+    "0x0b4b1e0325a7150468f724BCa3de2Deb92519846",
+    "v-WFTM/BIFI"
+  ],
+  [
+    "0x2294504776aCFACF8Fbcbcb215793cA40F34D13A",
+    "v-WFTM/TOMB"
+  ],
+  [
+    "0x37Ed3Cb668Bb94116A8F56c58766c6780EDcb6E5",
+    "v-USDC/FRAX"
+  ],
+  [
+    "0xf8B3e572f8D5A512e632270C17A49C8A0e4e23a0",
+    "v-USDC/DAI"
+  ],
+  [
+    "0x8D2C044817F500404CD528B7A0cfbD4679f699bB",
+    "v-ETH/ELITE"
+  ],
+  [
+    "0xA167799D965F08f190fC1DFc48d265336a10C963",
+    "v-WFTM/SCARAB"
+  ],
+  [
+    "0xa404F4D5eaC7FBE88fCC7E6f7040a922df47De12",
+    "v-SCARAB/ELITE"
+  ],
+  [
+    "0x1a82a09C12de27d13364fe3e25Fc751e80139Eb9",
+    "v-SCARAB/GSCARAB"
+  ],
+  [
+    "0xfEA05C63625E6881bA55758Bc482B8feB2428998",
+    "v-WFTM/GSCARAB"
+  ],
+  [
+    "0x674f7e6411B19C83cC28356FB32B094805208d53",
+    "v-WFTM/wBOMB"
+  ],
+  [
+    "0xaEE6278c7F484cA9Bf4a7b6262fb450b5929658D",
+    "v-GSCARAB/ELITE"
+  ],
+  [
+    "0xAB2776f19Ba984620De28486cFBDb2DA63e26400",
+    "v-WFTM/WPGUNK"
+  ],
+  [
+    "0x7b9Aff497598E21fd4B13C77202dd922c0F2cFDe",
+    "v-GSCARAB/FRAX"
+  ],
+  [
+    "0xfBFC759682bB8e7b8ABAb41261ab7Bf395C4fEF7",
+    "v-DEI/DEUS"
+  ],
+  [
+    "0x7C2712D17B4e28e34fABDB75278C83D34eBdC7aC",
+    "v-MIM/FRAX"
+  ],
+  [
+    "0xc3EFf0ba7E39b79b65Af2f07aaA40c79D0Fc3427",
+    "v-FBA/WFTM"
+  ],
+  [
+    "0x4d26D7A17b9c10613eAA049632aaDc8889EAb2E7",
+    "s-USDC/MIM"
+  ],
+  [
+    "0x33345e59e6221B5C082E1C17e830Fb3AD1103e2A",
+    "v-WFTM/BEETS"
+  ],
+  [
+    "0x4E35281130f8696a66895c1304A83502Fc709bb2",
+    "v-SOLID/DEI"
+  ],
+  [
+    "0x60496516D235c3C31F31Ca5598240595058220F9",
+    "v-WFTM/SYN"
+  ],
+  [
+    "0x9146C98D35F6bE6d6793271717E7298Ed345E441",
+    "s-WFTM/sFTMX"
+  ],
+  [
+    "0xeEF40e11a49be1b2cc64159B6e31712841fd9a5d",
+    "v-WFTM/sFTMX"
+  ],
+  [
+    "0xF71Cc09BaF34713e31b37217b214c9df196D4773",
+    "v-WFTM/SCREAM"
+  ],
+  [
+    "0x846267990B6398bef102F6FFa858dAD603048ab3",
+    "s-WFTM/EQUAL"
+  ],
+  [
+    "0xd8888a7E6a2544d4364f2f7b4221CcA07614Fa40",
+    "v-BSHARE/BASED"
+  ],
+  [
+    "0x788EDb6a782e15f32444a86C0AeAfFCe5348A635",
+    "v-EQUAL/DEUS"
+  ],
+  [
+    "0x6B8261Fd849E92aBdba217de24b301E20F5b20ce",
+    "v-USDC/BEETS"
+  ],
+  [
+    "0x312ea55de23E3aBa3296f1B3F97C182C63b1916d",
+    "v-FXS/FRAX"
+  ],
+  [
+    "0x5a3134171Aa7c37535363ccB36eA4C8A9Ae00741",
+    "v-WFTM/FXS"
+  ],
+  [
+    "0x11E32758c32C3089a1e8653705e5C1618757Fb1D",
+    "v-EQUAL/FXS"
+  ],
+  [
+    "0x357C065Aa5140DF963459DAA4afF919a3A81170b",
+    "v-BOO/BEETS"
+  ],
+  [
+    "0x7dED20C00c13D65f5EDcFB716659f8097BcBC35b",
+    "v-ETH/wBOMB"
+  ],
+  [
+    "0x33448B530FD45c33791A9924bD53494c3a78f738",
+    "v-EYE/DAI"
+  ],
+  [
+    "0xbF732579C8F769B0Eb31b15bb9E3030aA1857153",
+    "v-EQUAL/EYE"
+  ],
+  [
+    "0xa020d985dbd4d237038738a226F2A3730e3b4d2A",
+    "v-TOMB/wBOMB"
+  ],
+  [
+    "0x94Fa6d830fe38C715E9A8aEd09e34988994C3a31",
+    "v-WFTM/FGHST"
+  ],
+  [
+    "0xE81b869CD412955a1817859aD654A3E443482d58",
+    "v-USDC/wBOMB"
+  ],
+  [
+    "0x0995F3932B4Aca1ED18eE08D4B0DCf5f74B3c5D3",
+    "s-USDC/fUSDT"
+  ],
+  [
+    "0xf686909031e6831f96B5a11bF3b83A584C7Ae421",
+    "v-WFTM/DEI"
+  ],
+  [
+    "0xC64d38E7fcB4896A466368f100d57AD427fE955d",
+    "v-MMY/USDC"
+  ],
+  [
+    "0x5EB26b5206C2948E115deD46462D22bDf5d0547f",
+    "v-WFTM/fBOMB"
+  ],
+  [
+    "0xc078b427f74879aA89d44B8b22e64D0f6001c992",
+    "v-ETH/SHRAP"
+  ],
+  [
+    "0x940d4CD69ff009aCD8af4754e503Fc10Fbc96B13",
+    "v-USDC/fBOMB"
+  ],
+  [
+    "0x0272A69b9f7D12489E0E0C756cD645E538A00DDE",
+    "v-LQDR/WFTM"
+  ],
+  [
+    "0xDc935Ffe9f9C972B7b304E0b7E61Eb774037E394",
+    "v-MMY/WFTM"
+  ],
+  [
+    "0x9A611ca04e89D70cCA10c826393a8A3143644b26",
+    "v-MST/WFTM"
+  ],
+  [
+    "0xB02A933c8Fa52cDfdc86b46c7180Ef025f9DFef4",
+    "v-EQUAL/fBOMB"
+  ],
+  [
+    "0x476da2b76eaEea37292e1bd1Bbe66637Aa549D4c",
+    "v-USDC/WPGUNK"
+  ],
+  [
+    "0xfCbaa0065C2Cf4F184FD132CC31C2Deb09C5874a",
+    "v-fBOMB/BEETS"
+  ],
+  [
+    "0x542A4fF9c41206C78301760280f8179Fe337d48E",
+    "v-BTC/SHRAP"
+  ],
+  [
+    "0x21D2f7654857Fa3A0aD47e9330D78003dce49967",
+    "v-fBOMB/DAI"
+  ],
+  [
+    "0x503BA2DdA445422D9d436DbE1bA6f0Ee4170aF1D",
+    "s-USDC/WFTM"
+  ],
+  [
+    "0xDB376032d14A9189010F18fe0E484783b7225B78",
+    "v-TOMB/LIF3"
+  ],
+  [
+    "0xff7C108c31179549a8234100C82249b2c043C865",
+    "s-WFTM/v-fBOMB/BEETS"
+  ],
+  [
+    "0xf76C0D035b6C545148A3277373AdfC2509E35Ac0",
+    "s-S*USDC/WFTM"
+  ],
+  [
+    "0x8d16B9675102ae749EeB49F1A4E58091638Db816",
+    "v-WFTM/v-fBOMB/BEETS"
+  ],
+  [
+    "0xE72303643a4C192A8e23cB5f1dfc2e44bEE594ef",
+    "v-ASHARE/WFTM"
+  ],
+  [
+    "0x6266c25787b90e5ff8901dc17423D5B421c3b103",
+    "v-APEX/WFTM"
+  ],
+  [
+    "0x5bCcd50Eaa616d8cD7ceeD1c3ae063b1452Cbda8",
+    "v-USDC/RAVE"
+  ],
+  [
+    "0x2a3C7b75B0D753E63765C04dA98fB187D144fD37",
+    "v-WFTM/SPIRIT"
+  ],
+  [
+    "0xB9adC8193F48943A7F4F50921F414991473f73c5",
+    "v-WFTM/SLM"
+  ],
+  [
+    "0x4156B4941421134DA1f91aBE5aEA72de9C8C24A8",
+    "v-WFTM/SSHARE"
+  ],
+  [
+    "0xAe48Ff19832321F1EBc335f2710807562c0AdD99",
+    "v-xDEUS/DEUS"
+  ],
+  [
+    "0x72D65404cF8f62CeEEDa08771b28eC1A0B6F7E33",
+    "v-WFTM/xDEUS"
+  ],
+  [
+    "0xdABB8f8A9E4d9119bb137cA80F4caA0fa38D73d0",
+    "v-EQUAL/SHRAP"
+  ],
+  [
+    "0xC922c064674d7ac9DD80414Ea50e17bf69f68a25",
+    "v-USDC/SPIRIT"
+  ],
+  [
+    "0x1B24f7F8e6E4440642888BbF7d95f6680f07bA3D",
+    "v-USDC/ELITE"
+  ],
+  [
+    "0x8A28dfEBA9DE4507BFE52f67EF16182b78EA7b78",
+    "s-USDC/alUSD"
+  ],
+  [
+    "0x3733855070d7d4383B5791727C2a746D2bbe1b40",
+    "v-USDC/BTC"
+  ],
+  [
+    "0xd5B40DB8A0254ba822f2B9b7192DdaC5D7c693cb",
+    "s-WFTM/DAI"
+  ],
+  [
+    "0x27639D067D2ef5ec1Dd5B210d9C000932072A9e7",
+    "v-WFTM/GEIST"
+  ],
+  [
+    "0xe117a5f40A5D28d3b2F103301C629617bfBA5F61",
+    "v-WFTM/RAVE"
+  ],
+  [
+    "0x0F8F138a93B7d06865842431b1BDD06B8C9Cb341",
+    "v-RAVE/DEUS"
+  ],
+  [
+    "0x7e46D5F4Add361bb52b5a933b0e004E924170ba0",
+    "v-WFTM/MAGIK"
+  ],
+  [
+    "0x2fF970bfCDD87D31a018a0A90f940a688bdE9c61",
+    "v-RAVE/ELITE"
+  ],
+  [
+    "0xD65B7f0E8E62409Bf56863013Fb2E505b54E648a",
+    "v-WFTM/FUSD"
+  ],
+  [
+    "0x9a4cc63a54B4eDec89931090614D0a36F8EECE9f",
+    "v-USDC/FUSD"
+  ],
+  [
+    "0x02a759Afe0e6ee18fA49E6505356A712D9dc0d82",
+    "v-DAI/FUSD"
+  ],
+  [
+    "0x049A88Fca9Df202Be72a9e8AE3CD62D685920fb2",
+    "s-USDC/FUSD"
+  ],
+  [
+    "0xABa0CC2Ab74B791D6f9B99c5247beb5aa03D06eD",
+    "s-rDAI/RDNT"
+  ],
+  [
+    "0xaa1d80469a3a77D40138B29538cD6f81dB9cc20B",
+    "v-rETH/RDNT"
+  ],
+  [
+    "0x22C2BEED6Ca39C084755bEDa1b7Ae3Fcb6264bBB",
+    "v-rBTC/RDNT"
+  ],
+  [
+    "0x476606b47dDA7131268A25F144e6F5F529C2d918",
+    "v-USDC/MIGHT"
+  ],
+  [
+    "0xc0ffb65E959104316f6650864359ef4BFF717717",
+    "v-WFTM/MIGHT"
+  ],
+  [
+    "0x68ca64CABbB3d40dBB0de37101A8C0b701f66fD6",
+    "v-MCLB/fBOMB"
+  ],
+  [
+    "0x5C912e84097CC5d9dE842bbF7B3DEf477fB578a0",
+    "v-EQUAL/BIFI"
+  ],
+  [
+    "0x3D62915960996b388A83574C38BD7b698738D27A",
+    "v-WFTM/NET"
+  ],
+  [
+    "0x22512C4eBDf8F02E2fDE485463AAA7f46Aa26c1D",
+    "v-USDC/CONK"
+  ],
+  [
+    "0x4855C81908e60F33Fc60540D2894Cc11143BCb13",
+    "v-WFTM/CONK"
+  ],
+  [
+    "0x2B115D4D1eA9106f06538F71AFF584e6e082DADF",
+    "v-WFTM/@"
+  ],
+  [
+    "0xbb3Fc99Cb90dC68949AFA78F8d0b8BD67fb0197f",
+    "s-USDC/nUSD"
+  ],
+  [
+    "0xdE26e98d868FE02fFfb6DF26E638995124d3Ca13",
+    "v-WFTM/MPX"
+  ],
+  [
+    "0x0147C95eB09280efE45f5CF80789dEb338b544bA",
+    "v-sFS/FS"
+  ],
+  [
+    "0xa049fFA7c19B421874651F071aBCf072313D4623",
+    "s-WFTM/MPX"
+  ],
+  [
+    "0xDA7feCcD5832D0447F14ecEc3b8957Bc3D3A0d05",
+    "v-USDC/FS"
+  ],
+  [
+    "0x061b161e0BB59Fc0d0c42fB942aF5b8662CaE1a5",
+    "v-WFTM/SAMP"
+  ],
+  [
+    "0x8418BAb773ABF430907b39B7dB6A6F8318A9210e",
+    "v-USDC/RING"
+  ],
+  [
+    "0x60db1fBA7321897fcc85f7a5960952a9944D870b",
+    "v-ANKR/WFTM"
+  ],
+  [
+    "0x7739682F691F9D42795FB51E544F0086d2656a98",
+    "v-TokenTest/TokenTest2"
+  ],
+  [
+    "0x9d67D0558e7aBA7bd01d83Ac1A047c7b30B33Fd9",
+    "s-fUSDT/WFTM"
+  ],
+  [
+    "0xD9E4572f14Fc38A8193a1855c0bC506C17eE4E94",
+    "v-WFTM/AMAZE"
+  ],
+  [
+    "0x148B418567a533C5719E3C3C49D4759A30C0884f",
+    "v-FXAI/WFTM"
+  ],
+  [
+    "0xF9C16595F5714a4B4920e36FA1dD88cBc2A1D358",
+    "v-USDC/BLOOM"
+  ],
+  [
+    "0x5312221fe6e2B869d2B636595E6EaDA1AF97Fb83",
+    "v-WFTM/BLOOM"
+  ],
+  [
+    "0x6F12aE78aFA2E3d17413702ec9Ae08b777Fe3F24",
+    "v-MONK/WFTM"
+  ],
+  [
+    "0x6B4029Ba8e81a76EE73C3BdA2e9Fe5B78B14a626",
+    "v-WFTM/RING"
+  ],
+  [
+    "0x1f0441B8b8A6deF5cAB59567851b533EB410CBF5",
+    "v-WFTM/Nova"
+  ],
+  [
+    "0xBA79059c3bFcbd3C73613B826C822a1260760aDA",
+    "s-USDC/EQUAL"
+  ],
+  [
+    "0x910A9B84604128615EF46baDA6710c7710772425",
+    "s-WFTM/RAVE"
+  ],
+  [
+    "0xe43Ba9FCd5B39f7800a5D910E6316be496Bb2A56",
+    "s-USDC/RING"
+  ],
+  [
+    "0xC0893292663E7F78Bff8A84a65bb00214eadA246",
+    "v-WFTM/BRUSH"
+  ],
+  [
+    "0x6E822660206C0f01F56E1Cca63A777ca6093cc81",
+    "v-WFTM/Arb"
+  ],
+  [
+    "0x38076D8E285A0A15ddb46D4a5FD9e1b440aE43EB",
+    "v-WFTM/WIGO"
+  ],
+  [
+    "0xabb606A9AC26B82bc995c431650a9ca70E965757",
+    "v-WFTM/beFTM"
+  ],
+  [
+    "0xC57EaA4bCDB9a81BB363A90531fB4b086A0ecdD6",
+    "v-UNIDX/WFTM"
+  ],
+  [
+    "0xC571c055B9b587DD1Efd5Cd618f83aFDe6796E43",
+    "s-WFTM/ASHARE"
+  ],
+  [
+    "0x2f951ebC628546aC0F573e403b072f21b3Bb24Fe",
+    "v-USDC/TREEB"
+  ],
+  [
+    "0xEAc2E3793375b03303208256157444b886C6e4d4",
+    "v-fUSDT/DAI"
+  ],
+  [
+    "0x76fa7935a5AFEf7fefF1C88bA858808133058908",
+    "v-USDC/EQUAL"
+  ],
+  [
+    "0xCDd8bA3F1316d09ad190e29e64DA48798C453871",
+    "s-USDC/TUSD"
+  ],
+  [
+    "0xE6F633A0FFAd997e8E3b4f098e4574D353BfBAe1",
+    "s-MMY/WFTM"
+  ],
+  [
+    "0xe00D5e6535fb48E83C8cabe602242Cc1Bd253cEA",
+    "s-fUSDT/DAI"
+  ],
+  [
+    "0xCC66d9D09C420E26AeEa605534DbE94c5Cdc93b7",
+    "v-EQUAL/ELITE"
+  ],
+  [
+    "0xDBEeEBb365eb4Bdc791870E200cc9B4E16cBf3aF",
+    "v-ANKR/ankrFTM"
+  ],
+  [
+    "0xaB1f0FFE3f947D7dC2fdFB8511E7FBd26EcB2B45",
+    "s-UNIDX/WFTM"
+  ],
+  [
+    "0x8ED258c11B73BB4C6F429d0e867Fa3651914D86E",
+    "v-EQUAL/CONK"
+  ],
+  [
+    "0x92E61035f4DF32B76a6902d6e1AdbE7E6d6d22eD",
+    "s-MCLB/fBOMB"
+  ],
+  [
+    "0x57c77Ba53BBA21Fac170568d7C35166D8a625143",
+    "v-USDC/FXS"
+  ],
+  [
+    "0xFa179405c10CC2ac141d7d0aeE6bBd04C1D49387",
+    "v-fBOMB/CONK"
+  ],
+  [
+    "0x67D1724E93C1fadc99f063d319D984DE44f7e192",
+    "v-USDC/fUSDT"
+  ],
+  [
+    "0xF920886Adc589dbD89F3ABeE75F085Cf3b260144",
+    "v-YFI/WOOFY"
+  ],
+  [
+    "0x2b77a91b0C876a7641ED7B64EB80BC316F48363E",
+    "v-CONK/BEETS"
+  ],
+  [
+    "0x257322F6f7a375cDe08498AdaFB8fB75c324b41B",
+    "s-YFI/WOOFY"
+  ],
+  [
+    "0x69b4d3893882ee4068301470efDA30F14a56AeD0",
+    "v-WFTM/FGHST"
+  ],
+  [
+    "0xBCEe26225De2D5A359EdcE5Cd983782Ff3860cf7",
+    "v-FTM/TROY"
+  ],
+  [
+    "0x8daFfE224Af377aA1B8B0d9B8b419606306D10BF",
+    "v-WFTM/SKULL"
+  ],
+  [
+    "0x5462F8c029ab3461d1784cE8B6F6004f6F6E2Fd4",
+    "v-GRIM EVO/WFTM"
+  ],
+  [
+    "0x9EbdC97603F989EEe2744c786658Ca8699b17134",
+    "s-ANKR/WFTM"
+  ],
+  [
+    "0x4163dA643d26Cea4291Ed21Eb9B0395A4aFff55B",
+    "v-WFTM/POTION"
+  ],
+  [
+    "0xAb20921A33a5176Fc6d6D210EcDB5e238045ba99",
+    "v-ONFT/CONK"
+  ],
+  [
+    "0x4378853243a29BeceC0085b0fcC77d2c0f04B701",
+    "v-WFTM/ZZZ"
+  ],
+  [
+    "0x628e61164d16E08812B3a1421B4a0Be734EC4842",
+    "v-WFTM/COMB"
+  ],
+  [
+    "0xcaE2974bB2CB0E6856E623602DAB5CDbfFA88efb",
+    "v-RAVE/ODIN"
+  ],
+  [
+    "0x11a0779eA92176298b7A2760AE29fC9Ce1aD47b4",
+    "v-WFTM/CHILL"
+  ],
+  [
+    "0x2c6bDb1b22A3bc17e5fE5761097471F4B877f8aD",
+    "s-WFTM/SKULL"
+  ],
+  [
+    "0xE0EeDd62F988e6e08200843320a8A174673Bc58E",
+    "v-fUSDT/EQUAL"
+  ],
+  [
+    "0x02914e2bE577c428B1AdfDeb51069aF057E881e4",
+    "v-EQUAL/TUSD"
+  ],
+  [
+    "0x4B19c45492b713C42C6ADD9bD17BA6895DAE060E",
+    "v-EQUAL/DAI"
+  ],
+  [
+    "0x5236d432f885680331D50EFCA06f43076b904ffc",
+    "v-EQUAL/MIM"
+  ],
+  [
+    "0xa4F38d2C1600fEeBB3c1b15899Efb3EA9690D001",
+    "v-EQUAL/FRAX"
+  ],
+  [
+    "0x2a7721bbbBE2090cafC66785f7D11A574e079378",
+    "v-EQUAL/FUSD"
+  ],
+  [
+    "0x39B1D23C404835F3Ae6f58363A864B1BC1b491b3",
+    "v-DOODLE/WFTM"
+  ],
+  [
+    "0x2921Ba57C4e2c5B3266f81D13fDE96eC0d697419",
+    "v-USDC/SLM"
+  ],
+  [
+    "0x34d0F983B2F10f1105dDC1Cbd9286f594A5Ea35b",
+    "v-BTC/EQUAL"
+  ],
+  [
+    "0x8a94555370ffa2e795A598BAd21d679Da2fBa4A3",
+    "s-TUSD/FRAX"
+  ],
+  [
+    "0xB8C65E0922434801e7bfC15F5f35f94989C53CB2",
+    "v-WFTM/FUCK"
+  ],
+  [
+    "0x89A196A264116DD65e19EB6158A56510AA408CEf",
+    "s-WFTM/beFTM"
+  ],
+  [
+    "0xc24C1F0abf32C413eFA27D6d58510085186987BB",
+    "v-MAGIK/CONK"
+  ],
+  [
+    "0x3C4559E3Ba4966e372Be33F10Babd31f20796856",
+    "v-EQUAL/SKULL"
+  ],
+  [
+    "0x2a14Cb2E0B1Eb506Ce0D7dE8521a9488dfa0AaC9",
+    "v-fBOMB/ODIN"
+  ],
+  [
+    "0xFcbA7f132F4e3F37072553395Aa6915A7E901a70",
+    "v-WFTM/ALPHA"
+  ],
+  [
+    "0xc7eAcC38EF5B293FfF8261bFB4ea2C02a72bc563",
+    "v-SHRAP/BEETS"
+  ],
+  [
+    "0xb127FeFbb83B8B52488a983Ac2feDfD786a83Ba8",
+    "v-dSKULL/SKULL"
+  ],
+  [
+    "0xd3110036BA512005446fd725b9e59A3fa76de11E",
+    "v-OATH/SHRAP"
+  ],
+  [
+    "0xAC1D2625349d28489b5c9185A1e67cDf91B7BFE5",
+    "v-FTMAI/WFTMAI"
+  ],
+  [
+    "0x32b7245093Ae2e9E0dec8ca47d8039e9053C6959",
+    "v-WFTM/XEX"
+  ],
+  [
+    "0x75f1DA430A4BEB8E7350Ef17CECd2B844634Ad4c",
+    "s-fUSDT/USDV"
+  ],
+  [
+    "0x80568993E98051f34d39f93f814Ade6092e1B8DF",
+    "s-fUSDT/TUSD"
+  ],
+  [
+    "0x6dd9F49D8216d96Ee05Bbe790804656ef3293109",
+    "v-WFTM/DOGGO"
+  ],
+  [
+    "0xeeCd826b58B45d9F38d66235D64467757DB44482",
+    "v-BOB/XENA"
+  ],
+  [
+    "0x4aa1A3Ebe25c80b0c509bb5dd82aC8a7B2344c91",
+    "s-TUSD/FUSD"
+  ],
+  [
+    "0x11bad0b471bA302057D95e7E690849a4a52d9816",
+    "v-WFTM/SPANK"
+  ],
+  [
+    "0x8DdF59A053b4F9254bF0D6314DC1AeAF26017362",
+    "v-GRAIN/WFTM"
+  ],
+  [
+    "0x92d1EB61f395A6eF6602771bD1a7E9D4d400475f",
+    "v-FBA/EQUAL"
+  ],
+  [
+    "0x02e66fe5850B97fde7DDF89F67be4Edf76EB2256",
+    "v-MIM/ICE"
+  ],
+  [
+    "0x577F211Fd7C7D920c3D240933153CD57076141C4",
+    "v-fUSDT/ICE"
+  ],
+  [
+    "0x9c2957a5b0eDA30b9C3a24f2F1638702549dce1B",
+    "v-WFTM/STG"
+  ],
+  [
+    "0xF568F4A9aa359E4bd70D76C9745FEb0350ee2296",
+    "v-CRV/WFTM"
+  ],
+  [
+    "0xA7AC87E8a1238cb84121927E2d1267b5023E30D4",
+    "v-EQUAL/ICE"
+  ],
+  [
+    "0x483c7feBaa2F62644E27677ad55eF9c4058d3411",
+    "v-OATH/EQUAL"
+  ],
+  [
+    "0xa63d4dc518986b4C0e683F6C1A2433eD04401997",
+    "v-WFTM/fmXEN"
+  ],
+  [
+    "0x0fa982A9F122C2eE9282Dd73BF6b123b22b3cD80",
+    "v-RAVE/CONK"
+  ],
+  [
+    "0xCd03d8A9194FaDE1b67752b849f46060F8105FDC",
+    "v-BTC/SPANK"
+  ],
+  [
+    "0xc877CcfBEFdeb980A65785260b235929E5e71350",
+    "v-EQUAL/DIAMOND"
+  ],
+  [
+    "0x29709345c30C6D27CAE571528f9739Da5D2a0Ddf",
+    "v-WFTM/3V3"
+  ],
+  [
+    "0x098aDC7F3C7279ca00012210D4Ff2C073F779A7F",
+    "v-WFTM/YODA"
+  ],
+  [
+    "0xa1a819F07A9Bf15d9e11Eb452636bfb37FcC7DB9",
+    "v-WFTM/DOGGO"
+  ],
+  [
+    "0xA300BA34ABb9e1C08b7b72FB481AA0a8d714F45d",
+    "v-WFTM/BAY"
+  ],
+  [
+    "0x6e8B108D8B45Cc1070402d394296E26D28FA25b7",
+    "v-USDC/SPANK"
+  ],
+  [
+    "0xb6bc2682F196c1Fd32BD6b0DE4Af7696A3bb83F9",
+    "v-WFTM/GMFTM"
+  ],
+  [
+    "0x493b29Cb1eE9Ef86e01fbe0d7136e83F7A3Be812",
+    "v-PEPE/WFTM"
+  ],
+  [
+    "0x46F15964848282d105Dc86e8f12B0A23dEA7939d",
+    "v-WFTM/STACKS"
+  ],
+  [
+    "0x8BF81481D0FC658954BaE451e9254B987010Dbd2",
+    "v-EQUAL/ETH"
+  ],
+  [
+    "0x77CfeE25570b291b0882F68Bac770Abf512c2b5C",
+    "v-axlUSDC/WFTM"
+  ],
+  [
+    "0x2dB45833822bA2fFA0b6f594Dc0679c340cf0512",
+    "v-USDC/axlUSDC"
+  ],
+  [
+    "0xBd0A41C397de1c0476b07b6AB20213F52524eE2e",
+    "s-USDC/axlUSDC"
+  ],
+  [
+    "0xf5A8EdFb4f3E0828eB36F6f66567b866Fdccd4a2",
+    "v-USDC/STACKS"
+  ],
+  [
+    "0x32c2cC1f3d522C46B3b7Cf76206974656d51026C",
+    "v-ankrETH/ankrFTM"
+  ],
+  [
+    "0x24D4b9aAFa455078c4C172Fb582CC52F974A06E6",
+    "EQUITY Pool"
+  ],
+  [
+    "0xfF1A375039Ba4264a39Cff2f0d6bB83807a3adb8",
+    "v-CoUSD/USDC"
+  ],
+  [
+    "0x6D222CEDf2453a821F284878aD0001e2FD74DaA6",
+    "s-WFTM/fOLIVE"
+  ],
+  [
+    "0x7089d775c2ec3feBFBd86e8bd96209Cbe258780c",
+    "v-WFTM/ERN"
+  ],
+  [
+    "0x3f7be927d13dc45D7A6DEbaD5E6d96f4c35DaD90",
+    "v-EQUAL/FGHST"
+  ],
+  [
+    "0x3D03EC9780298aF6F7c23Ec87Fd9456d277f71A0",
+    "v-WFTM/USDC"
+  ],
+  [
+    "0x853d0B5e504Ae6f6CeE8b5D89E9c1853C330E6E9",
+    "v-WFTM/USDT"
+  ],
+  [
+    "0x606EF260Ed12E77f6418F307c42129c9151cC97e",
+    "s-WFTM/WBTC"
+  ],
+  [
+    "0x4b7C71DC2f2Ce0AC2962b26bF61803D58F8E2BfD",
+    "s-WFTM/WETH"
+  ],
+  [
+    "0x1f19718e02114006f0d848F46B2437eB2DB88c5d",
+    "s-USDC/USDT"
+  ],
+  [
+    "0x2E0f632a94a19a3c456C36904808520564E90A71",
+    "v-WFTM/WETH"
+  ],
+  [
+    "0xb5cb4B17FBE4Af711ff6e75FE2F164f7DdA19E24",
+    "v-WFTM/WBTC"
+  ],
+  [
+    "0x43A01D574680beb72620e663808C68d4E1744738",
+    "v-WFTM/LGG"
+  ],
+  [
+    "0x58503d69ebfDf06095c2C9E122aa75EF80f89441",
+    "s-axlUSDC/FRAX"
+  ],
+  [
+    "0x5F6F9E072DdD3Ab8f6DF37852908b7B181A77985",
+    "v-axlUSDC/ERN"
+  ],
+  [
+    "0x6aE1edC88C2d577a3A5f5aBB3d1BaCaBb4a305b3",
+    "v-WFTM/axlWBTC"
+  ],
+  [
+    "0x066adFCcBe186c75472ffC91Fe86F8362f1d5F77",
+    "v-WFTM/axlETH"
+  ],
+  [
+    "0xDc9A069c130C3F45F207cA832EADe31aa107FA2F",
+    "s-axlUSDC/axlUSDT"
+  ],
+  [
+    "0x0d8CD4191b92C1eb373Ae7Eac3696A00748410F2",
+    "s-axlUSDC/ERN"
+  ],
+  [
+    "0x03CbD6734d3b8d3f65284580b8445B950655c461",
+    "v-USDC/RING"
+  ],
+  [
+    "0x45bBeb76D694EA2874a98d5caB635b24a5085993",
+    "v-axlUSDC/USDT"
+  ],
+  [
+    "0xA1f10434c352F915EAe00A0F4bf2e14D230Afccd",
+    "s-axlUSDC/USDT"
+  ],
+  [
+    "0x3C4beB9a8D83c888D28f3CEF37e4ffF662caE9d7",
+    "s-axlUSDC/USDC"
+  ],
+  [
+    "0x05be8b93bfB5F195d8F9c7f43C89A099e0807591",
+    "s-USDC/FRAX"
+  ],
+  [
+    "0xa51c62c70571007254f0094c0BBf287472b8DFdB",
+    "v-WFTM/FRAX"
+  ],
+  [
+    "0x4A3dF59EfAb96edF1F79b4427d4916767CD906E5",
+    "v-WFTM/axlUSDT"
+  ],
+  [
+    "0xe21aA505CFC43AfA4AA2B6cAcd64afd51Be50904",
+    "v-USDC/EQUAL"
+  ],
+  [
+    "0x75a22ef700f18e6E709770EC21A4461748B98538",
+    "v-WFTM/FUCKMULTI"
+  ],
+  [
+    "0x7d1916d79C8143BbfB673c91B62fbf3d26Ba5c9C",
+    "v-axlUSDC/EQUAL"
+  ],
+  [
+    "0x9b2F4562dc31fe7238566E52ac54fC1A2B641923",
+    "v-EQUAL/axlETH"
+  ],
+  [
+    "0x89F4ABFe7a8D3A1D3fec16E9E32DAA7453337227",
+    "v-SHRP/axlETH"
+  ],
+  [
+    "0x04d5d80a6259e42DC84FC09465BC6b8048Ca6960",
+    "v-EQUAL/EQUITY"
+  ],
+  [
+    "0x99b7dAAf2468edCFBADD67DF9BCEA14D1a030675",
+    "v-WFTM/TAROT"
+  ],
+  [
+    "0x5F351C61941b753f55bFB1bEda85619e97e18B15",
+    "v-WFTM/axlLqdr"
+  ],
+  [
+    "0xd6eEE036C5db26dF2F8c53e1942f514DF24ae9b1",
+    "v-STARD/STARP"
+  ],
+  [
+    "0xd7c3F419c093b90Ef253e0dfC67AE7e0bAF92825",
+    "v-WFTM/STARP"
+  ]
+];
+
+function findPoolName(_pa) {
+	pfn = "Unknown Pool"
+	for (ni=0;ni< GD.length;ni++){/*console.log(ni)*/;if(GD[ni][0]==ethers.utils.getAddress(_pa)){pfn=GD[ni][1]}}
+	return pfn;
+}
+
+function sortit(n,_el) {
+  var t, r, z, i, x, y, v, b, c = 0;
+  t = document.getElementById(_el);
+  z = true;
+  b = "a";
+  while (z) {
+    z = false;
+    r = t.rows;
+    for (i = 0; i < (r.length - 1); i++) {
+      v = false;
+      x = (r[i].getElementsByTagName("td")[n].innerHTML).replaceAll(/,| |\.|\$|%/g,'');
+      if(isFinite(x)){x=Number(x)}else{x=x.toLowerCase()}
+      y = (r[i + 1].getElementsByTagName("td")[n].innerHTML).replaceAll(/,| |\.|\$|%/g,'');
+      if(isFinite(y)){y=Number(y)}else{y=y.toLowerCase()}
+      if (b == "a") {
+        if ((x) > (y)) {
+          v= true;
+          break;
+        }
+      } else if (b == "d") {
+        if ((x) < (y)) {
+          v = true;
+          break;
+        }
+      }
+    }
+    if (v) {
+      r[i].parentNode.insertBefore(r[i + 1], r[i]);
+      z = true;
+      c ++;
+    } else {
+      if (c == 0 && b == "a") {
+        b = "d";
+        z = true;
+      }
+    }
+  }
+}
+
+
+      </script>
+  </body>
+</html>
