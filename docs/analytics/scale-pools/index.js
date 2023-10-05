@@ -203,7 +203,7 @@ async function dexstats() {
 
 function findPoolName(_pa,_id) {
 	pfn = "?";
-	for (ni=0;ni< GD.length;ni++){/*console.log(ni)*/;if(GD[ni][0]==ethers.utils.getAddress(_pa)){pfn=GD[ni][1]}}
+	for (ni=0;ni< GD.length;ni++){/*console.log(ni)*/;if(GD[ni][0]==ethers.utils.getAddress(_pa)){pfn=`<a target="_blank" href="https://basescan.org/address/${_pa}">${GD[ni][1]}</a>`}}
 	return pfn=="?" ? `<button onclick='fetchPoolName("${_pa}",${_id})'>Check Name</button>` : pfn;
 }
 
@@ -310,7 +310,8 @@ GD = [
 
 
 async function fetchPoolName(_pad,_pid) {
-	$("pool_id_"+_pid).innerHTML = (await (new ethers.Contract(_pad,["function symbol() public view returns(string)"],provider)).symbol());
+	_smb = (await (new ethers.Contract(_pad,["function symbol() public view returns(string)"],provider)).symbol());
+	$("pool_id_"+_pid).innerHTML = `<a target="_blank" href="https://basescan.org/address/${_pad}">${_smb}</a>`
 }
 
 async function distribute(_g) {
