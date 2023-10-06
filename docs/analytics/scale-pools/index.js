@@ -315,7 +315,7 @@ async function fetchPoolName(_pad,_pid) {
 }
 
 async function distribute(_g) {
-	(new ethers.Contract(V,["function distribute(address)"],signer)).distribute(_g);
+	(new ethers.Contract(VOTER,["function distribute(address)"],signer)).distribute(_g);
 }
 
 async function paintF() {
