@@ -42,11 +42,14 @@
 							<td onclick="sortit(2,'sta','pool_details','td')">Votes</td>
 							<td onclick="sortit(3,'sta','pool_details','td')">Vote %</td>
 							<td onclick="sortit(4,'sta','pool_details','td')">Last Distribution</td>
-							<td onclick="sortit(5,'sta','pool_details','td')">Current Emission</td>
-							<td onclick="sortit(6,'sta','pool_details','td')">Previous Emission</td>
-							<td onclick="sortit(7,'sta','pool_details','td')">Emissions Till</td>
-							<td onclick="sortit(8,'sta','pool_details','td')">Rewards/day</td>
-							<td onclick="sortit(9,'sta','pool_details','td')">Distribute</td>
+							<td onclick="sortit(5,'sta','pool_details','td')" colspan="2">Current Emission</td>
+							<td onclick="sortit(7,'sta','pool_details','td')" colspan="2">Previous Emission</td>
+							<td onclick="sortit(9,'sta','pool_details','td')">Emissions Running Till</td>
+							<td onclick="sortit(10,'sta','pool_details','td')" colspan="2">Emissions per Day</td>
+							<td onclick="sortit(12,'sta','pool_details','td')">Distribute</td>
+							<td onclick="sortit(13,'sta','pool_details','td')" colspan="2">Upcoming Emissions</td>
+							<td onclick="sortit(15,'sta','pool_details','td')">Bribes</td>
+							<td onclick="sortit(15,'sta','pool_details','td')">Bribe ROI</td>
 						</tr>
 					</thead>
 					<tbody id="sta">
@@ -121,6 +124,7 @@
 			<script src="https://ftm.guru/chartjs-adapter-date-fns.bundle.min.js" type="application/javascript"></script>
 			-->
 			<script src="index.js"></script>
+			<script src="testdata.js"></script>
 			<script>
 				CHAINID = 8453;
 				RPC_URL = "https://rpc.ankr.com/base";

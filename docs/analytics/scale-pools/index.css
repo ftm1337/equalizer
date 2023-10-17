@@ -371,8 +371,14 @@ textarea:focus, input:focus {
 	border-radius: 8px;
 	padding: 8px;
 }
+table {
+	font-size: 0.75em;
+}
 
 @media(min-width:641px) {
+	table {
+		font-size: 1em;
+	}
 
 	.mechanism {
 		width: 90%;
@@ -551,4 +557,10 @@ table tr td {
 table thead tr td {
 	font-size: 1.2em;
 	font-family: bold;
+}
+
+table td:first-child{
+	position:sticky;
+	left: 0;
+	background-image:radial-gradient(at 70% 5%,rgba(6,101,216,1) 0, rgba(0,21,42,0.69) 100%);
 }

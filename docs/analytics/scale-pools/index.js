@@ -304,8 +304,112 @@ GD = [
   [
     "0xD630b2E4981a3a2bE0D7D397EC24741B7b222e98",
     "v-WETH/MOARRR"
+  ],
+  [
+    "0xDa5A39B10FCFCD012c0686f35f49388F88E785ED",
+    "v-WETH/NFI"
+  ],
+  [
+    "0x9046D8f6130D6f141Ba54F0A6e9EC0783c78edac",
+    "s-WETH/BASED"
+  ],
+  [
+    "0x1948Bd09a8777023d4F15E29880930eD5bA0Daf2",
+    "v-SCALE/PANTHEON"
+  ],
+  [
+    "0x3f4F7fF7CAeA820aa87Da12C6E873c5cAde9bC1a",
+    "v-IT/WETH"
+  ],
+  [
+    "0xd277A78d0321eFB9845b01CF9Ec5c1FD151a4972",
+    "v-IT/cbETH"
+  ],
+  [
+    "0xC8B090548648fD40fD623023434EaF451424d8ef",
+    "v-WETH/OVN"
+  ],
+  [
+    "0xF6354383d0FbE31Da4089e23dD00CcDD3c92b6b8",
+    "v-WETH/USD+"
+  ],
+  [
+    "0x741292fFC0C40B466baE4AF261C64009198a3aB5",
+    "v-WETH/DAI+"
+  ],
+  [
+    "0x4B3953ecB9e5373a0267439d563Eb99A247E2C54",
+    "v-cbETH/AKITA V3"
+  ],
+  [
+    "0x942cd46853398F30C051fd4435cdfbb4a092601C",
+    "v-fBOMB/YFX"
+  ],
+  [
+    "0x76A0Efd0227644113c21d795dDC27D7a9419695d",
+    "v-FREN/fBOMB"
+  ],
+  [
+    "0x7437204fEc1eD3d758d3743EB22adb9137237e19",
+    "s-USDC/axlUSDC"
+  ],
+  [
+    "0xe821d033667E55842e1B3342E069C55AD66B006b",
+    "s-DAI/axlUSDC"
+  ],
+  [
+    "0x94Fe2DC68a1ABD3053F380E51799E0f52700DB0F",
+    "v-WETH/TOSHI"
+  ],
+  [
+    "0x18F2Bf913fc6eFa3123B11523B5b1Ed4c1aeFB16",
+    "v-WETH/bSHARE"
+  ],
+  [
+    "0xA63eE2e8344d8a5dD41a6EE06a02F5280D305273",
+    "v-WETH/BSHARE"
+  ],
+  [
+    "0x29c4Dfc4357D37D164098FbE0311b22d3e2e6464",
+    "v-WETH/BRATE"
+  ],
+  [
+    "0x1D8F2b55785359636f9b8245B394B3a4C5e24397",
+    "v-WETH/DIP"
+  ],
+  [
+    "0x26946d91d7820c16d902161A674C7F8f2ba3DF18",
+    "s-DOLA/USDC"
+  ],
+  [
+    "0xdd8c2713b5cE39dCa4a4B59C8Af4f5f31bc2Fc66",
+    "s-DOLA/USDbC"
+  ],
+  [
+    "0x8084B1b2DDe3B685A0FAB3bBF201f94340d1D768",
+    "s-MAI/USDbC"
+  ],
+  [
+    "0x7fC9C6F318505f83fa27D4e221797884E946DB2B",
+    "s-USDC/MAI"
+  ],
+  [
+    "0xe9a5452aC188079cE00707C2b1076A1a58e80b18",
+    "s-USD+/USDbC"
+  ],
+  [
+    "0xeFe199803ECCDF7F3582f1a30287e6BF762eB4b4",
+    "s-USDC/USD+"
+  ],
+  [
+    "0xB9C0d13Ae45dbF95cC6A96400551Fa289393BC2E",
+    "v-WETH/TOSHI"
+  ],
+  [
+    "0xfc24111FdfA17aD574965d5947CADD21DFC5D0b0",
+    "v-SURV/WETH"
   ]
-];
+]
 
 
 
@@ -314,15 +418,53 @@ async function fetchPoolName(_pad,_pid) {
 	$("pool_id_"+_pid).innerHTML = `<a target="_blank" href="https://basescan.org/address/${_pad}">${_smb}</a>`
 }
 
+
+async function fetchAllPoolNames() {
+	F=new ethers.Contract("0xed8db60acc29e14bc867a497d94ca6e3ceb5ec04",["function allPairs(uint) public view returns(address)", "function allPairsLength() public view returns(uint)"],provider);
+	LEN=Number(await F.allPairsLength());
+	GD2 = [];
+	for(i=0;i<LEN;i++) {
+		_pa = await F.allPairs(i);
+		_sb = (await (new ethers.Contract(_pa,["function symbol() public view returns(string)"],provider)).symbol());
+		GD2.push([_pa,_sb]);
+	}
+	return(GD2);
+}
+
 async function distribute(_g) {
 	(new ethers.Contract(VOTER,["function distribute(address)"],signer)).distribute(_g);
 }
 
+async function pushBribes(_fd, _bd) {
+	bribes = new Array(_fd.length);bribes.fill(0);
+	for(let i=0;i<_fd.length;i++) {
+		for(let j=0;j<_bd.length;j++) {
+			if(_bd[j].address == _fd[i].A[0]) {
+				//console.log(i,j,_bd[j].address,_fd[i].A[0])
+				bribes[i] = isNaN(_bd[j].gauge.tbvUSD) ? 0 : _bd[j].gauge.tbvUSD;
+			}
+		}
+	}
+	return bribes;
+}
 async function paintF() {
 
 	L19=new ethers.Contract("0x8ddd725a8a8666c4166879e45c8704d60df6c60d",[{"inputs": [{"internalType": "address","name": "_v","type": "address"},{"internalType": "address","name": "_f","type": "address"},{"internalType": "address","name": "_e","type": "address"}],"stateMutability": "nonpayable","type": "constructor"},{"inputs": [],"name": "DAO","outputs": [{"internalType": "address","name": "","type": "address"}],"stateMutability": "view","type": "function"},{"inputs": [],"name": "E","outputs": [{"internalType": "address","name": "","type": "address"}],"stateMutability": "view","type": "function"},{"inputs": [],"name": "EPOCH_0","outputs": [{"internalType": "uint256","name": "","type": "uint256"}],"stateMutability": "view","type": "function"},{"inputs": [],"name": "F","outputs": [{"internalType": "contract IF","name": "","type": "address"}],"stateMutability": "view","type": "function"},{"inputs": [],"name": "M","outputs": [{"internalType": "contract IM","name": "","type": "address"}],"stateMutability": "view","type": "function"},{"inputs": [],"name": "V","outputs": [{"internalType": "contract IV","name": "","type": "address"}],"stateMutability": "view","type": "function"},{"inputs": [],"name": "VE","outputs": [{"internalType": "contract IVE","name": "","type": "address"}],"stateMutability": "view","type": "function"},{"inputs": [],"name": "infoGaugeDistPrice","outputs": [{"internalType": "uint256[]","name": "","type": "uint256[]"}],"stateMutability": "view","type": "function"},{"inputs": [{"internalType": "address","name": "_g","type": "address"}],"name": "infoGaugeDists","outputs": [{"internalType": "uint256[]","name": "","type": "uint256[]"}],"stateMutability": "view","type": "function"},{"inputs": [],"name": "infoListedPoolNums","outputs": [{"components": [{"internalType": "uint256[7]","name": "N","type": "uint256[7]"}],"internalType": "struct Equalens_poolMonitor.SN7[]","name": "","type": "tuple[]"}],"stateMutability": "view","type": "function"},{"inputs": [],"name": "infoPoolBase","outputs": [{"components": [{"internalType": "address[4]","name": "A","type": "address[4]"},{"internalType": "bool","name": "B","type": "bool"},{"internalType": "uint256","name": "N","type": "uint256"}],"internalType": "struct Equalens_poolMonitor.SA4BN[]","name": "","type": "tuple[]"}],"stateMutability": "view","type": "function"},{"inputs": [],"name": "infoPoolFull","outputs": [{"components": [{"internalType": "address[4]","name": "A","type": "address[4]"},{"internalType": "bool","name": "B","type": "bool"},{"internalType": "uint256[7]","name": "N","type": "uint256[7]"}],"internalType": "struct Equalens_poolMonitor.SP[]","name": "","type": "tuple[]"}],"stateMutability": "view","type": "function"},{"inputs": [],"name": "infoPoolNums","outputs": [{"components": [{"internalType": "uint256[7]","name": "N","type": "uint256[7]"}],"internalType": "struct Equalens_poolMonitor.SN7[]","name": "","type": "tuple[]"}],"stateMutability": "view","type": "function"},{"inputs": [{"internalType": "address","name": "_d","type": "address"}],"name": "setDAO","outputs": [],"stateMutability": "nonpayable","type": "function"},{"inputs": [{"internalType": "address","name": "_v","type": "address"},{"internalType": "address","name": "_f","type": "address"},{"internalType": "address","name": "_e","type": "address"}],"name": "setVFE","outputs": [],"stateMutability": "nonpayable","type": "function"}],provider);
-	fd = await L19.infoPoolFull();
+	TG = new ethers.Contract("0x7a18d1b46baabb2d8260d0f8cfbb2292901c2779",["function p_t_coin_usd(address) public view returns(uint)"],provider);
+	birbs=BIRB.data;
+	fds = await Promise.all([
+		L19.infoPoolFull(),
+		TG.p_t_coin_usd("0xc825c67ca3a80d487c339a6c16bb84f7dca16012"),
+		birbs
+	]);
+	fd = fds[0];
+	bd = fds[2];
+	bribes = await pushBribes(fd,bd);
+	PRICE=Number(fds[1])/1e18;
 	tv = 0; for(i=0;i<fd.length;i++) { tv+= fd[i].N[1]/1e18 }
+	te = 0; for(i=0;i<fd.length;i++) { te+= fd[i].N[3]/1e18 }
+	ep_now = Date.now(); ep_now -= ep_now%(86400*7e3)
+	ep_gen = 1695859200000;
 	for(i=0;i<fd.length;i++) {
 		$("sta").innerHTML += `
 			<tr class="pool_details">
@@ -332,10 +474,17 @@ async function paintF() {
 				<td>${(fd[i].N[1]/1e16/tv).toFixed(6)}%</td>
 				<td>${(new Date(fd[i].N[2]*1e3)).toLocaleString()}</td>
 				<td>${(fd[i].N[3]/1e18).toLocaleString(undefined,{maximumFractionDigits:0})}</td>
+				<td>$${(fd[i].N[3]/1e18*PRICE).toLocaleString(undefined,{maximumFractionDigits:0})}</td>
 				<td>${(fd[i].N[4]/1e18).toLocaleString(undefined,{maximumFractionDigits:0})}</td>
+				<td>$${(fd[i].N[4]/1e18*PRICE).toLocaleString(undefined,{maximumFractionDigits:0})}</td>
 				<td>${(new Date(fd[i].N[5]*1e3)).toLocaleString()}</td>
-				<td>${(fd[i].N[6]/1e18*86400).toFixed(6)}</td>
+				<td>${(fd[i].N[6]/1e18*86400).toFixed(2)}</td>
+				<td>$${(fd[i].N[6]/1e18*86400*PRICE).toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2})}</td>
 				<td><button onclick='distribute("${fd[i].A[3]}")'>Distribute</button></td>
+				<td>${(fd[i].N[1]/1e18/tv*te*0.98).toLocaleString(undefined,{maximumFractionDigits:0})}</td>
+				<td>$${(fd[i].N[1]/1e18/tv*te*0.98*PRICE).toLocaleString(undefined,{maximumFractionDigits:0})}</td>
+				<td>$${(bribes[i]).toLocaleString(undefined,{maximumFractionDigits:0})}</td>
+				<td>${( isNaN((fd[i].N[1]/1e18/tv*te*0.98*PRICE) / (bribes[i])) ? 0 : ((fd[i].N[1]/1e18/tv*te*0.98*PRICE) / (bribes[i])) ).toLocaleString(undefined,{maximumFractionDigits:4})}x</td>
 			</tr>
 		`;
 	}
