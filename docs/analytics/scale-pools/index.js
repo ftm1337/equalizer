@@ -520,7 +520,7 @@ function sortit(n,_maintable,_trName,_tdName) {
     r = t.getElementsByClassName(_trName);
     for (i = 0; i < (r.length - 1); i++) {
       v = false;
-      x = (r[i].getElementsByTagName(_tdName)[n].textContent).replace(/,| |\.|\$|%/g,'');
+      x = (r[i].getElementsByTagName(_tdName)[n].textContent).replace(/,| |\.|\$|%|x/g,'');
       if(isFinite(x)){x=Number(x)}else{x=x.toLowerCase()}
       y = (r[i + 1].getElementsByTagName(_tdName)[n].textContent).replace(/,| |\.|\$|%|x/g,'');
       if(isFinite(y)){y=Number(y)}else{y=y.toLowerCase()}
