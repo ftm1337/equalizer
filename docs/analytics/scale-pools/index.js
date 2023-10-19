@@ -494,9 +494,9 @@ async function paintF() {
 				<td>$${(0*fd[i].N[1]/1e18/tv*te*0.98*PRICE).toLocaleString(undefined,{maximumFractionDigits:0})}</td>
 
 
-				<td>p.b</td>
+				<td>$${(bribes[i]).toLocaleString(undefined,{maximumFractionDigits:0})}</td>
 				<td>p.b.r</td>
-				<td>p.b.r.n</td>
+				<td>${( isNaN((fd[i].N[3]/1e18*PRICE) / (bribes[i])) ? 0 : ((fd[i].N[3]/1e18*PRICE) / (bribes[i])) ).toLocaleString(undefined,{maximumFractionDigits:4})}x</td>
 				<td>$${(bribes[i]).toLocaleString(undefined,{maximumFractionDigits:0})}</td>
 				<td>${( isNaN((fd[i].N[1]/1e18/tv*te*0.98*PRICE) / (bribes[i])) ? 0 : ((fd[i].N[1]/1e18/tv*te*0.98*PRICE) / (bribes[i])) ).toLocaleString(undefined,{maximumFractionDigits:4})}x</td>
 				<td>Min. ROI x</td>
@@ -522,7 +522,7 @@ function sortit(n,_maintable,_trName,_tdName) {
       v = false;
       x = (r[i].getElementsByTagName(_tdName)[n].textContent).replace(/,| |\.|\$|%/g,'');
       if(isFinite(x)){x=Number(x)}else{x=x.toLowerCase()}
-      y = (r[i + 1].getElementsByTagName(_tdName)[n].textContent).replace(/,| |\.|\$|%/g,'');
+      y = (r[i + 1].getElementsByTagName(_tdName)[n].textContent).replace(/,| |\.|\$|%|x/g,'');
       if(isFinite(y)){y=Number(y)}else{y=y.toLowerCase()}
       if (b == "a") {
         if ((x) > (y)) {

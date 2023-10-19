@@ -560,8 +560,16 @@ table thead tr td {
 	text-align: center;
 }
 
+table thead tr:first-child td {
+		background-image:radial-gradient(at 70% 5%,rgba(6,101,216,1) 0, rgba(0,21,42,0.69) 100%);
+}
+
 table td:first-child{
 	position:sticky;
 	left: 0;
 	background-image:radial-gradient(at 70% 5%,rgba(6,101,216,1) 0, rgba(0,21,42,0.69) 100%);
+}
+
+table thead tr:first-child td:first-child {
+	position:  relative;
 }
