@@ -435,7 +435,8 @@ async function distribute(_g) {
 	(new ethers.Contract(VOTER,["function distribute(address)"],signer)).distribute(_g);
 }
 
-async function pushBribes(_fd, _bd) {
+async function pushBribes(_fd, _bdo, _bd) {
+	bribesOld = new Array(_fd.length);bribes.fill(0);
 	bribes = new Array(_fd.length);bribes.fill(0);
 	for(let i=0;i<_fd.length;i++) {
 		for(let j=0;j<_bd.length;j++) {
@@ -443,9 +444,13 @@ async function pushBribes(_fd, _bd) {
 				//console.log(i,j,_bd[j].address,_fd[i].A[0])
 				bribes[i] = isNaN(_bd[j].gauge.tbvUSD) ? 0 : _bd[j].gauge.tbvUSD;
 			}
+			if(_bdo[j].address == _fd[i].A[0]) {
+				//console.log(i,j,_bd[j].address,_fd[i].A[0])
+				bribesOld[i] = isNaN(_bdo[j].gauge.tbvUSD) ? 0 : _bdo[j].gauge.tbvUSD;
+			}
 		}
 	}
-	return bribes;
+	return [bribes,bribesOld];
 }
 async function paintF() {
 
@@ -455,8 +460,9 @@ async function paintF() {
 	fds = await Promise.all([
 		L19.infoPoolFull(),
 		TG.p_t_coin_usd("0xc825c67ca3a80d487c339a6c16bb84f7dca16012"),
-		birbs
-		//fetch("https://eqapi-main-7cmme.ondigitalocean.app/fantom/pairs")
+		birbs,
+		//fetch("https://eqapi-main-7cmme.ondigitalocean.app/fantom/pairs"),
+		fetch("https://eqapi-base-vkgqs.ondigitalocean.app/base")
 	]);
 	fd = fds[0];
 	bd = fds[2];
@@ -494,9 +500,9 @@ async function paintF() {
 				<td>$${(0*fd[i].N[1]/1e18/tv*te*0.98*PRICE).toLocaleString(undefined,{maximumFractionDigits:0})}</td>
 
 
-				<td>$${(bribes[i]).toLocaleString(undefined,{maximumFractionDigits:0})}</td>
+				<td>$${(bribesOld[i]).toLocaleString(undefined,{maximumFractionDigits:0})}</td>
 				<td>p.b.r</td>
-				<td>${( isNaN((fd[i].N[3]/1e18*PRICE) / (bribes[i])) ? 0 : ((fd[i].N[3]/1e18*PRICE) / (bribes[i])) ).toLocaleString(undefined,{maximumFractionDigits:4})}x</td>
+				<td>${( isNaN((fd[i].N[3]/1e18*PRICE) / (bribesOld[i])) ? 0 : ((fd[i].N[3]/1e18*PRICE) / (bribesOld[i])) ).toLocaleString(undefined,{maximumFractionDigits:4})}x</td>
 				<td>$${(bribes[i]).toLocaleString(undefined,{maximumFractionDigits:0})}</td>
 				<td>${( isNaN((fd[i].N[1]/1e18/tv*te*0.98*PRICE) / (bribes[i])) ? 0 : ((fd[i].N[1]/1e18/tv*te*0.98*PRICE) / (bribes[i])) ).toLocaleString(undefined,{maximumFractionDigits:4})}x</td>
 				<td>Min. ROI x</td>
