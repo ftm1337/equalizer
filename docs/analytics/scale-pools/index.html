@@ -37,19 +37,41 @@
 				<table style="margin: auto;">
 					<thead>
 						<tr>
-							<td onclick="sortit(0,'sta','pool_details','td')">Pool Name</td>
+							<td colspan="2">Pool Details</td>
+							<td colspan="4">Votes</td>
+							<td colspan="13">Liquidity Provisioning Rewards</td>
+							<td colspan="7">Fees & Bribes: Voter Incentives</td>
+							<td colspan="3">Rewards for Voting</td>
+						</tr>
+						<tr>
+							<td onclick="sortit(0,'sta','pool_details','td')">Name</td>
 							<td onclick="sortit(1,'sta','pool_details','td')">Trade fee</td>
-							<td onclick="sortit(2,'sta','pool_details','td')">Votes</td>
-							<td onclick="sortit(3,'sta','pool_details','td')">Vote %</td>
-							<td onclick="sortit(4,'sta','pool_details','td')">Last Distribution</td>
-							<td onclick="sortit(5,'sta','pool_details','td')" colspan="2">Current Emission</td>
-							<td onclick="sortit(7,'sta','pool_details','td')" colspan="2">Previous Emission</td>
-							<td onclick="sortit(9,'sta','pool_details','td')">Emissions Running Till</td>
-							<td onclick="sortit(10,'sta','pool_details','td')" colspan="2">Emissions per Day</td>
-							<td onclick="sortit(12,'sta','pool_details','td')">Distribute</td>
-							<td onclick="sortit(13,'sta','pool_details','td')" colspan="2">Upcoming Emissions</td>
-							<td onclick="sortit(15,'sta','pool_details','td')">Bribes</td>
-							<td onclick="sortit(15,'sta','pool_details','td')">Bribe ROI</td>
+
+							<td onclick="sortit(2,'sta','pool_details','td')">Current</td>
+							<td onclick="sortit(3,'sta','pool_details','td')">Current %</td>
+							<td onclick="sortit(4,'sta','pool_details','td')">Confirmed</td>
+							<td onclick="sortit(5,'sta','pool_details','td')">Confirmed %</td>
+
+							<td onclick="sortit(6,'sta','pool_details','td')">Last Distribution</td>
+							<td onclick="sortit(7,'sta','pool_details','td')" colspan="2">Current Emission</td>
+							<td onclick="sortit(9,'sta','pool_details','td')" colspan="2">Previous Emission</td>
+							<td onclick="sortit(11,'sta','pool_details','td')">Emissions Running Till</td>
+							<td onclick="sortit(12,'sta','pool_details','td')" colspan="2">Emissions per Day</td>
+							<td onclick="sortit(14,'sta','pool_details','td')">Distribute</td>
+							<td onclick="sortit(15,'sta','pool_details','td')" colspan="2">Upcoming Emissions (Predicted)</td>
+							<td onclick="sortit(17,'sta','pool_details','td')" colspan="2">Upcoming Emissions (Min. Guarantee)</td>
+
+							<td onclick="sortit(19,'sta','pool_details','td')">Previous</td>
+							<td onclick="sortit(20,'sta','pool_details','td')">Previous ROI</td>
+							<td onclick="sortit(20,'sta','pool_details','td')">Previous ROI Now</td>
+							<td onclick="sortit(19,'sta','pool_details','td')">Current</td>
+							<td onclick="sortit(20,'sta','pool_details','td')">Current ROI</td>
+							<td onclick="sortit(21,'sta','pool_details','td')">Min. Guaranteed ROI</td>
+							<td onclick="sortit(21,'sta','pool_details','td')">Max. Possible ROI</td>
+
+							<td onclick="sortit(22,'sta','pool_details','td')">Voting APR</td>
+							<td onclick="sortit(23,'sta','pool_details','td')">Min. Guaranteed APR</td>
+							<td onclick="sortit(24,'sta','pool_details','td')">Max. Possible APR</td>
 						</tr>
 					</thead>
 					<tbody id="sta">

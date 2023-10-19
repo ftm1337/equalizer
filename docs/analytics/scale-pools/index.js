@@ -456,6 +456,7 @@ async function paintF() {
 		L19.infoPoolFull(),
 		TG.p_t_coin_usd("0xc825c67ca3a80d487c339a6c16bb84f7dca16012"),
 		birbs
+		//fetch("https://eqapi-main-7cmme.ondigitalocean.app/fantom/pairs")
 	]);
 	fd = fds[0];
 	bd = fds[2];
@@ -465,13 +466,19 @@ async function paintF() {
 	te = 0; for(i=0;i<fd.length;i++) { te+= fd[i].N[3]/1e18 }
 	ep_now = Date.now(); ep_now -= ep_now%(86400*7e3)
 	ep_gen = 1695859200000;
+	ep_num = (ep_now-ep_gen)/(86400*7e3);
 	for(i=0;i<fd.length;i++) {
 		$("sta").innerHTML += `
 			<tr class="pool_details">
+
 				<td id='pool_id_${i}'>${findPoolName(fd[i].A[0],i)}</td>
 				<td>${(fd[i].N[0]/1e16).toFixed(6)}%</td>
+
 				<td>${(fd[i].N[1]/1e18).toLocaleString(undefined,{maximumFractionDigits:0})}</td>
 				<td>${(fd[i].N[1]/1e16/tv).toFixed(6)}%</td>
+				<td>cnf. V</td>
+				<td>cnf. V %</td>
+
 				<td>${(new Date(fd[i].N[2]*1e3)).toLocaleString()}</td>
 				<td>${(fd[i].N[3]/1e18).toLocaleString(undefined,{maximumFractionDigits:0})}</td>
 				<td>$${(fd[i].N[3]/1e18*PRICE).toLocaleString(undefined,{maximumFractionDigits:0})}</td>
@@ -483,8 +490,21 @@ async function paintF() {
 				<td><button onclick='distribute("${fd[i].A[3]}")'>Distribute</button></td>
 				<td>${(fd[i].N[1]/1e18/tv*te*0.98).toLocaleString(undefined,{maximumFractionDigits:0})}</td>
 				<td>$${(fd[i].N[1]/1e18/tv*te*0.98*PRICE).toLocaleString(undefined,{maximumFractionDigits:0})}</td>
+				<td>${(0*fd[i].N[1]/1e18/tv*te*0.98).toLocaleString(undefined,{maximumFractionDigits:0})}</td>
+				<td>$${(0*fd[i].N[1]/1e18/tv*te*0.98*PRICE).toLocaleString(undefined,{maximumFractionDigits:0})}</td>
+
+
+				<td>p.b</td>
+				<td>p.b.r</td>
+				<td>p.b.r.n</td>
 				<td>$${(bribes[i]).toLocaleString(undefined,{maximumFractionDigits:0})}</td>
 				<td>${( isNaN((fd[i].N[1]/1e18/tv*te*0.98*PRICE) / (bribes[i])) ? 0 : ((fd[i].N[1]/1e18/tv*te*0.98*PRICE) / (bribes[i])) ).toLocaleString(undefined,{maximumFractionDigits:4})}x</td>
+				<td>Min. ROI x</td>
+				<td>Max. ROI x</td>
+
+				<td>V. APR %</td>
+				<td>Min. VA %</td>
+				<td>Max. VA %</td>
 			</tr>
 		`;
 	}

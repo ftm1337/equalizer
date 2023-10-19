@@ -557,6 +557,7 @@ table tr td {
 table thead tr td {
 	font-size: 1.2em;
 	font-family: bold;
+	text-align: center;
 }
 
 table td:first-child{
