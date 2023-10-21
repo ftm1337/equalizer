@@ -436,7 +436,7 @@ async function distribute(_g) {
 }
 
 async function pushBribes(_fd, _bdo, _bd) {
-	bribesOld = new Array(_fd.length);bribes.fill(0);
+	bribesOld = new Array(_fd.length);bribesOld.fill(0);
 	bribes = new Array(_fd.length);bribes.fill(0);
 	for(let i=0;i<_fd.length;i++) {
 		for(let j=0;j<_bd.length;j++) {
@@ -462,11 +462,14 @@ async function paintF() {
 		TG.p_t_coin_usd("0xc825c67ca3a80d487c339a6c16bb84f7dca16012"),
 		birbs,
 		//fetch("https://eqapi-main-7cmme.ondigitalocean.app/fantom/pairs"),
-		fetch("https://eqapi-base-vkgqs.ondigitalocean.app/base")
+		birbs//fetch("https://eqapi-base-vkgqs.ondigitalocean.app/base/pairs")
 	]);
+	try {tfetch = await fetch("https://eqapi-base-vkgqs.ondigitalocean.app/base/pairs"); console.log(await tfetch.json());}
+	catch(e) { console.log("tfetch failed",e)}
 	fd = fds[0];
-	bd = fds[2];
-	bribes = await pushBribes(fd,bd);
+	bdo = fds[2];
+	bd = fds[3];
+	await pushBribes(fd,bd,bdo);
 	PRICE=Number(fds[1])/1e18;
 	tv = 0; for(i=0;i<fd.length;i++) { tv+= fd[i].N[1]/1e18 }
 	te = 0; for(i=0;i<fd.length;i++) { te+= fd[i].N[3]/1e18 }
