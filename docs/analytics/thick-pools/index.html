@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="description" content="Thick ALM Analytics : All Pools : Equalizer.Exchange">
+		<meta name="keywords" content="Thick, Scale, Equalizer, Finance, Decentralized Finance, defi, Airdrop, veNFT, Solidly">
+		<title>Thick ALM Analytics : All Pools : Equalizer.Exchange</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="shortcut icon" href="https://base.equalizer.exchange/assets/base/token/0x54016a4848a38f257b6e96331f7404073fd9c32c.png"/>
+		<link rel="stylesheet" href="index.css"/>
+		<meta property="og:type" content="article" />
+		<meta property="og:title" content="Thick DEX on Fantom - ALM Analytics : All Pools" />
+		<meta property="og:description" content="Thick DEX on Fantom - ALM Analytics : All Pools" />
+		<meta property="og:url" content="https://ftm.guru" />
+		<meta property="og:image" content="https://ftm.guru/icons/thick.png" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:site" content="@ftm1337" />
+		<meta name="twitter:title" content="" />
+		<meta name="twitter:description" content="Thick DEX on Fantom - ALM Analytics : All Pools" />
+		<meta name="twitter:image" content="https://ftm.guru/icons/thick.png" />
+	</head>
+	<body>
+		<div class="" align="right">
+			<p style="text-align:right !important;padding:5px" id="p_cw"><span id="cw" onclick="cw()">Hello 👋 <span id="cw_og">Connect wallet!</span></p>
+		</div>
+		<div class="partnership">
+			<h1><span>Thick ALM pools</span></h1>
+			<h2>Explore Real-time Pool Statistics!</h2>
+			<span class="light-in" style="margin: 0;"><b></b></span>
+		</div>
+		<br><br>
+		<div class="mechanism">
+			<br><br>
+			<div style="overflow:auto">
+				<h2>WFTM/lzUSDC-0.3% (ICHI)</h2>
+				<div id="usual-stats"></div>
+			</div>
+			<br><br>
+			<br><br>
+			<br><br>
+		</div>
+		<div class="analytics">
+			<a href="https://cl.equalizer.exchange" target="_blank">Earn Rewards at Equalizer <img src="https://ftm.guru/icons/equal.png" style="height:18px;vertical-align: top;"></a>
+		</div>
+
+
+	<div id="note" class="overlay">
+		<div class="popup">
+			<a class="close" href="#">&times;</a>
+			<div class="content" id="content1">
+				w31c0m3 fren!<br>trade well :)
+			</div>
+		</div>
+	</div>
+
+
+
+	<div class="extra">
+		<br><br>
+		<h3><a href="https://eliteness.network">Powered by Equalizer</a></h3>
+		<div id="social">
+			<a href="https://twitter.com/equalizer0x"><img src="https://ftm.guru/icons/twitter.svg"></a>
+			<a href="https://discord.gg/QpyfMarNrV"><img src="https://ftm.guru/icons/discord.svg"></a>
+			<a href="https://defillama.com/protocol/equalizer"><img src="https://ftm.guru/icons/defillama.svg"></a>
+		</div>
+		<!--
+		<small id="stats">
+		</small>
+		<h1><span></span></h1>
+		-->
+		<br><br>
+	</div>
+
+
+
+
+
+<!-- IGNORE BELOW BLOCK : DEV LOGS -->
+		<div style="display:none">
+		<span id="cw_m"></span>
+		<div id="connect">
+			Please connect your web3 wallet.
+			<br><br>
+			<button onclick="cw()" id="btn-connect">Connect</button>
+		</div>
+		<div id="switch">
+			<b id="btn-switch" onclick="cw()">
+				<img src="img/wallet.svg" width="24px" style="position:relative;top:4px">
+				<span id="cw"></span>
+			</b>
+			<br>Balance: <b style="font-family:bold" id="usb-mtv">?</b> <img class="imgmtv" src="https://ftm.guru/icons/usdc.svg" width="20px" style="position:relative;top:4px">USDC<br>
+			<span style="font-size:0.9em">Wallet at <img class="imgmtv" src="https://ftm.guru/icons/ftm.svg" width="20px" style="position:relative;top:4px">Fantom Opera. <a href="index.html" style="color:aqua;font-family:bold">Change?</a></span>
+		</div>
+	</div>
+<!-- IGNORE ABOVE BLOCK : DEV LOGS -->
+
+		<div id="particle-container" style="display:none">
+			<div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
+		</div>
+			<script src="https://ftm.guru/ethers-5.2.umd.min.js" type="application/javascript" defer="true"></script>
+			<!--
+			<script src="https://ftm.guru/chart.min.js" type="application/javascript"></script>
+			<script src="https://ftm.guru/chartjs-adapter-date-fns.bundle.min.js" type="application/javascript"></script>
+			-->
+			<script src="index.js"></script>
+			<script src="testdata.js"></script>
+			<script>
+				CHAINID = 250;
+				RPC_URL = "https://rpc.ankr.com/fantom";
+				EXPLORE = "https://ftmscan.com";
+				CHAIN_NAME = "Fantom Network";
+				CHAIN_GAS = "FTM";
+				LOGO = "https://ftm.guru/icons/equal.png";
+				POOL2 = "0x3d6c56f6855b7cc746fb80848755b0a9c3770122";
+				EQUALENS = "0xeC90476ccb34D8B6B7c77ab59ECE0b43945CB9c9";
+				VOTER= "0xe3d1a117df7dcac2eb0ac8219341bad92f18dac1";
+			</script>
+	</body>
+</html>
