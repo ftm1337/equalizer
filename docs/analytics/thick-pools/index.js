@@ -262,15 +262,15 @@ async function paint() {
 	]);
 
 	$("usual-stats").innerHTML = `
-		<div class="statcard"><div>Current Price</div><div>${(1.0001**Number(_ud[4])*1e12).toFixed(4)} lzUSDC/WFTM</div></div>
-		<div class="statcard"><div>Total LP</div><div>${(Number(_ud[7][0])/1e18).toFixed(4)} WFTM + ${(Number(_ud[7][1])/1e6).toFixed(4)} lzUSDC</div></div>
+		<div class="statcard"><div>Current Price</div><div>$${(1.0001**Number(_ud[4])*1e12).toLocaleString()}</div></div>
 		<div class="statcard"><div>Status</div><div>${_ud[11]?"Paused":"Active"}</div></div>
+		<div class="statcard"><div>Total LP</div><div>${(Number(_ud[7][0])/1e18).toLocaleString()} WFTM <br> ${(Number(_ud[7][1])/1e6).toLocaleString()} lzUSDC</div></div>
 		<br>
-		<div class="statcard"><div>Base LP</div><div>${(Number(_ud[5][1])/1e18).toFixed(4)} WFTM + ${(Number(_ud[5][2])/1e6).toFixed(4)} lzUSDC</div></div>
-		<div class="statcard"><div>Base Range</div><div>${(1.0001**Number(_ud[0])*1e12).toFixed(4)}-${(1.0001**Number(_ud[1])*1e12).toFixed(4)}</div></div>
+		<div class="statcard"><div>Base Range</div><div>${(1.0001**Number(_ud[0])*1e12).toLocaleString()} - ${(1.0001**Number(_ud[1])*1e12).toLocaleString()}</div></div>
+		<div class="statcard"><div>Base LP</div><div>${(Number(_ud[5][1])/1e18).toLocaleString()} WFTM <br> ${(Number(_ud[5][2])/1e6).toLocaleString()} lzUSDC</div></div>
 		<br>
-		<div class="statcard"><div>Limit LP</div><div>${(Number(_ud[6][1])/1e18).toFixed(4)} WFTM + ${(Number(_ud[6][2])/1e6).toFixed(4)} lzUSDC</div></div>
-		<div class="statcard"><div>Limit Range</div><div>${(1.0001**Number(_ud[2])*1e12).toFixed(4)}-${(1.0001**Number(_ud[3])*1e12).toFixed(4)}</div></div>
+		<div class="statcard"><div>Limit Range</div><div>${(1.0001**Number(_ud[2])*1e12).toLocaleString()} - ${(1.0001**Number(_ud[3])*1e12).toLocaleString()}</div></div>
+		<div class="statcard"><div>Limit LP</div><div>${(Number(_ud[6][1])/1e18).toLocaleString()} WFTM <br> ${(Number(_ud[6][2])/1e6).toLocaleString()} lzUSDC</div></div>
 		<br>
 		<div class="statcard"><div>AutoLP Price</div><div>$${fornum2(Number(_ud[9]),18)}</div></div>
 		<div class="statcard"><div>Total TVL</div><div>$${fornum2(Number(_ud[8])/1e18 * Number(_ud[9])/1e18 , 0)}</div></div>
