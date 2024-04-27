@@ -270,10 +270,10 @@ async function paint25() {
 
 	paint("ch_s", cd_s, "Supply Classification", ["Circulating", "Outstanding", "Diluted"], [0,0,1], 1, [{t:'origin',a:'rgba(255, 255, 255,1)'},{t:'origin',a:'rgba(0, 255, 255,0.5)'},{t:'origin',a:'rgba(255, 255, 0, 1)'}])
 	paint("ch_s2", cd_s2, "Non-circulating Supply", ["Locked in veNFTs", "Unclaimed Gauge Rewards", "Other Excluded Supply"], [0,0,1], 1, [{t:'origin',a:'rgba(127, 127, 127,0.5)'},{t:'origin',a:'rgba(0, 255, 255,1)'},false])
-	paint("ch_v", cd_v, "Vote Escrowed Supply", [ `ve${TOKENNAME} Voting Power`, `Locked ${TOKENNAME}`, `Total ${TOKENNAME}`], [0,0,0], 1,  [{t:'origin',a:'rgba(255, 255, 255,0.5)'},{t:'origin',a:'rgba(0, 255, 255,0.5)'},{t:'origin',a:'rgba(255, 223, 0, 0.1)'}])
-	paint("ch_lr", cd_lr, `Locked Supply of ${TOKENNAME} (in %)`, ["", "", ""], [1,0,1], 0, [false,{t:'origin',a:'rgba(0, 255, 255,0.5)'},false])
-	paint("ch_p", cd_p, `Price of ${TOKENNAME} in USD ($)`, ["", "", ""], [1,0,1], 0, [false,{t:'origin',a:'rgba(255, 255, 255, 0.5)'},false])
-	paint("ch_lqmc", cd_lqmc, "Day-Trading Vitals", ["EQUAL pooled", "Pool2 Liquidity", "Circ. Mkt. Cap."], [0,0,0], 1, [ {t:'origin',a:'rgba(255, 255, 255, 0.25)'}, {t:'origin',a:'rgba(0, 255, 255, 0.25)'},{t:'origin',a:'rgba(255, 255, 0.25)'}])
+	paint("ch_v", cd_v, "Vote Escrowed Supply", [ "veEQUAL Voting Power", "Locked EQUAL", "Total EQUAL"], [0,0,0], 1,  [{t:'origin',a:'rgba(255, 255, 255,0.5)'},{t:'origin',a:'rgba(0, 255, 255,0.5)'},{t:'origin',a:'rgba(255, 223, 0, 0.1)'}])
+	paint("ch_lr", cd_lr, "Locked Supply of EQUAL (in %)", ["", "", ""], [1,0,1], 0, [false,{t:'origin',a:'rgba(0, 255, 255,0.5)'},false])
+	paint("ch_p", cd_p, "Price of EQUAL in USD ($)", ["", "", ""], [1,0,1], 0, [false,{t:'origin',a:'rgba(255, 255, 255, 0.5)'},false])
+	paint("ch_lqmc", cd_lqmc, "Day-Trading Vitals", ["SCALE pooled", "Pool2 Liquidity", "Circ. Mkt. Cap."], [0,0,0], 1, [ {t:'origin',a:'rgba(255, 255, 255, 0.25)'}, {t:'origin',a:'rgba(0, 255, 255, 0.25)'},{t:'origin',a:'rgba(255, 255, 0.25)'}])
 	paint("ch_lqmcr", cd_lqmcr, "Pool2 Liquidity to Mkt.Cap Ratio (in %)", ["", "", ""], [1,0,1], 0, [false,{t:'origin',a:'rgba(0, 255, 255,0.5)'},false])
 	paint("ch_mc", cd_mc, "Market Capitalization in USD ($)", ["Total Issued", "Locked", "Circulating"], [0,0,0], 1, [false,false,false])
 
@@ -282,9 +282,9 @@ async function paint25() {
 	$("es_cmc").innerHTML = "$ " + Math.floor(cd_mc[2][cd_mc[2].length-1][1]).toLocaleString();
 	$("es_lr").innerHTML = (cd_lr[1][cd_lr[1].length-1][1]).toLocaleString() + " %";
 
-	$("cde_s_c").innerHTML = Math.floor(cd_s[0][cd_s[0].length-1][1]).toLocaleString() + ` ${TOKENNAME}`;
-	$("cde_s_o").innerHTML = Math.floor(cd_s[1][cd_s[1].length-1][1]).toLocaleString() + ` ${TOKENNAME}`;
-	$("cde_s_d").innerHTML = Math.floor(cd_s[2][cd_s[2].length-1][1]).toLocaleString() + ` ${TOKENNAME}`;
+	$("cde_s_c").innerHTML = Math.floor(cd_s[0][cd_s[0].length-1][1]).toLocaleString() + " EQUAL";
+	$("cde_s_o").innerHTML = Math.floor(cd_s[1][cd_s[1].length-1][1]).toLocaleString() + " EQUAL";
+	$("cde_s_d").innerHTML = Math.floor(cd_s[2][cd_s[2].length-1][1]).toLocaleString() + " EQUAL";
 }
 
 async function settings() {
