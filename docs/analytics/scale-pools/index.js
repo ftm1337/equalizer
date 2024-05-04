@@ -431,8 +431,16 @@ async function fetchAllPoolNames() {
 	return(GD2);
 }
 
+async function claimFees(_p) {
+	(new ethers.Contract(_p,["function claimFees()"],signer)).claimFees();
+}
+
 async function distribute(_g) {
 	(new ethers.Contract(VOTER,["function distribute(address)"],signer)).distribute(_g);
+}
+
+async function pokeBribes(_g) {
+	(new ethers.Contract(_g,["function claimFees()"],signer)).claimFees();
 }
 
 async function pushBribes(_fd, _bdo, _bd) {
@@ -496,7 +504,11 @@ async function paintF() {
 				<td>${(new Date(fd[i].N[5]*1e3)).toLocaleString()}</td>
 				<td>${(fd[i].N[6]/1e18*86400).toFixed(2)}</td>
 				<td>$${(fd[i].N[6]/1e18*86400*PRICE).toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2})}</td>
-				<td><button onclick='distribute("${fd[i].A[3]}")'>Distribute</button></td>
+				<td>
+					<button onclick='distribute("${fd[i].A[3]}")'>Distribute</button>
+					<button onclick='claimFees("${fd[i].A[0]}")'>Claim My Fees</button>
+					<button onclick='pokeBribes("${fd[i].A[3]}")'>Poke Bribes</button>
+				</td>
 				<td>${(fd[i].N[1]/1e18/tv*te*0.98).toLocaleString(undefined,{maximumFractionDigits:0})}</td>
 				<td>$${(fd[i].N[1]/1e18/tv*te*0.98*PRICE).toLocaleString(undefined,{maximumFractionDigits:0})}</td>
 				<td>${(0*fd[i].N[1]/1e18/tv*te*0.98).toLocaleString(undefined,{maximumFractionDigits:0})}</td>
