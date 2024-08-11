@@ -320,28 +320,28 @@ async function switch_rpc() {
 			<div align="center">
 				<b><img style="vertical-align: middle;"src="https://raw.githubusercontent.com/twitter/twemoji/54df6a1340154c4f5bad09c85de8b720c5373c03/assets/svg/2699.svg" width="16px"> User Settings</b>
 				<hr><br>
-				We were unable to access Fantom Network (#250) from the RPC URL you shared . . .
+				We were unable to access ${CHAIN_NAME} Network (#${CHAINID}) from the RPC URL you shared . . .
 			</div>
 		`);
 		return;
 	}
-	if(tempn.chainId != 250 ) {
+	if(tempn.chainId != CHAINID ) {
 
 		notice(`
 			<div align="center">
 				<b><img style="vertical-align: middle;"src="https://raw.githubusercontent.com/twitter/twemoji/54df6a1340154c4f5bad09c85de8b720c5373c03/assets/svg/2699.svg" width="16px"> User Settings</b>
 				<hr><br>
-				We were unable to access Fantom Network (#250) from the RPC URL (#${tempn.chainId==null?"?":tempn.chainId}) you shared . . .
+				We were unable to access ${CHAIN_NAME} Network (#${CHAINID}) from the RPC URL (#${tempn.chainId==null?"?":tempn.chainId}) you shared . . .
 			</div>
 		`);
 		return;
 	}
-	else if(tempn.chainId == 250) {
+	else if(tempn.chainId == CHAINID) {
 		notice(`
 			<div align="center">
 				<b><img style="vertical-align: middle;"src="https://raw.githubusercontent.com/twitter/twemoji/54df6a1340154c4f5bad09c85de8b720c5373c03/assets/svg/2699.svg" width="16px"> User Settings</b>
 				<hr><br>
-				Connected Successfully to Fantom Network (#250) from the RPC URL you shared!
+				Connected Successfully to ${CHAIN_NAME} Network (#${CHAINID}) from the RPC URL you shared!
 				<br><br>
 				<b>Old RPC:</b> ${provider.connection.url}
 				<br>
