@@ -1,0 +1,158 @@
+<!doctype html>
+<html>
+<meta charset="UTF-8">
+<meta name="description" content="Graphical Analytics for EQUAL Token: Price, various Market Caps., Classification of Supplies, Lock Ratios, Pool2 Liquidity, and a lot more! | Powered by FTM.Guru">
+<meta name="keywords" content="Equalizer, Exchange, Analytics, Ftm.guru, Guru Network, Finance, Decentralized Finance, defi, Airdrop, EQUAL, veNFT, Solidly, Equalizer, Base Opera, FTM">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+  <title>Equalizer.Exchange - EQUAL Analytics | FTM.Guru</title>
+  <link rel="shortcut icon" href="https://equalizer.exchange/assets/logo/EQUAL.png"/>
+  <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">-->
+  <link rel="stylesheet" href="index.css"/>
+  <style>
+  </style>
+</head>
+  <body>
+	<div id="particle-container-div">
+		<div id="particle-container">
+			<div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
+		</div>
+	</div>
+    <header>
+      <a class="logo" href="/"><img src="https://equalizer.exchange/images/logo.png"></a>
+      <input id="nav" type="checkbox">
+      <label for="nav" id="burger-menu"><img src="img/borger.jpg" alt=""></label>
+      <nav>
+        <ul>
+          <li><a href="https://equalizer.exchange/swap">Swap</a></li>
+          <li><a href="https://equalizer.exchange/liquidity">Liquidity</a></li>
+          <li><a href="https://equalizer.exchange/vest">Vest</a></li>
+          <li><a href="https://equalizer.exchange/vote">Vote</a></li>
+          <li><a href="https://equalizer.exchange/bribe/create">Bribe</a></li>
+          <li><a href="https://equalizer.exchange/rewards">Rewards</a></li>
+          <li><a href="https://ftm.guru/equalizer/analytics">Analytics</a></li>
+          <li><a onclick="settings()"><img style="vertical-align: middle;"src="https://raw.githubusercontent.com/twitter/twemoji/54df6a1340154c4f5bad09c85de8b720c5373c03/assets/svg/2699.svg" width="32px"> Settings</a></li>
+          <li> <button class="connect-wallet" id="cw" onclick="window.location='https://equalizer.exchange'">Launch DApp</button></li>
+        </ul>
+      </nav>
+
+    </header>
+
+
+    <div class="partnership">
+      <h1><span>Equalizer Analytics</span></h1>
+      <h2>Sonic's <span id="bonus-percentage">3rd Biggest</span> Decentralized Exchange</h2>
+    </div>
+    <br>
+    <div id="exsum" align="center">
+    	<h2>EQUAL: Executive Summary</h2>
+    	<div class="exsum">
+    		<div class="esd"><span>Price</span><span id="es_mp">$ ?</span></div>
+    		<div class="esd"><span>C. Market Cap</span><span id="es_cmc">$ ?</span></div>
+    		<div class="esd"><span>veNFT Lock Rate</span><span id="es_lr">? %</span></div>
+    	</div>
+    </div>
+	<div id="charts">
+
+		<script src="https://ftm.guru/chart.min.js"></script>
+		<script src="https://ftm.guru/chartjs-adapter-date-fns.bundle.min.js"></script>
+
+
+		<br><br><br><br><canvas id="ch_s" style="width:80%;height:50vh;max-height:500px"></canvas>
+		<div align="center" style="font-family:light">(Tap on a Category Label to Toggle its Chart)</div>
+		<div class="cde">
+			<h2>Classification of Supply</h2>
+			<h3>
+				<svg width="48" height="24"><rect height="20" width="48" style="fill:#fff;stroke-width:3;stroke:rgb(0,0,0);"></rect></svg>
+				Circulating Supply
+			</h3>
+			<span class="cdeda" id="cde_s_c">???,???,??? EQUAL</span>
+			<br>The Supply of EQUAL that is held by users in their wallets. Circulating Supply is fully unlocked and readily transferable.
+			<br><br><br>
+			<h3>
+				<svg width="48" height="24"><rect height="20" width="48" style="fill:#0ff;stroke-width:3;stroke:rgb(0,0,0);"></rect></svg>
+				Outstanding Supply
+			</h3>
+			<span class="cdeda" id="cde_s_o">???,???,??? EQUAL</span>
+			<br>Includes all circulating supply, locked supply (EQUAL that is locked inside veNFTs) and also the unclaimed supply from gauge distributions.
+			<br><br><br>
+			<h3>
+				<svg width="48" height="24"><rect height="20" width="48" style="fill:#ff0;stroke-width:3;stroke:rgb(0,0,0);"></rect></svg>
+				Diluted Supply
+			</h3>
+			<span class="cdeda" id="cde_s_d">???,???,??? EQUAL</span>
+			<br>Includes everything! Its the Total of Outstanding plus the EQUAL left in Genesis Airdrop (20% of initial supply, = 500K), Genesis Boosted Farming Incentives  (25% of initial supply, = 625K), Treasury holdings, Marketing wallet & unclaimed bribes as well.
+		</div>
+
+
+		<br><br><br><br><canvas id="ch_s2" style="width:80%;height:50vh;max-height:500px"></canvas>
+		<br><br><br><br><canvas id="ch_v" style="width:80%;height:50vh;max-height:500px"></canvas>
+		<br><br><br><br><canvas id="ch_lr" style="width:80%;height:50vh;max-height:500px"></canvas>
+		<br><br><br><br><canvas id="ch_p" style="width:80%;height:50vh;max-height:500px"></canvas>
+		<br><br><br><br><canvas id="ch_lqmc" style="width:80%;height:50vh;max-height:500px"></canvas>
+		<br><br><br><br><canvas id="ch_lqmcr" style="width:80%;height:50vh;max-height:500px"></canvas>
+		<br><br><br><br><canvas id="ch_mc" style="width:80%;height:50vh;max-height:500px"></canvas>
+
+
+	</div>
+    <div class="partnership">
+      <h1><span>Equalizer Analytics</span></h1>
+      <h2 class="getbonus" onclick="window.location='https://equalizer.exchange/lock'">Earn <span style="display:none" id="bonus-percentage"> </span>#RealYield by locking EQUAL!</h2>
+    </div>
+	<div align="center" class="lowerbar socialIcon">
+		<a href="https://twitter.com/Equalizer0x" target="_blank"><img src="https://equalizer.exchange/socials/socialcion1.svg" alt="Icon"></a>
+		<a href="https://discord.gg/6ubHeztmYV" target="_blank"><img src="https://equalizer.exchange/socials/social-cion2.svg" alt="Icon"></a>
+		<a href="https://equalizer0x.gitbook.io/equalizer-exchange-docs/" target="_blank"><img src="https://equalizer.exchange/socials/social-cion3.svg" alt="Icon"></a>
+		<a href="https://www.youtube.com/channel/UCERDeAyvqf8kEDAcorKJdTA" target="_blank"><img src="https://equalizer.exchange/socials/youtube.png" alt="Icon"></a>
+	</div>
+	<br><br>
+
+	<div id="note" class="overlay">
+		<div class="popup">
+			<a class="close" href="#">&times;</a>
+			<div class="content" id="content1">
+				<h3>Equalizer Analytics</h3>
+				Real-time On-chain Data<br>
+				Powered by FTM.Guru 🦾
+			</div>
+		</div>
+	</div>
+
+
+
+<!-- IGNORE BELOW BLOCK : DEV LOGS -->
+    <div style="display:none">
+		<span id="cw_m"></span>
+		<div id="connect">
+			Please connect your web3 wallet.
+			<br><br>
+			<button onclick="cw()" id="btn-connect">Connect</button>
+		</div>
+		<div id="switch">
+			<b id="btn-switch" onclick="cw()">
+				<img src="img/wallet.svg" width="24px" style="position:relative;top:4px">
+				<span id="cw"></span>
+			</b>
+			<br>Balance: <b style="font-family:bold" id="usb-mtv">?</b> <img class="imgmtv" src="https://ftm.guru/icons/usdc.svg" width="20px" style="position:relative;top:4px">USDC<br>
+			<span style="font-size:0.9em">Wallet at <img class="imgmtv" src="https://ftm.guru/icons/ftm.svg" width="20px" style="position:relative;top:4px">Sonic. <a href="index.html" style="color:aqua;font-family:bold">Change?</a></span>
+		</div>
+	</div>
+<!-- IGNORE ABOVE BLOCK : DEV LOGS -->
+
+
+      <script src="https://ftm.guru/ethers-5.2.umd.min.js" type="application/javascript" defer="true"></script>
+      <script src="https://ftm.guru/chart.min.js" type="application/javascript"></script>
+      <script src="https://ftm.guru/chartjs-adapter-date-fns.bundle.min.js" type="application/javascript"></script>
+      <script src="index.js?v=2"></script>
+      <script>
+        CHAINID = 146;
+        RPC_URL = "https://sonic.drpc.org";
+        EXPLORE = "https://sonicscan.org/address/";
+        CHAIN_NAME = "Sonic Mainnet";
+        VENFT = "0x3045119766352fF250b3d45312Bd0973CBF7235a";
+        EQUAL = "0xddF26B42C1d903De8962d3F79a74a501420d5F19";
+        E_S	=	"0x1e84c30aC53Eeda877A9e5c1fa23e042864A389f";
+        SBLOCK = 300000;
+      </script>
+  </body>
+</html>
