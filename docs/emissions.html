@@ -6,19 +6,715 @@
 	<title>Eliteness.Network</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="shortcut icon" href="https://ftm.guru/icons/scale-base.png"/>
-	<link rel="stylesheet" href="e.css"/>
-	<h1>Equalizer Emissions on Base & Sonic</h1>
+	<style>@font-face{font-family:bold;src: url(https://ftm.guru/font/bold.ttf);}
+@font-face{ font-family:italic;src: url(https://ftm.guru/font/italic.ttf);}
+@font-face{ font-family:light;src: url(https://ftm.guru/font/light.ttf);}
+@font-face{ font-family:light_italic;src: url(https://ftm.guru/font/light_italic.ttf);}
+@font-face{ font-family:regular;src: url(https://ftm.guru/font/regular.ttf);}
+@font-face{ font-family:regular_italic;src: url(https://ftm.guru/font/regular_italic.ttf);}
+*{
+	font-family:regular;
+	scroll-behavior: smooth !important;
+	color: white;
+}
+body {
+	margin:0;
+}
+.equal-gradient {
+	background: -webkit-linear-gradient(left, #f0a, #90f);
+}
+
+.equal-gradient-white {
+    background: -webkit-linear-gradient(left, #f0a, #90f) !important;
+    color: white !important;
+	font-family: ;
+}
+
+body {
+	/*background: url('img/bg.png')
+	background-color: #01011b;
+	background-repeat: none;
+	background-size: 100% 100vh;*/
+	background: url('https://eliteness.network/ethena/img/bgypt.png');
+	background-attachment: fixed;
+	background-position: cover;
+	background-size: 100% 100%;
+}
+small {
+	color: white;
+	font-family: sans-serif;
+}
+.topnav {
+	background: #f0f1;
+	backdrop-filter: blur(10px);
+	display: grid;
+	grid-template-columns: auto auto auto auto auto;
+	align-items: center;
+	padding: 10px 5%;
+}
+.topnav-left-text {
+    font-weight: bold;
+	display: none;
+}
+@media(min-width:641px) {
+	.topnav-left-text {
+		display: revert;
+	}
+}
+.topnav a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2em;
+}
+
+.topnav-left img {
+    margin-right: 10px;
+    height: 32px;
+    vertical-align: middle;
+}
+
+.partnership, .extra {
+	width: 80%;
+	margin: auto auto;
+	text-align: center;
+}
+.partnership span {
+	padding: 10px;
+}
+
+p {
+	font-family: sans-serif;
+	font-size: 1em;
+	text-align: center;
+	margin-top: 5px;
+}
+
+h1, h2 {
+	color: white;
+	font-family: sans-serif;
+	text-align: center;
+}
+
+h1 span, h2 span {
+	background: -webkit-linear-gradient(top,	#f07 40%, #90f);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+h1 {
+	margin: 20px 0px 20px 0px;
+	font-size: 1.75em;
+}
+
+h2 {
+	color: white;
+	font-weight: normal;
+	margin-top: 25px;
+	font-size: 0.75em
+}
+
+.mechanism {
+	width: 75%;
+	position: relative;
+	background: -webkit-linear-gradient(183.56deg, #01011b, #001337);
+	background: -moz-linear-gradient(183.56deg, #01011b 0, #001337 100%);
+	background: linear-gradient(266.44deg, #01011b, #001337);
+	/*
+	background:#090333;
+	*/
+	border: 1px solid #ed00c9;
+	border-radius: 25px;
+	margin: 25px auto;
+	padding: 15px;
+	position: relative;
+	margin-bottom: 0;
+}
+
+.mechanism .amount p {
+	color: white;
+}
+
+button,select {
+	background-color: #ea00cb;
+	padding: 10px 30px;
+	border-radius: 30px;
+	font-family: sans-serif;
+	font-weight: bold;
+	color: white;
+}
+
+button.submit {
+
+		width: 60%;
+	margin-top: 50px;
+	padding: 6px;
+	font-size: 0.75em;
+}
+
+button.btn-max {
+	background: #001337;
+    width: 35% !important;
+    margin-left: 2%;
+}
+
+.mechanism .input-amount input, .nft-amtl {
+	display: inline;
+	vertical-align: middle;
+	margin-left: 10px;
+}
+
+.mechanism .input-amount img.bigthumb {
+	width: 40px;
+	display: inline;
+	vertical-align: middle;
+}
+.mechanism .input-amount img.bigthumb_sub {
+	width: 20px;
+	position: relative ;
+	left:-20px;
+	top:10px;
+}
+.mechanism .input-amount img.bigthumb_sup {
+	width: 20px;
+	position: relative;
+	left: -32px;
+	top: -16px;
+}
+
+.mechanism .input-amount img {
+	width: 20px;
+	display: inline;
+	vertical-align: middle;
+}
+
+.mechanism input, .nft-amtl {
+	background-color: transparent;
+	color: black;
+	width: 100%;
+	border: 0;
+	font-size: 1em;
+	color: white;
+}
+
+.input-amount-els{
+	display: grid;
+	grid-template-columns: max-content auto;
+}
+
+#nft-amt, #nft-offer {
+	font-size: 1.5em;
+	margin: 0;
+}
+
+.nft-amt-nums {
+	position: relative;
+	left: -10px;
+	max-width: max-content;
+}
+
+.nft-amtl-desc {
+	font-family: light_italic;
+	font-size: 1em;
+}
+.nft-amtl-desc b {
+	font-family: regular_italic;
+}
+
+.earn-stats {
+	display: grid;
+	grid-template-columns: auto auto;
+	text-align: center;
+	font-size: 1.5em;
+}
+
+/*
+#bal_tvl, #bal_apr{
+	text-decoration: 2px dotted underline aqua;
+	font-size:0.9em;
+}
+*/
+
+textarea:focus, input:focus {
+	outline: none;
+}
+
+.mechanism:before {
+	content: "";
+	border-radius: 25px;
+	position: absolute;
+	background: -webkit-linear-gradient(183.56deg, #28edec, #0564d7);
+	background: -moz-linear-gradient(183.56deg, #28edec 0, #0564d7 100%);
+	background: linear-gradient(266.44deg, #28edec, #0564d7);
+	/*
+	-webkit-animation: gradient 2s ease infinite;
+	animation: gradient 2s ease infinite;
+	box-shadow: 0 0 50px #48003d;
+	*/
+	top: -1px;
+	left: -1px;
+	bottom: -1px;
+	right: -1px;
+	z-index: -1;
+}
+
+
+.particle {
+	position: absolute;
+	border-radius: 50%;
+}
+
+#particle-container {
+	position:absolute;
+	top:0;
+	height:100vh;
+	z-index: -1;
+}
+
+.hr-nft {
+	border:none;
+	/*
+	background: -webkit-linear-gradient(183.56deg, #0564d7, #28edec);
+	background: -moz-linear-gradient(183.56deg, #0564d7 0, #28edec 100%);
+	background: linear-gradient(266.44deg, #0564d7, #28edec);
+	*/
+	height: 2px;
+	background: -webkit-linear-gradient(left, #f0a, #90f);
+}
+
+#p_cw{font-size:1em;font-family:light;position:relative;z-index:1;}
+
+#nft-sel {
+	font-size: 0.8em;
+	padding: 5px
+}
+
+#cw_og {
+	text-decoration: 2px underline aqua;
+}
+
+#cw_og {
+	border-radius: 5px;
+	padding: 5px;
+	cursor: pointer;
+}
+
+#cw_og:hover {
+	box-shadow: 0px 0px 10px 5px rgba(255,255,255,.05), 0px 0px 10px 5px rgba(255,255,255,0.05);transition: 0.3s;
+	text-decoration: 2px underline wavy aqua
+}
+
+.extra h3,.extra h4 {
+	color: white;
+	text-shadow: 0px 0px 2px #f07;
+}
+.extra h1 {
+	background: -webkit-linear-gradient(left, #035cd6, #2cfbee);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	font-size:2.5em
+}
+.extra a {
+	text-decoration: none;
+}
+
+
+.overlay {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: rgba(0, 0, 0, 0.7);
+	transition: opacity 500ms;
+	visibility: hidden;
+	opacity: 0;
+	overflow-y:	auto;
+	z-index: 1;
+}
+.overlay:target {
+	visibility: visible;
+	opacity: 1;
+}
+
+.popup {
+	margin: 70px auto;
+	padding: 20px;
+	background: #192133;
+	color: #fff;
+	border-radius: 20px;
+	width: 30%;
+	position: relative;
+	transition: all 5s ease-in-out;
+}
+
+.popup .close {
+	position: absolute;
+	top: 10px;
+	right: 20px;
+	transition: all 200ms;
+	font-size: 30px;
+	font-weight: bold;
+	text-decoration: none;
+	color: #789;
+}
+.popup .close:hover {
+	color: #fff;
+	cursor:	context-menu
+}
+.popup .content {
+	max-height: 30%;
+	overflow: auto;
+}
+
+@media screen and (max-width: 700px){
+	.box{
+		width: 70%;
+	}
+	.popup{
+		width: 70%;
+	}
+}
+
+
+#content1 a {
+	color: aqua;
+}
+
+#content1 u {
+	text-decoration: dashed underline aqua
+}
+
+.analytics {
+	text-align: center;
+	margin-bottom: 20px;
+	padding: 5px;
+	display:none;
+}
+
+.analytics a {
+	max-width: min-content;
+	width: min-content;
+	position: relative;
+	background: -webkit-linear-gradient(183.56deg, #28edec, #6789ff);
+	background: -moz-linear-gradient(183.56deg, #28edec 0, #6789ff 100%);
+	background: linear-gradient(266.44deg, #28edec, #6789ff);
+	padding: 5px;
+	margin: auto;
+	border-radius: 0px 0px 10px 10px;
+	color: #001;
+	text-decoration: none
+}
+
+#social a img {
+  height: 24px;
+  margin:4px 4px 4px 0;
+}
+
+
+.prefill-num {
+	opacity: 0.5;
+	font-size: 0.5em !important;
+}
+
+.in-box {
+	background: rgba(0,0,0,0.5) !important;;
+	border-radius: 8px;
+	padding: 8px;
+}
+
+@media(min-width:641px) {
+
+	.mechanism {
+		width: 500px;
+	}
+
+	.mechanism .amount {
+		position: absolute;
+		right: 25px;
+		top: 15px;
+	}
+
+	.mechanism .input-amount img {
+		width: 40px;
+		display: inline;
+		vertical-align: middle;
+	}
+	.mechanism .input-amount img.bigthumb {
+		width: 80px;
+		display: inline;
+		vertical-align: middle;
+	}
+	.mechanism .input-amount img.bigthumb_sub {
+		width: 40px;
+		position: relative ;
+		left:-40px;
+		top:20px;
+	}
+	.mechanism .input-amount img.bigthumb_sup {
+		width: 40px;
+		position: relative;
+		left: -64px;
+		top: -32px;
+}
+
+	#nft-amt, #nft-offer {
+		font-size: 2.5em;
+		margin: 0;
+	}
+
+	.nft-amt-nums {
+		position: relative;
+		left: -20px
+	}
+
+	.nft-amtl-desc {
+		font-family: light_italic;
+		font-size: 2em;
+	}
+
+	.nft-amtl-desc b {
+		font-family: regular_italic;
+	}
+
+	.earn-stats {
+		grid-template-columns: auto auto;
+	}
+
+
+	.mechanism input, .nft-amtl {
+		background-color: transparent;
+		color: black;
+		width: 100%;
+		border: 0;
+		font-size: 1.5em;
+		color: white;
+	}
+
+	button.submit {
+		margin-top: 50px;
+		padding: 10px;
+		font-size: 1em;
+	}
+
+	h1 {
+		margin-top: 100px;
+		font-size: 4em;
+	}
+
+	h2 {
+		font-size: 1.5em;
+	}
+
+	.prefill-num {
+		opacity: 0.5;
+		font-size: 0.5em !important;
+	}
+
+	#bal_tvl, #bal_apr{
+		font-size:revert;
+	}
+
+}
+
+
+
+
+
+#scroll-container {
+	background: black;
+	overflow: hidden;
+	padding: 5px;
+	display:none;
+}
+
+#scroll-text {
+  text-align: right;
+	font-family: light;
+	width: max-content;
+
+  /* animation properties */
+  -moz-transform: translateX(-100%);
+  -webkit-transform: translateX(-100%);
+  transform: translateX(-100%);
+
+  -moz-animation: scroll-animation 30s linear infinite;
+  -webkit-animation: scroll-animation 30s linear infinite;
+  animation: scroll-animation 30s linear infinite;
+}
+
+#scroll-text span {
+  margin:10px;
+}
+/* for Firefox */
+@-moz-keyframes scroll-animation {
+  from { -moz-transform: translateX(-100%); }
+  to { -moz-transform: translateX(100%); }
+}
+
+/* for Chrome */
+@-webkit-keyframes scroll-animation {
+  from { -webkit-transform: translateX(-100%); }
+  to { -webkit-transform: translateX(100%); }
+}
+
+@keyframes scroll-animation {
+  to {
+    -moz-transform: translateX(-100%);
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
+  from {
+    -moz-transform: translateX(10%);
+    -webkit-transform: translateX(10%);
+    transform: translateX(10%);
+  }
+}
+
+#scroll-text:hover{
+	animation: none;
+	transform: revert;
+}
+
+.earn-stats-key {
+    text-align:left;
+    font-size:1em;
+}
+.earn-stats-val {
+    text-align:right;
+    font-size:1em;
+}
+
+.dune-counters, .dune-chart {
+	text-align:center;
+}
+
+.dune-chart iframe {
+	width:80%;
+	height:60vh;
+}
+
+
+
+
+.topstats {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 2%;
+}
+
+.topstat {
+    background: #f3f3;
+    padding: 20px;
+    border: 1px solid #f0f;
+    border-radius: 10px;
+    margin: 10px;
+    flex: 1;
+    min-width: 200px;
+    text-align: center;
+}
+
+.topstat div:first-child {
+    font-family: bold;
+    font-size: 1.5em;
+}
+
+.topstat div:last-child {
+    font-family: regular;
+    font-size: 1em;
+}
+
+
+@media (max-width: 700px) {
+    .topstats {
+        flex-direction: column;
+    }
+}
+
+.footer {
+	backdrop-filter: blur(10px);
+	margin:0;
+	padding:0;
+	background: #0007;
+}
+.footer-nav {
+	display:grid;
+	grid-template-columns: auto;
+	padding-bottom: 20px;
+	text-align: left;
+	margin: 100px calc( max(10px , 2%)) 0px;
+}
+.footer-nav-sub{
+	margin-top: 50px;
+}
+.footer-nav-sub-head {
+	font-family:bold;
+	font-size:2em;
+	border-bottom: 1px solid #0ff7;
+	margin-bottom: 10px
+}
+.footer-nav-sub div {
+		margin: 10px auto;
+}
+.footer-nav-sub a {
+	text-decoration: none;
+	color: #fff;
+	font-family: light;
+	font-weight: 900;
+	font-size: 1em;
+}
+.footer-nav-sub a:hover {
+	color: aqua;
+	text-shadow: 0px 0px 20px aqua;
+}
+@media(min-width:641px) {
+	.footer-nav-sub-head {
+		font-size:3em;
+	}
+	.footer-nav-sub a {
+		font-size: 1.5em
+	}
+}
+@media(min-width:1337px) {
+	.footer-nav {
+		grid-template-columns: auto auto;
+	}
+}
+@media(min-width:1920px) {
+	.footer-nav {
+		grid-template-columns: auto auto auto auto;
+	}
+}
+.echarts {
+	display: grid;
+	grid-template-columns: auto;
+	margin: 50px auto;
+}
+.echart {
+	width: 95%;
+	height: 60vh;
+	margin: 20px auto;
+}
+/*
+@media(min-width:1337px) {
+	.echarts {
+		grid-template-columns: auto auto;
+	}
+	.echart {
+	}
+}
+*/</style>
+	<h2>Equalizer Emissions on Base & Sonic</h2>
 		<div class="echarts">
-        	<div id="echart-1" class="echart" style="height:70vh"></div>
-        	<div id="echart-2" class="echart" style="height:70vh"></div>
-        	<div id="echart-3" class="echart" style="height:70vh"></div>
-        	<div id="echart-4" class="echart" style="height:70vh"></div>
-        	<div id="echart-5" class="echart" style="height:70vh"></div>
+        	<div id="echart-1" class="echart" style="height:60vh"></div>
+        	<div id="echart-2" class="echart" style="height:60vh"></div>
+        	<div id="echart-3" class="echart" style="height:60vh"></div>
+        	<div id="echart-4" class="echart" style="height:60vh"></div>
+        	<div id="echart-5" class="echart" style="height:60vh"></div>
         </div>
 
 			<script src="https://ftm.guru/ethers-5.2.umd.min.js" type="application/javascript"></script>
 		    <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
-		    <script src="stats.js"></script>
 		    <script>
 
 
@@ -196,7 +892,7 @@ echart1 = echarts.init(document.getElementById('echart-1'),'dark'); echart1.setO
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // emissions chart - base
-	ehd = (
+	let ehd = (
 		await (
 			(new ethers.Contract(
 				_lad,
@@ -336,8 +1032,8 @@ echart1 = echarts.init(document.getElementById('echart-1'),'dark'); echart1.setO
       			type: 'slider',
       			show: true,
       			xAxisIndex: [0],
-      			start: ehd.length - Math.min(52,ehd.length),
-      			end: ehd.length
+      			start: Math.floor((ehd.length - Math.min(52,ehd.length))/ehd.length * 100),
+      			end: 100
     		},
     		{
       			type: 'inside',
@@ -349,8 +1045,9 @@ echart1 = echarts.init(document.getElementById('echart-1'),'dark'); echart1.setO
     		show:true,
   		}
 	}
-	echart1 = echarts.init(document.getElementById(_echarta),'dark'); echart1.setOption(eo_eh);
-
+	let echart1 = echarts.init(document.getElementById(_echarta),'dark');
+	echart_ids.push( echart1.getId() );
+	echart1.setOption(eo_eh);
 
 
 
@@ -393,8 +1090,8 @@ echart1 = echarts.init(document.getElementById('echart-1'),'dark'); echart1.setO
       			type: 'slider',
       			show: true,
       			xAxisIndex: [0],
-      			start: ehd.length - Math.min(52,ehd.length),
-      			end: ehd.length
+      			start: Math.floor((ehd.length - Math.min(52,ehd.length))/ehd.length * 100),
+      			end: 100
     		},
     		{
       			type: 'inside',
@@ -409,10 +1106,17 @@ echart1 = echarts.init(document.getElementById('echart-1'),'dark'); echart1.setO
 
 
 
-	echart2 = echarts.init(document.getElementById(_echartb),'dark'); echart2.setOption(eo_ehu);
+	let echart2 = echarts.init(document.getElementById(_echartb),'dark');
+	echart_ids.push( echart2.getId() );
+	echart2.setOption(eo_ehu);
+
+
+
+	echarts.connect([echart1, echart2]);
+	console.log({ehd})
 
 }
-
+echart_ids = []
 main("0x73E01Ae0F263ac26F40558c51Cb57137944b3937",(new ethers.providers.JsonRpcProvider("https://mainnet.base.org")), 'echart-1', 'echart-2', "SCALE")
 main("0xaB492B40817e9dC5195DF543FBd8C71974855D56",(new ethers.providers.JsonRpcProvider("https://rpc.soniclabs.com")), 'echart-3', 'echart-4', "EQUAL")
 
